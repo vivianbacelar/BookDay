@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-   @State private var isPresented = false
-    
-    @State private var isbn: String?
+//   @State private var isPresented = false
+//   @State private var isbn: String?
+//   @State private var foundBooks: Book?
     
     var body: some View {
         NavigationView{
