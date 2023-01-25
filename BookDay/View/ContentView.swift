@@ -9,21 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-   @State private var isPresented = false
-    
-    @State private var isbn: String?
-    
     var body: some View {
-        NavigationView{
-            Form{
-                Section(header:
-                            Text("About this book")){
-                    Text("Title")
-                    Text("Subtitle")
-                    Text("Authors")
-                }
-            }
-        }
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)

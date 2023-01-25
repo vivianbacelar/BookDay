@@ -8,24 +8,71 @@
 import Foundation
 
 // MARK: - Welcome
-struct Welcome: Codable {
+struct Welcome: Decodable {
     //let kind: String
    // let totalItems: Int
     let items: [Item]
 }
 
 // MARK: - Item
-struct Item: Codable {
-   // let kind: Kind
+struct Item: Decodable, Identifiable{
     let id: String
-   // let etag: String
     let selfLink: String
     let volumeInfo: VolumeInfo
+    // let etag: String
+    // let kind: Kind
     //let saleInfo: SaleInfo
     //let accessInfo: AccessInfo
    // let searchInfo: SearchInfo?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case selfLink = "selfLink"
+        case volumeInfo = "volumeInfo"
+
+    }
 }
 
+// MARK: - VolumeInfo
+struct VolumeInfo: Codable {
+    let title: String
+    let authors: [String]
+    let publishedDate: String?
+    let description: String
+    let pageCount: Int
+    let categories: [String]
+    let averageRating: Double?
+    let language: Language
+    let subtitle, publisher: String?
+    let imageLinks: ImageLinks?
+    // let printType: PrintType
+  //let industryIdentifiers: [IndustryIdentifier]
+   // let readingModes: ReadingModes
+    //let ratingsCount: Int?
+    //let maturityRating: MaturityRating
+   // let allowAnonLogging: Bool
+   // let contentVersion: ContentVersion
+    //let previewLink, infoLink: String
+    //let canonicalVolumeLink: String
+    //let panelizationSummary: PanelizationSummary?
+}
+
+/*
+enum ContentVersion: String, Codable {
+    case preview100 = "preview-1.0.0"
+    case the1550Preview2 = "1.5.5.0.preview.2"
+}
+ */
+
+// MARK: - ImageLinks
+struct ImageLinks: Codable {
+    let smallThumbnail, thumbnail: String
+}
+
+enum Language: String, Codable {
+    case pt = "pt"
+    case ptBR = "pt-BR"
+}
 /*
 // MARK: - AccessInfo
 struct AccessInfo: Codable {
@@ -81,47 +128,6 @@ struct SearchInfo: Codable {
     let textSnippet: String
 }
  */
-
-// MARK: - VolumeInfo
-struct VolumeInfo: Codable {
-    let title: String
-    let authors: [String]
-    let publishedDate: String?
-    let description: String
-  //  let industryIdentifiers: [IndustryIdentifier]
-   // let readingModes: ReadingModes
-    let pageCount: Int
-   // let printType: PrintType
-    let categories: [String]
-    let averageRating: Double?
-    //let ratingsCount: Int?
-    //let maturityRating: MaturityRating
-   // let allowAnonLogging: Bool
-   // let contentVersion: ContentVersion
-    let language: Language
-    //let previewLink, infoLink: String
-    //let canonicalVolumeLink: String
-    //let panelizationSummary: PanelizationSummary?
-    let subtitle, publisher: String?
-    let imageLinks: ImageLinks?
-}
-
-/*
-enum ContentVersion: String, Codable {
-    case preview100 = "preview-1.0.0"
-    case the1550Preview2 = "1.5.5.0.preview.2"
-}
- */
-
-// MARK: - ImageLinks
-struct ImageLinks: Codable {
-    let smallThumbnail, thumbnail: String
-}
-
-enum Language: String, Codable {
-    case pt = "pt"
-    case ptBR = "pt-BR"
-}
 /*
 // MARK: - IndustryIdentifier
 struct IndustryIdentifier: Codable {
