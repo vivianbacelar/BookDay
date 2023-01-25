@@ -1,9 +1,16 @@
 //
-//  Book.swift
+//  StructLivro.swift
 //  BookDay
 //
-//  Created by Vivian Bacelar on 24/01/23.
+//  Created by Isabella Gomes  on 25/01/23.
 //
+
+import Foundation
+
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let welcome = try? JSONDecoder().decode(Welcome.self, from: jsonData)
 
 import Foundation
 
@@ -152,6 +159,3 @@ struct ReadingModes: Codable {
     let text, image: Bool
 }
 */
-
-
-

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A73EDE92981A7AE0015C444 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A73EDE82981A7AE0015C444 /* NetworkModel.swift */; };
+		8A73EDEB2981B2A60015C444 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A73EDEA2981B2A60015C444 /* DummyData.swift */; };
+		8A73EDF02981B3180015C444 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 8A73EDEF2981B3180015C444 /* CodableExtensions */; };
 		A14899502980541900402C94 /* BookDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148994F2980541900402C94 /* BookDayApp.swift */; };
 		A14899522980541900402C94 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14899512980541900402C94 /* ContentView.swift */; };
 		A14899542980541A00402C94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14899532980541A00402C94 /* Assets.xcassets */; };
@@ -16,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A73EDE82981A7AE0015C444 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		8A73EDEA2981B2A60015C444 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		A148994C2980541900402C94 /* BookDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A148994F2980541900402C94 /* BookDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDayApp.swift; sourceTree = "<group>"; };
 		A14899512980541900402C94 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,12 +35,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A73EDF02981B3180015C444 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A73EDE529807F2D0015C444 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A14899512980541900402C94 /* ContentView.swift */,
+				A148994F2980541900402C94 /* BookDayApp.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A14899432980541900402C94 = {
 			isa = PBXGroup;
 			children = (
@@ -55,8 +70,7 @@
 		A148994E2980541900402C94 /* BookDay */ = {
 			isa = PBXGroup;
 			children = (
-				A148994F2980541900402C94 /* BookDayApp.swift */,
-				A14899512980541900402C94 /* ContentView.swift */,
+				8A73EDE529807F2D0015C444 /* View */,
 				A14899622980686500402C94 /* BookSearchManager.swift */,
 				A1489961298060FC00402C94 /* Model */,
 				A14899532980541A00402C94 /* Assets.xcassets */,
@@ -77,6 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				A148995F298060F000402C94 /* Book.swift */,
+				8A73EDE82981A7AE0015C444 /* NetworkModel.swift */,
+				8A73EDEA2981B2A60015C444 /* DummyData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -97,6 +113,9 @@
 			dependencies = (
 			);
 			name = BookDay;
+			packageProductDependencies = (
+				8A73EDEF2981B3180015C444 /* CodableExtensions */,
+			);
 			productName = BookDay;
 			productReference = A148994C2980541900402C94 /* BookDay.app */;
 			productType = "com.apple.product-type.application";
@@ -125,6 +144,9 @@
 				Base,
 			);
 			mainGroup = A14899432980541900402C94;
+			packageReferences = (
+				8A73EDEE2981B3180015C444 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+			);
 			productRefGroup = A148994D2980541900402C94 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -151,7 +173,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A73EDE92981A7AE0015C444 /* NetworkModel.swift in Sources */,
 				A1489960298060F000402C94 /* Book.swift in Sources */,
+				8A73EDEB2981B2A60015C444 /* DummyData.swift in Sources */,
 				A14899522980541900402C94 /* ContentView.swift in Sources */,
 				A14899632980686500402C94 /* BookSearchManager.swift in Sources */,
 				A14899502980541900402C94 /* BookDayApp.swift in Sources */,
@@ -355,6 +379,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A73EDEE2981B3180015C444 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A73EDEF2981B3180015C444 /* CodableExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A73EDEE2981B3180015C444 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			productName = CodableExtensions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A14899442980541900402C94 /* Project object */;
 }
