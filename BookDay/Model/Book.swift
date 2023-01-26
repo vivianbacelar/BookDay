@@ -34,19 +34,20 @@ struct Item: Decodable, Identifiable{
 }
 
 // MARK: - VolumeInfo
-struct VolumeInfo: Codable {
+struct VolumeInfo: Decodable {
     let title: String
-    let authors: [String]
+    let authors: [String]?
     let publishedDate: String?
-    let description: String
-    let pageCount: Int
-    let categories: [String]
+    let description: String?
+    let pageCount: Int?
+    let categories: [String]?
     let averageRating: Double?
     let language: Language
     let subtitle, publisher: String?
     let imageLinks: ImageLinks?
+
     // let printType: PrintType
-  //let industryIdentifiers: [IndustryIdentifier]
+    //let industryIdentifiers: [IndustryIdentifier]
    // let readingModes: ReadingModes
     //let ratingsCount: Int?
     //let maturityRating: MaturityRating
@@ -66,12 +67,14 @@ enum ContentVersion: String, Codable {
 
 // MARK: - ImageLinks
 struct ImageLinks: Codable {
-    let smallThumbnail, thumbnail: String
+    let smallThumbnail, thumbnail: URL
+    
 }
 
 enum Language: String, Codable {
     case pt = "pt"
     case ptBR = "pt-BR"
+    case en = "en"
 }
 /*
 // MARK: - AccessInfo
