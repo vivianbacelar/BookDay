@@ -9,15 +9,29 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @State private var search: String = ""
     @State private var filteredItems: [Item] = []
     @StateObject private var networkModel = NetworkModel()
     
- 
+    private var items: [Item]{
+        filteredItems.isEmpty ? networkModel.items: filteredItems
+    }
+    
     var body: some View {
         NavigationStack{
             VStack {
-                List(networkModel.items) { item in
+                Button {
+                    Task {
+                        do {
+                            try await networkModel.fetchBooks()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    
+                } label: {
+                    Text("pt-br")
+                }
+                List(items) { item in
                     HStack{
                         AsyncImage(url: item.volumeInfo.imageLinks?.smallThumbnail) { image in
                             image.resizable()
@@ -28,17 +42,18 @@ struct SearchView: View {
                         }
                         Text(item.volumeInfo.title ?? "")
                         
+                        
                     }
                 }
-                .searchable(text: $search)
-                .onChange(of: search, perform: performSearch)
+                .searchable(text: $networkModel.search)
+                .onChange(of: networkModel.search, perform: performSearch)
                 .task {
                     do {
-                       try await networkModel.fetchBooks()
+                        try await networkModel.fetchBooks()
                     } catch {
                         print(error)
                     }
-                    
+                    //game+of+trhones
                 }
             }
         }
