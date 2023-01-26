@@ -6,24 +6,49 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct MainView: View {
-    var body: some View {
+   
+    @State var showLibraryTouch = true
+     
+     var body: some View {
+         
         
-       
-        TabView {
-            Library()
-                .tabItem {
-                    Image("library")
+         TabView {
+             Library()
+                 .tabItem {
+                     Label("Library", systemImage: "books.vertical")
                 }
+             
             Home()
                 .tabItem {
-                    Image("home")
+                    Label("Reading", systemImage: "book.fill")
+                    
                 }
             Search()
                 .tabItem {
-                    Image("pesquisa")
-                }.tint(Color("Verde"))
+                    Label("Search", systemImage: "magnifyingglass")
+                }.tint(Color.corRosa)
+            
+        }.onAppear() {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(named: "gelo")
+            appearance.shadowColor = nil
+            appearance.stackedItemPositioning = .centered
+            appearance.stackedItemSpacing = 0
+            appearance.selectionIndicatorTintColor = .red
+            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "rosa")
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor(named: "rosa")
+            ]
+            appearance.stackedLayoutAppearance.normal.iconColor = UIColor(named: "cinza")
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor(named: "cinza")
+            ]
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+            UITabBar.appearance().standardAppearance = appearance
         }
     }
 }
@@ -33,3 +58,4 @@ struct MainView_Previews: PreviewProvider {
         MainView()
     }
 }
+

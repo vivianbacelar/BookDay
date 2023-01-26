@@ -12,6 +12,11 @@
 		A14899542980541A00402C94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14899532980541A00402C94 /* Assets.xcassets */; };
 		A14899572980541A00402C94 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14899562980541A00402C94 /* Preview Assets.xcassets */; };
 		A1489960298060F000402C94 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148995F298060F000402C94 /* Book.swift */; };
+		A14FC17F2982F8FA009F0075 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC17E2982F8FA009F0075 /* Test.swift */; };
+		A14FC1812982F969009F0075 /* FlowOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC1802982F969009F0075 /* FlowOrganizer.swift */; };
+		A14FC1832982FBE1009F0075 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC1822982FBE1009F0075 /* BookModel.swift */; };
+		A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC184298305FE009F0075 /* ProgressBar.swift */; };
+		A14FC18729832DB5009F0075 /* BelyDisplay.otf in Resources */ = {isa = PBXBuildFile; fileRef = A14FC17B2982F72A009F0075 /* BelyDisplay.otf */; };
 		A159F5F92981BCE60054BBC4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F5F82981BCE60054BBC4 /* Colors.swift */; };
 		A159F5FB2981C4870054BBC4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F5FA2981C4870054BBC4 /* MainView.swift */; };
 		A159F5FD2981C4CC0054BBC4 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F5FC2981C4CC0054BBC4 /* Library.swift */; };
@@ -26,6 +31,12 @@
 		A14899532980541A00402C94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14899562980541A00402C94 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A148995F298060F000402C94 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		A14FC1722982EDF3009F0075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A14FC17B2982F72A009F0075 /* BelyDisplay.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BelyDisplay.otf; sourceTree = "<group>"; };
+		A14FC17E2982F8FA009F0075 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		A14FC1802982F969009F0075 /* FlowOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowOrganizer.swift; sourceTree = "<group>"; };
+		A14FC1822982FBE1009F0075 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		A14FC184298305FE009F0075 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		A159F5F82981BCE60054BBC4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A159F5FA2981C4870054BBC4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A159F5FC2981C4CC0054BBC4 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
@@ -63,9 +74,12 @@
 		A148994E2980541900402C94 /* BookDay */ = {
 			isa = PBXGroup;
 			children = (
+				A14FC17B2982F72A009F0075 /* BelyDisplay.otf */,
+				A14FC1722982EDF3009F0075 /* Info.plist */,
 				A159F5F42981BC4C0054BBC4 /* View */,
 				A148994F2980541900402C94 /* BookDayApp.swift */,
 				A14899512980541900402C94 /* ContentView.swift */,
+				A14FC1782982EEF0009F0075 /* ViewExtended */,
 				A1489961298060FC00402C94 /* Model */,
 				A14899532980541A00402C94 /* Assets.xcassets */,
 				A14899552980541A00402C94 /* Preview Content */,
@@ -86,8 +100,17 @@
 			children = (
 				A148995F298060F000402C94 /* Book.swift */,
 				A159F5F82981BCE60054BBC4 /* Colors.swift */,
+				A14FC1802982F969009F0075 /* FlowOrganizer.swift */,
+				A14FC1822982FBE1009F0075 /* BookModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A14FC1782982EEF0009F0075 /* ViewExtended */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewExtended;
 			sourceTree = "<group>";
 		};
 		A159F5F42981BC4C0054BBC4 /* View */ = {
@@ -95,8 +118,10 @@
 			children = (
 				A159F5FA2981C4870054BBC4 /* MainView.swift */,
 				A159F6002981CA740054BBC4 /* Home.swift */,
+				A14FC184298305FE009F0075 /* ProgressBar.swift */,
 				A159F5FC2981C4CC0054BBC4 /* Library.swift */,
 				A159F5FE2981C4DE0054BBC4 /* Search.swift */,
+				A14FC17E2982F8FA009F0075 /* Test.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,6 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14FC18729832DB5009F0075 /* BelyDisplay.otf in Resources */,
 				A14899572980541A00402C94 /* Preview Assets.xcassets in Resources */,
 				A14899542980541A00402C94 /* Assets.xcassets in Resources */,
 			);
@@ -171,10 +197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */,
 				A159F5FD2981C4CC0054BBC4 /* Library.swift in Sources */,
 				A1489960298060F000402C94 /* Book.swift in Sources */,
+				A14FC17F2982F8FA009F0075 /* Test.swift in Sources */,
 				A159F5FB2981C4870054BBC4 /* MainView.swift in Sources */,
+				A14FC1832982FBE1009F0075 /* BookModel.swift in Sources */,
 				A159F5F92981BCE60054BBC4 /* Colors.swift in Sources */,
+				A14FC1812982F969009F0075 /* FlowOrganizer.swift in Sources */,
 				A159F5FF2981C4DE0054BBC4 /* Search.swift in Sources */,
 				A159F6012981CA740054BBC4 /* Home.swift in Sources */,
 				A14899522980541900402C94 /* ContentView.swift in Sources */,
@@ -310,6 +340,7 @@
 				DEVELOPMENT_TEAM = S5PMJAY297;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookDay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BookDay;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -340,6 +371,7 @@
 				DEVELOPMENT_TEAM = S5PMJAY297;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookDay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BookDay;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

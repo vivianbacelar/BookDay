@@ -9,33 +9,40 @@ import SwiftUI
 
 struct ContentView: View {
     
-//   @State private var isPresented = false
-//   @State private var isbn: String?
-//   @State private var foundBooks: Book?
+    @State var percent: CGFloat = 0
+    @State var numberPage: CGFloat = 0
     
     var body: some View {
-        NavigationView{
-            Form{
-                Section(header:
-                            Text("About this book")){
-                    Text("Title")
-                    Text("Subtitle")
-                    Text("Authors")
-                }
+        
+        VStack (spacing: 20){
+            
+            ProgressBar(width: 200, height: 30, percent: percent, color: .corRosa)
+            
+            HStack (spacing: 120) {
+                
+                Text("\(Int(percent))%")
+                    .font(.system(size: 20, weight: .bold))
+                    .multilineTextAlignment(.leading)
+                
+                //Descobrir como colocar o número da página que está
+                Text("\(Int(numberPage))")
+                    .font(.system(size: 20, weight: .bold))
+                
+                
+                    
+                
+                
             }
         }
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    
+    
+    
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
