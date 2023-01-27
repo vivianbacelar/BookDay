@@ -24,7 +24,7 @@ struct Item: Decodable, Identifiable{
     //let saleInfo: SaleInfo
     //let accessInfo: AccessInfo
    // let searchInfo: SearchInfo?
-    
+
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case selfLink = "selfLink"
@@ -68,7 +68,7 @@ enum ContentVersion: String, Codable {
 // MARK: - ImageLinks
 struct ImageLinks: Codable {
     let smallThumbnail, thumbnail: URL
-    
+
 }
 
 enum Language: String, Codable {
@@ -96,7 +96,7 @@ enum AccessViewStatus: String, Codable {
 enum Country: String, Codable {
     case br = "BR"
 }
- 
+
 
 // MARK: - Epub
 struct Epub: Codable {
@@ -142,7 +142,7 @@ enum TypeEnum: String, Codable {
     case isbn10 = "ISBN_10"
     case isbn13 = "ISBN_13"
 }
- 
+
 enum MaturityRating: String, Codable {
     case notMature = "NOT_MATURE"
 }
@@ -161,6 +161,3 @@ struct ReadingModes: Codable {
     let text, image: Bool
 }
 */
-
-
-
