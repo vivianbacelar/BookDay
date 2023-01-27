@@ -27,14 +27,16 @@ struct SearchView: View {
                             HStack {
                                 AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
                                     image.resizable()
+                                        .padding(.top)
                                         .aspectRatio(contentMode: .fit)
                                         .frame(maxWidth: 200, maxHeight: 150)
+                                        .padding(.bottom)
                                 } placeholder: {
                                     Image(systemName: "book")
                                 }
-                                VStack{
+                                VStack {
                                     Text(item.volumeInfo.title)
-                                        .font(Font.custom("RalewayRegular", size: 20))
+                                        .font(Font.custom("RalewayRegular", size: 18))
                                         .multilineTextAlignment(.leading)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                     //                                Text(item.volumeInfo.authors)
@@ -84,7 +86,10 @@ struct SearchView: View {
                         .font(Font.custom("BelyDisplay-Regular", size: 35))
                         .padding(.top,50)
                 }
-            }
+            }.frame(maxWidth: .infinity)
+                .background(.white)
+                .toolbarBackground( Color.white, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
         }
         
         
