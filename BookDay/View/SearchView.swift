@@ -17,23 +17,27 @@ struct SearchView: View {
     }
     
     var body: some View {
-        NavigationStack{
+        NavigationView{
             VStack {
-                List(items) { item in
+                ForEach(items) { item in
                     HStack{
                         AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 100, maxHeight: 100)
+                                .frame(maxWidth: 200, maxHeight: 150)
                         }placeholder: {
-                            Text("loading...")
+                            Image(systemName: "book")
                         }
                         Text(item.volumeInfo.title ?? "")
-                        
+                            .font(Font.custom("RalewayRegular", size: 20))
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         
                     }
                 }
+                
                 .searchable(text: $networkModel.search)
+                
                 .onSubmit(of: .search) {
                     Task {
                         do {
@@ -45,8 +49,21 @@ struct SearchView: View {
                 }
                 .onChange(of: networkModel.search, perform: performSearch)
                 
-            }
+            }.ignoresSafeArea()
         }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("BookDay")
+                    .font(Font.custom("BelyDisplay-Regular", size: 35))
+                
+                    .padding(.top)
+            }
+        }.frame(maxWidth: .infinity)
+            .background(.white)
+        // .toolbarBackground(Color.blue, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+        
+        
     }
     
     private func performSearch (keyWord: String) {
@@ -54,7 +71,7 @@ struct SearchView: View {
             item.volumeInfo.title.contains(keyWord)
         }
     }
- 
+    
 }
 
 struct SearchView_Previews: PreviewProvider {
