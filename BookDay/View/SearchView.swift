@@ -19,21 +19,9 @@ struct SearchView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                Button {
-                    Task {
-                        do {
-                            try await networkModel.fetchBooks()
-                        } catch {
-                            print(error)
-                        }
-                    }
-                    
-                } label: {
-                    Text("pt-br")
-                }
                 List(items) { item in
                     HStack{
-                        AsyncImage(url: item.volumeInfo.imageLinks?.smallThumbnail) { image in
+                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(maxWidth: 100, maxHeight: 100)
@@ -46,15 +34,17 @@ struct SearchView: View {
                     }
                 }
                 .searchable(text: $networkModel.search)
-                .onChange(of: networkModel.search, perform: performSearch)
-                .task {
-                    do {
-                        try await networkModel.fetchBooks()
-                    } catch {
-                        print(error)
+                .onSubmit(of: .search) {
+                    Task {
+                        do {
+                            try await networkModel.fetchBooks()
+                        } catch {
+                            print(error)
+                        }
                     }
-                    //game+of+trhones
                 }
+                .onChange(of: networkModel.search, perform: performSearch)
+                
             }
         }
     }
