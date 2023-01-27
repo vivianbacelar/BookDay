@@ -18,26 +18,54 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView{
-            VStack {
-                ForEach(items) { item in
-                    HStack{
-                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 200, maxHeight: 150)
-                        }placeholder: {
-                            Image(systemName: "book")
+            ScrollView {
+                
+                
+                VStack {
+                    ForEach(items) { item in
+                        VStack {
+                            HStack {
+                                AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxWidth: 200, maxHeight: 150)
+                                } placeholder: {
+                                    Image(systemName: "book")
+                                }
+                                VStack{
+                                    Text(item.volumeInfo.title)
+                                        .font(Font.custom("RalewayRegular", size: 20))
+                                        .multilineTextAlignment(.leading)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    //                                Text(item.volumeInfo.authors)
+                                    //                                    .font(Font.custom("RalewayLight", size: 20))
+                                    //                                    .multilineTextAlignment(.leading)
+                                    //                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    HStack {
+                                        Spacer()
+                                        Button {
+                                            print("Click")
+                                        }label: {
+                                            Image(systemName: "plus.circle")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 30)
+                                                .foregroundColor(.pink)
+                                                .padding(.trailing)
+                                            //.padding(.horizontal)
+                                        }.buttonStyle(.plain)
+                                    }
+                                    
+                                }
+                            }
+                            RoundedRectangle(cornerRadius: 15)
+                                   .foregroundColor(Color.gray)
+                                   .frame(height: 1)
+                                   .padding(.horizontal, 30)
                         }
-                        Text(item.volumeInfo.title ?? "")
-                            .font(Font.custom("RalewayRegular", size: 20))
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
                     }
                 }
-                
                 .searchable(text: $networkModel.search)
-                
                 .onSubmit(of: .search) {
                     Task {
                         do {
@@ -49,19 +77,16 @@ struct SearchView: View {
                 }
                 .onChange(of: networkModel.search, perform: performSearch)
                 
-            }.ignoresSafeArea()
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("BookDay")
-                    .font(Font.custom("BelyDisplay-Regular", size: 35))
-                
-                    .padding(.top)
             }
-        }.frame(maxWidth: .infinity)
-            .background(.white)
-        // .toolbarBackground(Color.blue, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("BookDay")
+                        .font(Font.custom("BelyDisplay-Regular", size: 35))
+                        .padding(.top,50)
+                }
+            }
+        }
+        
         
         
     }
