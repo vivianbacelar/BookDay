@@ -21,7 +21,7 @@ struct MainView: View {
                      Label("Library", systemImage: "books.vertical")
                 }
              
-            Home()
+            Home(page: Page.samplePage)
                 .tabItem {
                     Label("Reading", systemImage: "book.fill")
                     

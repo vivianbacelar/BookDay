@@ -17,6 +17,16 @@
 		A14FC1832982FBE1009F0075 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC1822982FBE1009F0075 /* BookModel.swift */; };
 		A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC184298305FE009F0075 /* ProgressBar.swift */; };
 		A14FC18729832DB5009F0075 /* BelyDisplay.otf in Resources */ = {isa = PBXBuildFile; fileRef = A14FC17B2982F72A009F0075 /* BelyDisplay.otf */; };
+		A152AC482984425E00D21DDC /* RalewayExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3C2984425E00D21DDC /* RalewayExtraLight.otf */; };
+		A152AC492984425E00D21DDC /* RalewayExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3D2984425E00D21DDC /* RalewayExtraBold.otf */; };
+		A152AC4A2984425E00D21DDC /* RalewayRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3E2984425E00D21DDC /* RalewayRegular.otf */; };
+		A152AC4B2984425E00D21DDC /* RalewayMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3F2984425E00D21DDC /* RalewayMedium.otf */; };
+		A152AC4C2984425E00D21DDC /* RalewayBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC402984425E00D21DDC /* RalewayBold.otf */; };
+		A152AC502984425E00D21DDC /* RalewayLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC442984425E00D21DDC /* RalewayLight.otf */; };
+		A152AC522984425E00D21DDC /* Raleway.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC462984425E00D21DDC /* Raleway.otf */; };
+		A152AC5E298449A200D21DDC /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152AC5D298449A200D21DDC /* PageModel.swift */; };
+		A152AC60298468BF00D21DDC /* ProfileBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152AC5F298468BF00D21DDC /* ProfileBook.swift */; };
+		A152AC622984790E00D21DDC /* ScrollBookReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152AC612984790E00D21DDC /* ScrollBookReading.swift */; };
 		A159F5F92981BCE60054BBC4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F5F82981BCE60054BBC4 /* Colors.swift */; };
 		A159F5FB2981C4870054BBC4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F5FA2981C4870054BBC4 /* MainView.swift */; };
 		A159F5FD2981C4CC0054BBC4 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F5FC2981C4CC0054BBC4 /* Library.swift */; };
@@ -37,6 +47,16 @@
 		A14FC1802982F969009F0075 /* FlowOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowOrganizer.swift; sourceTree = "<group>"; };
 		A14FC1822982FBE1009F0075 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		A14FC184298305FE009F0075 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		A152AC3C2984425E00D21DDC /* RalewayExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayExtraLight.otf; sourceTree = "<group>"; };
+		A152AC3D2984425E00D21DDC /* RalewayExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayExtraBold.otf; sourceTree = "<group>"; };
+		A152AC3E2984425E00D21DDC /* RalewayRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayRegular.otf; sourceTree = "<group>"; };
+		A152AC3F2984425E00D21DDC /* RalewayMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayMedium.otf; sourceTree = "<group>"; };
+		A152AC402984425E00D21DDC /* RalewayBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayBold.otf; sourceTree = "<group>"; };
+		A152AC442984425E00D21DDC /* RalewayLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayLight.otf; sourceTree = "<group>"; };
+		A152AC462984425E00D21DDC /* Raleway.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Raleway.otf; sourceTree = "<group>"; };
+		A152AC5D298449A200D21DDC /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
+		A152AC5F298468BF00D21DDC /* ProfileBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBook.swift; sourceTree = "<group>"; };
+		A152AC612984790E00D21DDC /* ScrollBookReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollBookReading.swift; sourceTree = "<group>"; };
 		A159F5F82981BCE60054BBC4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A159F5FA2981C4870054BBC4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A159F5FC2981C4CC0054BBC4 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
@@ -75,6 +95,13 @@
 			isa = PBXGroup;
 			children = (
 				A14FC17B2982F72A009F0075 /* BelyDisplay.otf */,
+				A152AC3C2984425E00D21DDC /* RalewayExtraLight.otf */,
+				A152AC3F2984425E00D21DDC /* RalewayMedium.otf */,
+				A152AC3E2984425E00D21DDC /* RalewayRegular.otf */,
+				A152AC462984425E00D21DDC /* Raleway.otf */,
+				A152AC402984425E00D21DDC /* RalewayBold.otf */,
+				A152AC442984425E00D21DDC /* RalewayLight.otf */,
+				A152AC3D2984425E00D21DDC /* RalewayExtraBold.otf */,
 				A14FC1722982EDF3009F0075 /* Info.plist */,
 				A159F5F42981BC4C0054BBC4 /* View */,
 				A148994F2980541900402C94 /* BookDayApp.swift */,
@@ -102,6 +129,7 @@
 				A159F5F82981BCE60054BBC4 /* Colors.swift */,
 				A14FC1802982F969009F0075 /* FlowOrganizer.swift */,
 				A14FC1822982FBE1009F0075 /* BookModel.swift */,
+				A152AC5D298449A200D21DDC /* PageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +146,8 @@
 			children = (
 				A159F5FA2981C4870054BBC4 /* MainView.swift */,
 				A159F6002981CA740054BBC4 /* Home.swift */,
+				A152AC612984790E00D21DDC /* ScrollBookReading.swift */,
+				A152AC5F298468BF00D21DDC /* ProfileBook.swift */,
 				A14FC184298305FE009F0075 /* ProgressBar.swift */,
 				A159F5FC2981C4CC0054BBC4 /* Library.swift */,
 				A159F5FE2981C4DE0054BBC4 /* Search.swift */,
@@ -184,9 +214,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A152AC4B2984425E00D21DDC /* RalewayMedium.otf in Resources */,
 				A14FC18729832DB5009F0075 /* BelyDisplay.otf in Resources */,
+				A152AC482984425E00D21DDC /* RalewayExtraLight.otf in Resources */,
+				A152AC522984425E00D21DDC /* Raleway.otf in Resources */,
 				A14899572980541A00402C94 /* Preview Assets.xcassets in Resources */,
 				A14899542980541A00402C94 /* Assets.xcassets in Resources */,
+				A152AC492984425E00D21DDC /* RalewayExtraBold.otf in Resources */,
+				A152AC4C2984425E00D21DDC /* RalewayBold.otf in Resources */,
+				A152AC4A2984425E00D21DDC /* RalewayRegular.otf in Resources */,
+				A152AC502984425E00D21DDC /* RalewayLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,14 +234,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A152AC60298468BF00D21DDC /* ProfileBook.swift in Sources */,
 				A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */,
 				A159F5FD2981C4CC0054BBC4 /* Library.swift in Sources */,
+				A152AC622984790E00D21DDC /* ScrollBookReading.swift in Sources */,
 				A1489960298060F000402C94 /* Book.swift in Sources */,
 				A14FC17F2982F8FA009F0075 /* Test.swift in Sources */,
 				A159F5FB2981C4870054BBC4 /* MainView.swift in Sources */,
 				A14FC1832982FBE1009F0075 /* BookModel.swift in Sources */,
 				A159F5F92981BCE60054BBC4 /* Colors.swift in Sources */,
 				A14FC1812982F969009F0075 /* FlowOrganizer.swift in Sources */,
+				A152AC5E298449A200D21DDC /* PageModel.swift in Sources */,
 				A159F5FF2981C4DE0054BBC4 /* Search.swift in Sources */,
 				A159F6012981CA740054BBC4 /* Home.swift in Sources */,
 				A14899522980541900402C94 /* ContentView.swift in Sources */,

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BelyDisplay.otf</string>
+		<string>RalewayExtraLight.otf</string>
+		<string>RalewayMedium.otf</string>
+		<string>RalewayRegular.otf</string>
+		<string>Raleway.otf</string>
+		<string>RalewayBold.otf</string>
+		<string>RalewayLight.otf</string>
+		<string>RalewayExtraBold.otf</string>
+	</array>
+</dict>
+</plist>
