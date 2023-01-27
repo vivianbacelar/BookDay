@@ -11,7 +11,7 @@ import SwiftUI
 struct BookDayApp: App {
     var body: some Scene {
         WindowGroup {
-            Home(page: Page.samplePage)
+            MainView()
         }
     }
 }

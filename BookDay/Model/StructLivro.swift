@@ -1,81 +1,38 @@
 //
-//  Book.swift
+//  StructLivro.swift
 //  BookDay
 //
-//  Created by Vivian Bacelar on 24/01/23.
+//  Created by Isabella Gomes  on 25/01/23.
 //
 
 import Foundation
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let welcome = try? JSONDecoder().decode(Welcome.self, from: jsonData)
+
+import Foundation
+
 // MARK: - Welcome
-struct Welcome: Decodable {
+struct Welcome: Codable {
     //let kind: String
    // let totalItems: Int
     let items: [Item]
 }
 
 // MARK: - Item
-struct Item: Decodable, Identifiable{
+struct Item: Codable {
+   // let kind: Kind
     let id: String
+   // let etag: String
     let selfLink: String
     let volumeInfo: VolumeInfo
-    // let etag: String
-    // let kind: Kind
     //let saleInfo: SaleInfo
     //let accessInfo: AccessInfo
    // let searchInfo: SearchInfo?
-
-    private enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case selfLink = "selfLink"
-        case volumeInfo = "volumeInfo"
-
-    }
 }
 
-// MARK: - VolumeInfo
-struct VolumeInfo: Decodable {
-    let title: String
-    let authors: [String]?
-    let publishedDate: String?
-    let description: String?
-    let pageCount: Int?
-    let categories: [String]?
-    let averageRating: Double?
-    let language: Language
-    let subtitle, publisher: String?
-    let imageLinks: ImageLinks?
-
-    // let printType: PrintType
-    //let industryIdentifiers: [IndustryIdentifier]
-   // let readingModes: ReadingModes
-    //let ratingsCount: Int?
-    //let maturityRating: MaturityRating
-   // let allowAnonLogging: Bool
-   // let contentVersion: ContentVersion
-    //let previewLink, infoLink: String
-    //let canonicalVolumeLink: String
-    //let panelizationSummary: PanelizationSummary?
-}
-
-/*
-enum ContentVersion: String, Codable {
-    case preview100 = "preview-1.0.0"
-    case the1550Preview2 = "1.5.5.0.preview.2"
-}
- */
-
-// MARK: - ImageLinks
-struct ImageLinks: Codable {
-    let smallThumbnail, thumbnail: URL
-
-}
-
-enum Language: String, Codable {
-    case pt = "pt"
-    case ptBR = "pt-BR"
-    case en = "en"
-}
 /*
 // MARK: - AccessInfo
 struct AccessInfo: Codable {
@@ -96,7 +53,7 @@ enum AccessViewStatus: String, Codable {
 enum Country: String, Codable {
     case br = "BR"
 }
-
+ 
 
 // MARK: - Epub
 struct Epub: Codable {
@@ -131,6 +88,47 @@ struct SearchInfo: Codable {
     let textSnippet: String
 }
  */
+
+// MARK: - VolumeInfo
+struct VolumeInfo: Codable {
+    let title: String
+    let authors: [String]
+    let publishedDate: String?
+    let description: String
+  //  let industryIdentifiers: [IndustryIdentifier]
+   // let readingModes: ReadingModes
+    let pageCount: Int
+   // let printType: PrintType
+    let categories: [String]
+    let averageRating: Double?
+    //let ratingsCount: Int?
+    //let maturityRating: MaturityRating
+   // let allowAnonLogging: Bool
+   // let contentVersion: ContentVersion
+    let language: Language
+    //let previewLink, infoLink: String
+    //let canonicalVolumeLink: String
+    //let panelizationSummary: PanelizationSummary?
+    let subtitle, publisher: String?
+    let imageLinks: ImageLinks?
+}
+
+/*
+enum ContentVersion: String, Codable {
+    case preview100 = "preview-1.0.0"
+    case the1550Preview2 = "1.5.5.0.preview.2"
+}
+ */
+
+// MARK: - ImageLinks
+struct ImageLinks: Codable {
+    let smallThumbnail, thumbnail: String
+}
+
+enum Language: String, Codable {
+    case pt = "pt"
+    case ptBR = "pt-BR"
+}
 /*
 // MARK: - IndustryIdentifier
 struct IndustryIdentifier: Codable {
@@ -142,7 +140,7 @@ enum TypeEnum: String, Codable {
     case isbn10 = "ISBN_10"
     case isbn13 = "ISBN_13"
 }
-
+ 
 enum MaturityRating: String, Codable {
     case notMature = "NOT_MATURE"
 }
