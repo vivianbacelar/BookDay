@@ -34,7 +34,7 @@ struct ScrollBookReading: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 291, height: 433)
-                    }
+                    }.buttonStyle(.plain)
 
                     
                         
