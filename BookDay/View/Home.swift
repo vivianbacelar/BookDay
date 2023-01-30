@@ -29,43 +29,13 @@ struct Home: View {
                 VStack{
                     
                     Text("BookDay")
-                        .font(Font.custom("BelyDisplay-Regular", size: 35))
-                    //                        .padding(.top, 60)
+                        .font(Font.custom("BelyDisplay-Regular", size: 23))
+                        .padding(.top, 30)
                     
-                    Text("Add new book")
-                        .font(Font.custom("Raleway", size: 20))
-                        .multilineTextAlignment(.leading)
-                    
-                    ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
-                    //                        .padding(.top, 85)
-                    
-                    HStack (spacing: 120) {
-                        
-                        //                        Text("\(Int(percent))%")
-                        //                            .font(Font.custom("RalewayExtraLight", size: 10))
-                        ////                            .font(.system(size: 10, weight: .light))
-                        //                            .multilineTextAlignment(.leading)
-                        
-                        
-                        //Descobrir como colocar o número da página que está
-                        Text("Page \(Int(numberPage)) (\(Int(totalPage)) )")
-                            .font(Font.custom("RalewayExtraLight", size: 12))
-                            .foregroundColor(Color.corCinzaEscuro)
-                            .multilineTextAlignment(TextAlignment.trailing)
-                        //
-                    }
-                    
-//                    Text(page.title)
-//                        .font(Font.custom("Raleway", size: 20))
-//                        .multilineTextAlignment(.leading)
-//
-//                    Text(page.authors)
-//                        .font(Font.custom("Raleway", size: 20))
-//                        .multilineTextAlignment(.leading)
-                    
-                    
-                    
+ 
                     ScrollBookReading()
+                    
+             
                     
                 }
             }

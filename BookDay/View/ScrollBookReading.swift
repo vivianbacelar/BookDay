@@ -12,21 +12,42 @@ struct ScrollBookReading: View {
     @State private var pageIndex = 0
     private let pages: [Page] = Page.samplePages
     private let dotAppearance = UIPageControl.appearance()
+    @State var percent: CGFloat = 0
+    @State var numberPage: CGFloat = 0
+    //    Pensar em como colocar o número de páginas totais
+    @State var totalPage: CGFloat = 0
     
     var body: some View {
         
         TabView(selection: $pageIndex){
             ForEach(pages) {page in
                 
-                VStack (spacing: 20){
+                VStack (spacing: 15){
                     
                     Text(page.title)
-                        .font(Font.custom("Raleway", size: 20))
+                        .font(Font.custom("Raleway", size: 18))
                         .multilineTextAlignment(.leading)
+                        
                     
                     Text(page.authors)
-                        .font(Font.custom("Raleway", size: 20))
+                        .font(Font.custom("RalewayExtraLight", size: 14))
                         .multilineTextAlignment(.leading)
+                    
+                    
+                    ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
+                     
+                    
+                    HStack (spacing: 120) {
+  
+                        //Descobrir como colocar o número da página que está
+                        Text("Page \(Int(numberPage)) (\(Int(totalPage)) )")
+                            .font(Font.custom("RalewayExtraLight", size: 12))
+                            .foregroundColor(Color.corCinzaEscuro)
+                            .multilineTextAlignment(TextAlignment.trailing)
+                    
+                    }
+                    
+                    
                     NavigationLink {
                         
                     } label: {
