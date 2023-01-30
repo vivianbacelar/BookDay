@@ -29,7 +29,6 @@ struct SearchView: View {
                         
                         ForEach(items) { item in
 
-                            
                             VStack {
                                 HStack {
                                     AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
@@ -39,17 +38,23 @@ struct SearchView: View {
                                             .frame(maxWidth: 200, maxHeight: 150)
                                             .padding(.bottom)
                                     } placeholder: {
-                                        Image(systemName: "book")
+                                        Image("PlaceHolder")
+                                            .resizable()
+                                                .padding(.top)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(maxWidth: 200, maxHeight: 150)
+                                                .padding(.bottom)
                                     }
                                     VStack {
                                         Text(item.volumeInfo.title)
                                             .font(Font.custom("RalewayRegular", size: 18))
                                             .multilineTextAlignment(.leading)
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                        //                                Text(item.volumeInfo.authors)
-                                        //                                    .font(Font.custom("RalewayLight", size: 20))
-                                        //                                    .multilineTextAlignment(.leading)
-                                        //                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                        Text(item.volumeInfo.authors?.first ?? "")
+                                            .font(Font.custom("RalewayLight", size: 15))
+                                            .multilineTextAlignment(.leading)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                        
                                         HStack {
                                             Spacer()
                                             Button (action:{

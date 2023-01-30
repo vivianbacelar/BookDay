@@ -29,13 +29,19 @@ struct ScrollBookReading: View {
                             .multilineTextAlignment(.leading)
                         NavigationLink {
                             
+                            InfoBookView(item: page)
                         } label: {
                             AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
                                 image.resizable()
                                     .scaledToFit()
                                     .frame(width: 291, height: 433)
                             } placeholder: {
-                                Image(systemName: "book")
+                                Image("PlaceHolder")
+                                    .resizable()
+                                        .padding(.top)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxWidth: 200, maxHeight: 150)
+                                        .padding(.bottom)
                             }
                         }.buttonStyle(.plain)
                         
