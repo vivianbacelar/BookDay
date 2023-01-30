@@ -50,10 +50,13 @@ struct SearchView: View {
                                             .font(Font.custom("RalewayRegular", size: 18))
                                             .multilineTextAlignment(.leading)
                                             .frame(maxWidth: .infinity, alignment: .leading)
+                                            
                                         Text(item.volumeInfo.authors?.first ?? "")
                                             .font(Font.custom("RalewayLight", size: 15))
                                             .multilineTextAlignment(.leading)
                                             .frame(maxWidth: .infinity, alignment: .leading)
+                                            .padding(.top,1)
+                                        
                                         
                                         HStack {
                                             Spacer()
@@ -69,9 +72,9 @@ struct SearchView: View {
                                                     .frame(width: 30)
                                                     .foregroundColor(Color.corLaranja)
                                                     .padding(.trailing)
-                                                //.padding(.horizontal)
+                                                    .padding(.horizontal)
                                             }.buttonStyle(.plain)
-                                        }
+                                        }.padding(.top)
                                         
                                         
                                     }
