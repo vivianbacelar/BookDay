@@ -11,7 +11,7 @@ import UIKit
 struct MainView: View {
    
     @State var showLibraryTouch = true
-     
+    
      var body: some View {
          
         
@@ -26,7 +26,7 @@ struct MainView: View {
                     Label("Reading", systemImage: "book.fill")
                     
                 }
-            SearchView()
+             SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }.tint(Color.corRosa)

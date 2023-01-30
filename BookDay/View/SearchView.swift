@@ -9,11 +9,12 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @State private var filteredItems: [Item] = []
+    @State var filteredItems: [Item] = []
     @State var customAlert = false
-    @StateObject private var networkModel = NetworkModel()
+    @StateObject var networkModel = NetworkModel()
+    @State var selectedItem: Item?
     
-    private var items: [Item]{
+    var items: [Item]{
         filteredItems.isEmpty ? networkModel.items: filteredItems
     }
     
@@ -27,6 +28,8 @@ struct SearchView: View {
                     VStack {
                         
                         ForEach(items) { item in
+
+                            
                             VStack {
                                 HStack {
                                     AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
@@ -52,6 +55,7 @@ struct SearchView: View {
                                             Button (action:{
                                                 withAnimation{
                                                     customAlert.toggle()
+                                                    selectedItem = item
                                                 }
                                             }) {
                                                 Image(systemName: "plus.circle")
@@ -61,7 +65,7 @@ struct SearchView: View {
                                                     .foregroundColor(Color.corLaranja)
                                                     .padding(.trailing)
                                                 //.padding(.horizontal)
-                                            }
+                                            }.buttonStyle(.plain)
                                         }
                                         
                                         
@@ -104,13 +108,15 @@ struct SearchView: View {
             
         }.overlay(content: {
             if customAlert {
-                CustomAlertView(show: $customAlert)
+                CustomAlertView(show: $customAlert, selectedItem: selectedItem)
             }
         })
         
         
         
     }
+ 
+
     
     private func performSearch (keyWord: String) {
         filteredItems = networkModel.items.filter{ item in
@@ -120,21 +126,10 @@ struct SearchView: View {
     
 }
 
-struct BlurView : UIViewRepresentable {
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
-        
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-        
-    }
-}
-
 struct CustomAlertView: View {
     
     @Binding var show: Bool
+    var selectedItem: Item?
     
     var body: some View{
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
@@ -146,19 +141,26 @@ struct CustomAlertView: View {
                             HStack{
                                 Button{
                                     print("read")
+                                    show.toggle()
                                 }label:{
                                     Image("readButtom")
-                                }
+                                }.buttonStyle(.plain)
+                                
                                 Button{
                                     print("reading")
+                                    show.toggle()
+                                    DAO.shared.addToReadingList(item: selectedItem!)
                                 }label:{
                                     Image("readingButtom")
-                                }
+                                }.buttonStyle(.plain)
+                                
                                 Button{
                                     print("want to read")
+                                    show.toggle()
                                 }label:{
                                     Image("wantToReadButtom")
-                                }
+                                }.buttonStyle(.plain)
+                                
                             }.padding(.bottom)
                                 .padding(.horizontal)
                             
@@ -169,7 +171,7 @@ struct CustomAlertView: View {
                                 }
                             }){
                                 Image("okButton")
-                            }
+                            }.buttonStyle(.plain)
                         }
                     })
             }
@@ -182,12 +184,14 @@ struct CustomAlertView: View {
         .background(Color.corCinzaEscuro.opacity(0.7))
         
     }
+    
 }
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack{
-            SearchView()
-        }
-    }
-}
+//
+//struct SearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack{
+//            SearchView( livro: $livro)
+//        }
+//    }
+//}

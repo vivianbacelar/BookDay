@@ -62,9 +62,7 @@ struct Home: View {
 //                    Text(page.authors)
 //                        .font(Font.custom("Raleway", size: 20))
 //                        .multilineTextAlignment(.leading)
-                    
-                    
-                    
+                   
                     ScrollBookReading()
                     
                 }
