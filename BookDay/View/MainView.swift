@@ -41,11 +41,11 @@ struct MainView: View {
             appearance.selectionIndicatorTintColor = .red
             appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "rosa")
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor(named: "rosa")
+                NSAttributedString.Key.foregroundColor: UIColor(named: "rosa")!
             ]
             appearance.stackedLayoutAppearance.normal.iconColor = UIColor(named: "cinza")
             appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor(named: "cinza")
+                NSAttributedString.Key.foregroundColor: UIColor(named: "cinza")!
             ]
             UITabBar.appearance().scrollEdgeAppearance = appearance
             UITabBar.appearance().standardAppearance = appearance

@@ -152,6 +152,7 @@ struct CustomAlertView: View {
                                 Button{
                                     print("read")
                                     show.toggle()
+                                    DAO.shared.addToReadList(item: selectedItem!)
                                 }label:{
                                     Image("readButtom")
                                 }.buttonStyle(.plain)
@@ -167,6 +168,7 @@ struct CustomAlertView: View {
                                 Button{
                                     print("want to read")
                                     show.toggle()
+                                    DAO.shared.addToWantList(item: selectedItem!)
                                 }label:{
                                     Image("wantToReadButtom")
                                 }.buttonStyle(.plain)

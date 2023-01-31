@@ -15,7 +15,7 @@ struct Welcome: Decodable {
 }
 
 // MARK: - Item
-struct Item: Decodable, Identifiable{
+struct Item: Decodable, Identifiable, Hashable{
     let id: String
     let selfLink: String
     let volumeInfo: VolumeInfo
@@ -34,7 +34,7 @@ struct Item: Decodable, Identifiable{
 }
 
 // MARK: - VolumeInfo
-struct VolumeInfo: Decodable {
+struct VolumeInfo: Decodable, Hashable {
     let title: String
     let authors: [String]?
     let publishedDate: String?
@@ -66,12 +66,12 @@ enum ContentVersion: String, Codable {
  */
 
 // MARK: - ImageLinks
-struct ImageLinks: Codable {
+struct ImageLinks: Codable, Hashable {
     let smallThumbnail, thumbnail: URL
 
 }
 
-enum Language: String, Codable {
+enum Language: String, Codable, Hashable {
     case pt = "pt"
     case ptBR = "pt-BR"
     case en = "en"

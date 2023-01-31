@@ -22,6 +22,12 @@ class DAO {
         readingList.append(item)
     }
     
+    func addToWantList(item: Item){
+        wantToReadList.append(item)
+    }
+    
+    func addToReadList(item: Item){
+        readList.append(item)
+    }
 }
-
 

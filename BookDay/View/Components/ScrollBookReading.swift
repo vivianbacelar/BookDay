@@ -16,8 +16,7 @@ struct ScrollBookReading: View {
     //    Pensar em como colocar o número de páginas totais
     @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
-    
-    
+
     var body: some View {
       
             TabView(selection: $ItemIndex){

@@ -16,6 +16,8 @@ struct Home: View {
     @State var totalPage: CGFloat = 0
     var page: Page
     
+    
+    
 
     var body: some View {
 
@@ -57,3 +59,6 @@ struct Home: View {
         //                }
     }
 }
+
+
+
