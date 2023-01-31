@@ -25,7 +25,7 @@ struct SearchView: View {
                 .ignoresSafeArea()
             NavigationView {
 
-                ScrollView {
+                ScrollView () {
                     VStack {
 
                         ForEach(items) { item in
