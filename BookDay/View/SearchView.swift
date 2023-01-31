@@ -9,25 +9,27 @@
 import SwiftUI
 
 struct SearchView: View {
-    
-    @State private var filteredItems: [Item] = []
+
+    @State var filteredItems: [Item] = []
     @State var customAlert = false
-    @StateObject private var networkModel = NetworkModel()
-    
-    private var items: [Item]{
+    @StateObject var networkModel = NetworkModel()
+    @State var selectedItem: Item?
+
+    var items: [Item]{
         filteredItems.isEmpty ? networkModel.items: filteredItems
     }
-    
+
     var body: some View {
         ZStack {
             Color.corGelo
                 .ignoresSafeArea()
             NavigationView {
-                
+
                 ScrollView {
                     VStack {
-                        
+
                         ForEach(items) { item in
+
                             VStack {
                                 HStack {
                                     AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
@@ -37,22 +39,32 @@ struct SearchView: View {
                                             .frame(maxWidth: 200, maxHeight: 150)
                                             .padding(.bottom)
                                     } placeholder: {
-                                        Image(systemName: "book")
+                                        Image("PlaceHolder")
+                                            .resizable()
+                                                .padding(.top)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(maxWidth: 200, maxHeight: 150)
+                                                .padding(.bottom)
                                     }
                                     VStack {
                                         Text(item.volumeInfo.title)
                                             .font(Font.custom("RalewayRegular", size: 18))
                                             .multilineTextAlignment(.leading)
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                        //                                Text(item.volumeInfo.authors)
-                                        //                                    .font(Font.custom("RalewayLight", size: 20))
-                                        //                                    .multilineTextAlignment(.leading)
-                                        //                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                        Text(item.volumeInfo.authors?.first ?? "")
+                                            .font(Font.custom("RalewayLight", size: 15))
+                                            .multilineTextAlignment(.leading)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .padding(.top,1)
+
+
                                         HStack {
                                             Spacer()
                                             Button (action:{
                                                 withAnimation{
                                                     customAlert.toggle()
+                                                    selectedItem = item
                                                 }
                                             }) {
                                                 Image(systemName: "plus.circle")
@@ -61,11 +73,11 @@ struct SearchView: View {
                                                     .frame(width: 30)
                                                     .foregroundColor(Color.corLaranja)
                                                     .padding(.trailing)
-                                                //.padding(.horizontal)
+                                                    .padding(.horizontal)
                                             }.buttonStyle(.plain)
-                                        }
-                                        
-                                        
+                                        }.padding(.top)
+
+
                                     }
                                 }
                                 RoundedRectangle(cornerRadius: 15)
@@ -88,9 +100,9 @@ struct SearchView: View {
                         }
                     }
                     .onChange(of: networkModel.search, perform: performSearch)
-                    
+
                 }
-                
+
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("BookDay")
@@ -102,41 +114,33 @@ struct SearchView: View {
                     .toolbarBackground(.visible, for: .navigationBar)
             }
             .edgesIgnoringSafeArea(.all)
-            
+
         }.overlay(content: {
             if customAlert {
-                CustomAlertView(show: $customAlert)
+                CustomAlertView(show: $customAlert, selectedItem: selectedItem)
             }
         })
-        
-        
-        
+
+
+
     }
-    
+
+
+
     private func performSearch (keyWord: String) {
         filteredItems = networkModel.items.filter{ item in
             item.volumeInfo.title.contains(keyWord)
         }
     }
-    
+
 }
 
-struct BlurView : UIViewRepresentable {
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
-        
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-        
-    }
-}
 
 struct CustomAlertView: View {
-    
+
     @Binding var show: Bool
-    
+    var selectedItem: Item?
+
     var body: some View{
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
             VStack (spacing: 25){
@@ -147,26 +151,30 @@ struct CustomAlertView: View {
                             HStack{
                                 Button{
                                     print("read")
+                                    show.toggle()
                                 }label:{
                                     Image("readButtom")
                                 }.buttonStyle(.plain)
-                                
+
                                 Button{
                                     print("reading")
+                                    show.toggle()
+                                    DAO.shared.addToReadingList(item: selectedItem!)
                                 }label:{
                                     Image("readingButtom")
                                 }.buttonStyle(.plain)
-                                
+
                                 Button{
                                     print("want to read")
+                                    show.toggle()
                                 }label:{
                                     Image("wantToReadButtom")
                                 }.buttonStyle(.plain)
-                                
+
                             }.padding(.bottom)
                                 .padding(.horizontal)
-                            
-                            
+
+
                             Button(action: {
                                 withAnimation{
                                     show.toggle()
@@ -179,12 +187,12 @@ struct CustomAlertView: View {
             }
             .background(BlurView())
             .cornerRadius(20)
-            
-            
+
+
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinzaEscuro.opacity(0.7))
-        
+
     }
 }
 
@@ -193,5 +201,18 @@ struct SearchView_Previews: PreviewProvider {
         NavigationStack{
             SearchView()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.corCinzaEscuro.opacity(0.7))
+
     }
+
 }
+
+//
+//struct SearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack{
+//            SearchView( livro: $livro)
+//        }
+//    }
+//}

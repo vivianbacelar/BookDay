@@ -27,7 +27,6 @@ class NetworkModel: ObservableObject{
             count += 1
         }
         
-        
         var request = URLRequest(url: URL(string: "https://www.googleapis.com/books/v1/volumes?q=\(searching)")!)
         request.addValue(":keyes&key=AIzaSyBnnuLvW6SMTK3G6VOvwb-36kCr4zW7kvg", forHTTPHeaderField: "Authorization")
         print(request.url!.absoluteString)

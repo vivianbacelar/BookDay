@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Page: Identifiable, Equatable{
+struct Page: Identifiable, Equatable {
     let id = UUID()
     var title: String
     var authors: String

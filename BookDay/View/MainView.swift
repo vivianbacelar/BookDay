@@ -9,28 +9,28 @@ import SwiftUI
 import UIKit
 
 struct MainView: View {
-   
+
     @State var showLibraryTouch = true
-     
+
      var body: some View {
-         
-        
+
+
          TabView {
              Library()
                  .tabItem {
                      Label("Library", systemImage: "books.vertical")
                 }
-             
+
             Home(page: Page.samplePage)
                 .tabItem {
                     Label("Reading", systemImage: "book.fill")
-                    
+
                 }
-            SearchView()
+             SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }.tint(Color.corRosa)
-            
+
         }.onAppear() {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -58,4 +58,3 @@ struct MainView_Previews: PreviewProvider {
         MainView()
     }
 }
-
