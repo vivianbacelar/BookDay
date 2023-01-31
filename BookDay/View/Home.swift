@@ -35,6 +35,8 @@ struct Home: View {
  
                     ScrollBookReading()
                     
+        
+                    
              
                     
                 }
@@ -53,25 +55,3 @@ struct Home: View {
 
 
 
-/*
- 
- 
- 
- Image ("\(page.imageUrl)")
-     .resizable()
-     .scaledToFit()
-     .frame(width: 291, height: 433)
-     .background(.red)
- 
- // Pensar em como o Reading pode ir para Library, acho que precisa tirar o NavigationLink
- 
- Button (action: {showingLibrary = true}) {
-     Image("AddNewBook")
-         .resizable()
-         .frame(width: 291, height: 433)
-     
-     
- }.buttonStyle(.plain)
- 
- NavigationLink("", destination: Library(), isActive: $showingLibrary)
- */

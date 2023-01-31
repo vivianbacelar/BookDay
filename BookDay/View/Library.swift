@@ -17,13 +17,13 @@ struct Library: View {
             Color.corGelo
                 .ignoresSafeArea()
             
+            Text("BookDay")
+                .font(Font.custom("BelyDisplay-Regular", size: 23))
+                .padding(.bottom, 650)
+            
             
             VStack{
-                
-                Text("BookDay")
-                    .font(Font.custom("BelyDisplay-Regular", size: 23))
-//                    .padding(.bottom, 650)
-                
+          
                 Picker("", selection: $selected){
                     Text("Want to Read")
                         .font(Font.custom("Raleway", size: 18))
@@ -34,9 +34,8 @@ struct Library: View {
             
                 }
                 .pickerStyle(.wheel)
-                .background(Color.corFundo)
-                .frame(width: 200, height: 150)
-                
+                .frame(width: 300, height: 300)
+                 
             }
             
         }

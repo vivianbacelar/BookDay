@@ -48,14 +48,15 @@ struct ScrollBookReading: View {
                     }
                     
                     
-                    NavigationLink {
-                        
-                    } label: {
+                    NavigationLink (destination: {
+                        ProfileBook(page: Page.samplePage)
+                    }, label: {
                         Image ("\(page.imageUrl)")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 291, height: 433)
-                    }
+              
+                    })
 
                     
                         
@@ -96,6 +97,7 @@ struct ScrollBookReading: View {
     
     func goToZero() {
         pageIndex = 0
+
         
     }
 }

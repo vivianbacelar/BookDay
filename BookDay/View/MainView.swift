@@ -26,7 +26,7 @@ struct MainView: View {
                     Label("Reading", systemImage: "book.fill")
                     
                 }
-            Search()
+            SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }.tint(Color.corRosa)
