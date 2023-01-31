@@ -11,6 +11,22 @@ struct Library: View {
     
     @State private var selected = "Want to Read"
     
+    init() {
+        UISegmentedControl.appearance().selectedSegmentTintColor = .cyan
+            UISegmentedControl.appearance().setTitleTextAttributes(
+                [
+                    .font: UIFont.boldSystemFont(ofSize: 18),
+                    .foregroundColor: UIColor.white
+            ], for: .selected)
+
+            UISegmentedControl.appearance().setTitleTextAttributes(
+                [
+                    .font: UIFont.boldSystemFont(ofSize: 18),
+                    .foregroundColor: UIColor.blue
+            ], for: .normal)
+        }
+
+    
     var body: some View {
         
         ZStack{
@@ -25,6 +41,7 @@ struct Library: View {
             VStack{
           
                 Picker("", selection: $selected){
+                    
                     Text("Want to Read")
                         .font(Font.custom("Raleway", size: 18))
                         .tag("Want to Read")
@@ -33,9 +50,24 @@ struct Library: View {
                         .tag("Read")
             
                 }
-                .pickerStyle(.wheel)
+                .pickerStyle(.segmented)
                 .frame(width: 300, height: 300)
-                 
+                
+                
+                Rectangle()
+                .fill(Color(red: 0.85, green: 0.85, blue: 0.85))
+                .frame(width: 310, height: 8)
+//                .padding(.top, 363)
+//
+                
+                Rectangle()
+                    .fill(Color(red: 0.85, green: 0.85, blue: 0.85))
+                .frame(width: 310, height: 8)
+//                .padding(.top, 500)
+                
+                Rectangle()
+                    .fill(Color.corCinzaClaro)
+                .frame(width: 310, height: 8)
             }
             
         }
