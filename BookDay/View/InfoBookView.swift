@@ -33,16 +33,21 @@ struct InfoBookView: View {
                         Spacer()
                         
                         Text(item.volumeInfo.title)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                             .font(Font.custom("RalewayBold", size: 20))
-                            .padding(.trailing,100)
+                            //.padding(.trailing,100)
+                            .padding(.horizontal)
                             .padding(.bottom)
                         
                         Spacer()
                         
-                        Text(item.volumeInfo.description ?? "")
+                        
+                        LabelAlignment(text: item.volumeInfo.description ?? "", textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 80)
                             .font(Font.custom("Raleway", size: 15))
-                            .padding(.horizontal)
-                            .multilineTextAlignment(.leading)
+//                            .multilineTextAlignment(.leading)
+//                            .lineLimit(3)
+                            
+                            
                         
                         Spacer()
                         

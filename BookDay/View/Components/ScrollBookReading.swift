@@ -32,7 +32,6 @@ struct ScrollBookReading: View {
                             .font(Font.custom("Raleway", size: 20))
                             .multilineTextAlignment(.leading)
                         NavigationLink {
-
                             InfoBookView(item: page)
                         } label: {
                             AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
@@ -48,10 +47,12 @@ struct ScrollBookReading: View {
                                         .padding(.bottom)
                             }
                         }.buttonStyle(.plain)
+                           // .tint(Color.corPreto)
 
                         button
                     }
                    // .tag(page.volumeInfo.)
+                
             }
 
         }
@@ -69,10 +70,13 @@ struct ScrollBookReading: View {
 
 
         }
+       
 
     }
+    
 
     var button: some View {
+        //let page: Item
 
         VStack {
 //            if page == (livros.last) {
