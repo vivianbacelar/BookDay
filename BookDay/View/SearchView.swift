@@ -33,31 +33,35 @@ struct SearchView: View {
                             VStack {
                                 HStack {
                                     AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
-                                        image.resizable()
-                                            .padding(.top)
+                                        image
+                                            .resizable()
+//                                            .padding(.top)
                                             .aspectRatio(contentMode: .fit)
-                                            .frame(maxWidth: 200, maxHeight: 150)
-                                            .padding(.bottom)
+                                            .frame(maxWidth: 130, maxHeight: 150)
+//                                            .padding(.bottom)
                                     } placeholder: {
                                         Image("PlaceHolder")
                                             .resizable()
-                                                .padding(.top)
+//                                                .padding(.top)
                                                 .aspectRatio(contentMode: .fit)
-                                                .frame(maxWidth: 200, maxHeight: 150)
-                                                .padding(.bottom)
+                                                .frame(maxHeight: 150)
+//                                                .padding(.bottom)
                                     }
-                                    VStack {
+                                    .padding(.trailing, 8)
+//                                    .border(.green)
+                                    VStack(spacing: 5) {
                                         Text(item.volumeInfo.title)
-                                            .font(Font.custom("RalewayRegular", size: 18))
+                                            .font(Font.custom("Raleway", size: 18))
                                             .multilineTextAlignment(.leading)
                                             .frame(maxWidth: .infinity, alignment: .leading)
-
+                                         
                                         Text(item.volumeInfo.authors?.first ?? "")
-                                            .font(Font.custom("RalewayLight", size: 15))
+                                            .font(Font.custom("Raleway", size: 13).weight(.thin))
                                             .multilineTextAlignment(.leading)
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .padding(.top,1)
-
+                                            
+                                        Spacer()
 
                                         HStack {
                                             Spacer()
@@ -72,24 +76,32 @@ struct SearchView: View {
                                                     .scaledToFit()
                                                     .frame(width: 30)
                                                     .foregroundColor(Color.corLaranja)
-                                                    .padding(.trailing)
-                                                    .padding(.horizontal)
-                                            }.buttonStyle(.plain)
-                                        }.padding(.top)
+//                                                    .padding(.trailing)
+//                                                    .padding(.horizontal)
+                                            }
+                                            .buttonStyle(.plain)
+                                        }
+                                        .padding(.top)
 
 
                                     }
+                                    .frame(maxHeight: .infinity)
+//                                    .border(.orange)
                                 }
+                                .padding(.horizontal, 20)
+//                                .border(.blue)
                                 RoundedRectangle(cornerRadius: 15)
                                     .foregroundColor(Color.corCinzaClaro)
-                                    .frame(height: 1)
-                                    .padding(.horizontal, 30)
+                                    .frame(height: 0.75)
+                                    .padding(.horizontal, 20)
                             }
+//                            .border(.red)
                         }
                     }
                     .navigationBarTitleDisplayMode(.inline)
                     .searchable(text: $networkModel.search, placement: .navigationBarDrawer(displayMode: .always))
                     .padding(.vertical)
+                
                     .onSubmit(of: .search) {
                         Task {
                             do {
@@ -106,7 +118,7 @@ struct SearchView: View {
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("BookDay")
-                            .font(Font.custom("BelyDisplay-Regular", size: 35))
+                            .font(Font.custom("BelyDisplay-Regular", size: 23))
                     }
                 }.frame(maxWidth: .infinity)
                     .background(Color.corGelo)
@@ -194,6 +206,7 @@ struct CustomAlertView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinzaEscuro.opacity(0.7))
+    
 
     }
 }

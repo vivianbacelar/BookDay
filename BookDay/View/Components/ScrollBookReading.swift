@@ -16,20 +16,20 @@ struct ScrollBookReading: View {
     //    Pensar em como colocar o número de páginas totais
     @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
-
+  
     var body: some View {
       
             TabView(selection: $ItemIndex){
                 
                 ForEach(livros, id: \.id) { page in
-                    VStack (spacing: 20){
+                    VStack (spacing: 10){
                         
                         Text(page.volumeInfo.title)
-                            .font(Font.custom("Raleway", size: 20))
+                            .font(Font.custom("Raleway", size: 18))
                             .multilineTextAlignment(.leading)
                         
                         Text(page.volumeInfo.authors?.first ?? "")
-                            .font(Font.custom("Raleway", size: 20))
+                            .font(Font.custom("Raleway", size: 15).weight(.light))
                             .multilineTextAlignment(.leading)
                         
                         ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
@@ -57,11 +57,22 @@ struct ScrollBookReading: View {
                         }
                         .buttonStyle(.plain)
                         
+                        if page == (livros.last)! {
+                            Button (action: goToZero) {
+                                
+                            }.buttonStyle(.plain)
+                            
+                        } else{
+                            Button (action: addPage) {
+                                
+                            }
+                        }
                         
-                        //                        button
                     }
-                    // .tag(page.volumeInfo.)
+                    .tag(page.volumeInfo)
+                        
                 }
+             
                 
             }
             .animation(.easeInOut, value: ItemIndex)
@@ -81,34 +92,17 @@ struct ScrollBookReading: View {
   
     }
     
-    //    var button: some View {
-    //
-    //        VStack {
-    //            if page == (livros.last) {
-    //                Button (action: goToZero) {
-    //
-    //                }.buttonStyle(.plain)
-    //
-    //            } else{
-    //                Button (action: addPage) {
-    //
-    //                }.buttonStyle(.plain)
-    //
-    //            }
-    //        }
-    //    }
-    //
-    //    func addPage() {
-    //        ItemIndex += 1
-    //    }
-    //
-    //    func goToZero() {
-    //        ItemIndex = 0
-    //
-    //
-    //    }
-    //}
-}
+       
+
+        func addPage() {
+            ItemIndex += 1
+        }
+
+        func goToZero() {
+            ItemIndex = 0
+            
+        }
+    }
 
 struct ScrollBookReading_Previews: PreviewProvider {
     static var previews: some View {

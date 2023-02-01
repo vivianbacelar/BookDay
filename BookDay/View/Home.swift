@@ -18,45 +18,56 @@ struct Home: View {
     
     
     
-
+    
     var body: some View {
-
+        
         NavigationView{
-
+            
             ZStack{
                 Color.corGelo
                     .ignoresSafeArea()
-
-
+                
+                
                 VStack{
-
+                    
                     Text("BookDay")
                         .font(Font.custom("BelyDisplay-Regular", size: 23))
-                        .padding(.top, 30)
-
-//                    Text("Add new book")
-//                        .font(Font.custom("Raleway", size: 20))
-//                        .multilineTextAlignment(.leading)
+                        .padding(.top, 40)
+                        .padding(.bottom, 40)
                     
-                    ScrollBookReading()
+                    
+                    
+                    
+//                    HStack{
 //
-             
 
+//                   
+//                        Image("AddNewBook")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 291, height: 433)
+//
+//
+//
+//                        //
+//
+//
+//
+//                    }
+                    ScrollBookReading()
                     
-
-
                 }
             }
-
+            
         } .accentColor(Color.corPreta)
-       
+        
             
 
-        //                struct Home_Previews: PreviewProvider {
-        //                    static var previews: some View {
-        //                        Home(page: Page.samplePage)
-        //                    }
-        //                }
+//                        struct Home_Previews: PreviewProvider {
+//                            static var previews: some View {
+//                                Home(page: Page.samplePage)
+//                            }
+//                        }
     }
 }
 

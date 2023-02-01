@@ -11,25 +11,28 @@ import UIKit
 struct MainView: View {
 
     @State var showLibraryTouch = true
+    @State var selection = 2
 
      var body: some View {
 
 
-         TabView {
+         TabView (selection: $selection){
              Library()
                  .tabItem {
                      Label("Library", systemImage: "books.vertical")
-                }
+                 }.tag(1)
 
             Home(page: Page.samplePage)
+
                 .tabItem {
                     Label("Reading", systemImage: "book.fill")
-
-                }
+                }.tag(2)
+             
              SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }.tint(Color.corRosa)
+                 .tag(3)
 
         }.onAppear() {
             let appearance = UITabBarAppearance()
