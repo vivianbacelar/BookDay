@@ -10,9 +10,12 @@ import UIKit
 import SwiftUI
 
 struct LabelAlignment: UIViewRepresentable {
- var text: String
- var textAlignmentStyle : TextAlignmentStyle
- var width: CGFloat
+    var text: String
+    var textAlignmentStyle : TextAlignmentStyle
+    var width: CGFloat
+    var color: UIColor
+    var font: UIFont
+
 
  func makeUIView(context: Context) -> UILabel {
      let label = UILabel()
@@ -21,12 +24,16 @@ struct LabelAlignment: UIViewRepresentable {
      label.preferredMaxLayoutWidth = width
      label.setContentHuggingPriority(.required, for: .horizontal)
      label.setContentHuggingPriority(.required, for: .vertical)
+     label.textColor = color
+     label.font = font
 
      return label
  }
 
  func updateUIView(_ uiView: UILabel, context: Context) {
      uiView.text = text
+     uiView.textColor = color
+     uiView.font = font
  }
 }
 

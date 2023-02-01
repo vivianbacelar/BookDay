@@ -10,21 +10,31 @@ import SwiftUI
 struct Library: View {
     
     @State private var selected = "Want to Read"
+    @State var livrosW: [Item] = DAO.shared.wantToReadList
+    @State var livrosR: [Item] = DAO.shared.readList
+    @State var livros: [Item] = []
+    @State var count: Int = 0
+//    let itens: [Item]
     
+    //    let attr = NSDictionary(object: UIFont(name: "Raleway", size: 16.0)!], forKey: NSFontAttributeName)
+    //    seg.setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
+    //
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = .cyan
-            UISegmentedControl.appearance().setTitleTextAttributes(
-                [
-                    .font: UIFont.boldSystemFont(ofSize: 18),
-                    .foregroundColor: UIColor.white
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "cinzaClaro")
+        UISegmentedControl.appearance().setTitleTextAttributes(
+            [
+                .font: UIFont(name: "Raleway", size: 18)!,
+                .foregroundColor: UIColor(named: "fundo")!
             ], for: .selected)
-
-            UISegmentedControl.appearance().setTitleTextAttributes(
-                [
-                    .font: UIFont.boldSystemFont(ofSize: 18),
-                    .foregroundColor: UIColor.blue
+        
+        UISegmentedControl.appearance().setTitleTextAttributes(
+            [
+                .font: UIFont(name: "Raleway", size: 18)!,
+                .foregroundColor: UIColor(named: "preto")!
             ], for: .normal)
-        }
+        
+    }
+    
 
     
     var body: some View {
@@ -33,49 +43,109 @@ struct Library: View {
             Color.corGelo
                 .ignoresSafeArea()
             
-            Text("BookDay")
-                .font(Font.custom("BelyDisplay-Regular", size: 23))
-                .padding(.bottom, 650)
-            
             
             VStack{
-          
+                
+                Text("BookDay")
+                    .font(Font.custom("BelyDisplay-Regular", size: 23))
+                    .padding(.top, 40)
+                    .padding(.bottom, 40)
+                
                 Picker("", selection: $selected){
+                    
                     
                     Text("Want to Read")
                         .font(Font.custom("Raleway", size: 18))
                         .tag("Want to Read")
+                    
                     Text("Read")
                         .font(Font.custom("Raleway", size: 18))
                         .tag("Read")
-            
+                    
+                    
                 }
                 .pickerStyle(.segmented)
-                .frame(width: 300, height: 300)
-                
-                
-                Rectangle()
-                .fill(Color(red: 0.85, green: 0.85, blue: 0.85))
-                .frame(width: 310, height: 8)
-//                .padding(.top, 363)
-//
-                
-                Rectangle()
-                    .fill(Color(red: 0.85, green: 0.85, blue: 0.85))
-                .frame(width: 310, height: 8)
-//                .padding(.top, 500)
-                
-                Rectangle()
-                    .fill(Color.corCinzaClaro)
-                .frame(width: 310, height: 8)
+                .frame(width: 300)
+               
+                ScrollView() {
+                    ZStack {
+                        shelfBooks
+                        collectionBooks
+                    }
+                }
+               
             }
-            
+        }
+        //TODO: melhorar, entender DAO no SwiftUI
+        // depois explicar pro pg
+        
+        .onAppear(){
+            livrosW = DAO.shared.wantToReadList
+            livrosR = DAO.shared.readList
+        }.onChange(of: selected) { newValue in
+            if newValue == "Want to Read" {
+                livros = DAO.shared.wantToReadList
+            } else {
+                livros = DAO.shared.readList
+            }
         }
     }
     
+    let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
+    var collectionBooks: some View {
+            
+            VStack {
+                LazyVGrid(columns: colums) {
+                    ForEach(livros, id: \.id) { item in
+                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
+                            image.resizable()
+                                .padding(.top)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 200, maxHeight: 150)
+                                .padding(.bottom)
+                        } placeholder: {
+                            Image("PlaceHolder")
+                                .resizable()
+                                    .padding(.top)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 200, maxHeight: 150)
+                                    .padding(.bottom)
+                            
+                        }
+                        
+                    }
+                }
+                Spacer()
+            }
+        
+    }
+    
+    var shelfNumber: Int {
+        return max(3, livros.count % 3)
+    }
+    
+    var shelfBooks: some View {
+        
+        VStack {
+            ForEach((1...shelfNumber), id:\.self) { _ in
+                Rectangle()
+                    .fill(.clear)
+                    .frame(width: 310, height: 150)
+                
+                Rectangle()
+                    .fill(Color(red: 0.85, green: 0.85, blue: 0.85))
+                    .frame(width: 310, height: 8)
+            }
+        }
+        
+    }
+}
+
+
     struct Library_Previews: PreviewProvider {
         static var previews: some View {
             Library()
         }
     }
-}
+

@@ -16,6 +16,8 @@ struct ScrollBookReading: View {
     //    Pensar em como colocar o número de páginas totais
     @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
+    @State var countPage: String =
+        UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "Nome"
 
     var body: some View {
 
@@ -31,19 +33,27 @@ struct ScrollBookReading: View {
                         Text(page.volumeInfo.authors?.first ?? "")
                             .font(Font.custom("Raleway", size: 20))
                             .multilineTextAlignment(.leading)
+                        
+                        ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
+                        Text("Page \(Int(numberPage)) (\(Int(totalPage)) )")
+                            .font(Font.custom("RalewayExtraLight", size: 12))
+                            .foregroundColor(Color.corCinzaEscuro)
+                            .multilineTextAlignment(TextAlignment.trailing)
+                        
+                        
                         NavigationLink {
-                            InfoBookView(item: page)
+                            InfoBookView(item: page, countPage: $countPage)
                         } label: {
                             AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
                                 image.resizable()
                                     .scaledToFit()
-                                    .frame(width: 291, height: 433)
+                                    .frame(width: 261, height: 403)
                             } placeholder: {
                                 Image("PlaceHolder")
                                     .resizable()
                                         .padding(.top)
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 200, maxHeight: 150)
+                                        .frame(maxWidth: 261, maxHeight: 403)
                                         .padding(.bottom)
                             }
                         }.buttonStyle(.plain)
