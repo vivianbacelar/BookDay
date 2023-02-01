@@ -16,6 +16,8 @@ struct ScrollBookReading: View {
     //    Pensar em como colocar o número de páginas totais
     @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
+    @State var countPage: String =
+        UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
   
     var body: some View {
       
@@ -40,7 +42,7 @@ struct ScrollBookReading: View {
                             .multilineTextAlignment(TextAlignment.trailing)
                         
                         NavigationLink {
-                            InfoBookView(item: page)
+                            InfoBookView(item: page, countPage: $countPage)
                         } label: {
                             AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
                                 image.resizable()

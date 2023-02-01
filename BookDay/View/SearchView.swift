@@ -222,12 +222,3 @@ struct SearchView_Previews: PreviewProvider {
     }
 
 }
-
-//
-//struct SearchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack{
-//            SearchView( livro: $livro)
-//        }
-//    }
-//}

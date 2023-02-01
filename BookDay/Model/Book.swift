@@ -16,6 +16,7 @@ struct Welcome: Decodable {
 
 // MARK: - Item
 struct Item: Decodable, Identifiable, Hashable{
+   
     let id: String
     let selfLink: String
     let volumeInfo: VolumeInfo
@@ -66,16 +67,21 @@ enum ContentVersion: String, Codable {
  */
 
 // MARK: - ImageLinks
-struct ImageLinks: Codable, Hashable {
+struct ImageLinks: Codable,  Hashable {
     let smallThumbnail, thumbnail: URL
 
 }
 
-enum Language: String, Codable, Hashable {
+enum Language: String, Codable,  Hashable {
     case pt = "pt"
     case ptBR = "pt-BR"
     case en = "en"
 }
+
+enum UserDefaultsKeys: String {
+    case countPage = "countPage"
+}
+
 /*
 // MARK: - AccessInfo
 struct AccessInfo: Codable {
@@ -161,3 +167,4 @@ struct ReadingModes: Codable {
     let text, image: Bool
 }
 */
+

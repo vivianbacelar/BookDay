@@ -52,6 +52,15 @@ struct MainView: View {
             ]
             UITabBar.appearance().scrollEdgeAppearance = appearance
             UITabBar.appearance().standardAppearance = appearance
+            
+            let appearenceNavBar = UINavigationBarAppearance()
+            appearenceNavBar.configureWithTransparentBackground()
+            appearenceNavBar.backgroundImage = UIImage().withTintColor(.blue)
+            appearenceNavBar.backgroundColor = . white.withAlphaComponent(0.5)
+            appearenceNavBar.shadowColor = nil
+            UINavigationBar.appearance().standardAppearance = appearenceNavBar
+            UINavigationBar.appearance().scrollEdgeAppearance = appearenceNavBar
+            UINavigationBar.appearance().isTranslucent = true
         }
     }
 }
