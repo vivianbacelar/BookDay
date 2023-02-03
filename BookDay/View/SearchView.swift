@@ -71,7 +71,7 @@ struct SearchView: View {
                                                     selectedItem = item
                                                 }
                                             }) {
-                                                Image(systemName: "plus.circle")
+                                                Image("addButtom")
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 30)

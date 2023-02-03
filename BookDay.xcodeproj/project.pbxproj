@@ -19,6 +19,7 @@
 		A11A8FCA2989D02A0059933E /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FC92989D02A0059933E /* LabelAlignment.swift */; };
 		A11A8FCC2989D0300059933E /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FCB2989D0300059933E /* ContentCell.swift */; };
 		A11A8FCE2989D1A40059933E /* InfoBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FCD2989D1A40059933E /* InfoBookView.swift */; };
+		A13E8477298C2B0700FCDEDB /* ChangePages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13E8476298C2B0700FCDEDB /* ChangePages.swift */; };
 		A14899542980541A00402C94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14899532980541A00402C94 /* Assets.xcassets */; };
 		A14899572980541A00402C94 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14899562980541A00402C94 /* Preview Assets.xcassets */; };
 		A1489960298060F000402C94 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148995F298060F000402C94 /* Book.swift */; };
@@ -38,6 +39,7 @@
 		A159F5FB2981C4870054BBC4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F5FA2981C4870054BBC4 /* MainView.swift */; };
 		A159F5FD2981C4CC0054BBC4 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F5FC2981C4CC0054BBC4 /* Library.swift */; };
 		A159F6012981CA740054BBC4 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F6002981CA740054BBC4 /* Home.swift */; };
+		A19BDFF3298DAB8C00ACE253 /* SaveInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BDFF2298DAB8C00ACE253 /* SaveInformations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,7 @@
 		A11A8FC92989D02A0059933E /* LabelAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabelAlignment.swift; path = ../../../../../../Downloads/LabelAlignment.swift; sourceTree = "<group>"; };
 		A11A8FCB2989D0300059933E /* ContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentCell.swift; path = ../../../../../../Downloads/ContentCell.swift; sourceTree = "<group>"; };
 		A11A8FCD2989D1A40059933E /* InfoBookView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoBookView.swift; path = ../../../../../Downloads/InfoBookView.swift; sourceTree = "<group>"; };
+		A13E8476298C2B0700FCDEDB /* ChangePages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePages.swift; sourceTree = "<group>"; };
 		A148994C2980541900402C94 /* BookDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14899532980541A00402C94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14899562980541A00402C94 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		A159F5FA2981C4870054BBC4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A159F5FC2981C4CC0054BBC4 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		A159F6002981CA740054BBC4 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		A19BDFF2298DAB8C00ACE253 /* SaveInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveInformations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 			children = (
 				A14FC184298305FE009F0075 /* ProgressBar.swift */,
 				A152AC612984790E00D21DDC /* ScrollBookReading.swift */,
+				A13E8476298C2B0700FCDEDB /* ChangePages.swift */,
 				8A541B8729885E7F00E8E87F /* BlurView.swift */,
 				8A541B8929885EAD00E8E87F /* CustomAlertView.swift */,
 				A11A8FC92989D02A0059933E /* LabelAlignment.swift */,
@@ -169,6 +174,7 @@
 			children = (
 				A148995F298060F000402C94 /* Book.swift */,
 				A159F5F82981BCE60054BBC4 /* Colors.swift */,
+				A19BDFF2298DAB8C00ACE253 /* SaveInformations.swift */,
 				A14FC1802982F969009F0075 /* FlowOrganizer.swift */,
 				A152AC5D298449A200D21DDC /* PageModel.swift */,
 				8A541B8B29886D7D00E8E87F /* DAO.swift */,
@@ -275,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19BDFF3298DAB8C00ACE253 /* SaveInformations.swift in Sources */,
 				A11A8FCA2989D02A0059933E /* LabelAlignment.swift in Sources */,
 				A11A8FCC2989D0300059933E /* ContentCell.swift in Sources */,
 				8A73EDE92981A7AE0015C444 /* NetworkModel.swift in Sources */,
@@ -283,6 +290,7 @@
 				8A73EDFB298449810015C444 /* StringProtocol.swift in Sources */,
 				8A541B8C29886D7D00E8E87F /* DAO.swift in Sources */,
 				8A73EDF62981C2360015C444 /* SearchView.swift in Sources */,
+				A13E8477298C2B0700FCDEDB /* ChangePages.swift in Sources */,
 				A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */,
 				A159F5FD2981C4CC0054BBC4 /* Library.swift in Sources */,
 				A152AC622984790E00D21DDC /* ScrollBookReading.swift in Sources */,

@@ -54,7 +54,7 @@ struct Library: View {
         
     }
     
-
+    
     
     var body: some View {
         
@@ -90,6 +90,8 @@ struct Library: View {
                     ZStack {
                         shelfBooks
                         collectionBooks
+//                        ChangePages(show: $volumeInfo)
+                        
                     }
                 }
                 
@@ -149,9 +151,10 @@ struct Library: View {
                     }
                 }
                 Spacer()
-            }
-        
-    }
+    
+//
+                }
+           }
     
     var shelfNumber: Int {
         return max(3, Int((livros.count + 2) / 3))
