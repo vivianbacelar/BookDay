@@ -11,7 +11,7 @@ import Foundation
 class NetworkModel: ObservableObject{
     
     @Published var items: [Item] = []
-    @Published var search: String = "Game of Thrones"
+    @Published var search: String = ""
     
     
     func fetchBooks() async throws {

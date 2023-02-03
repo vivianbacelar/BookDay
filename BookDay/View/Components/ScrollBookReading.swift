@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ScrollBookReading: View {
-
-    @State private var pageIndex = 0
+    
+    @State private var ItemIndex = 0
     private let dotAppearance = UIPageControl.appearance()
     @State var percent: CGFloat = 0
     @State var numberPage: CGFloat = 0
@@ -17,29 +17,29 @@ struct ScrollBookReading: View {
     @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
     @State var countPage: String =
-        UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "Nome"
-
+        UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
+  
     var body: some View {
-
-        TabView(selection: $pageIndex){
-
-            ForEach(livros, id: \.id) { page in
-                    VStack (spacing: 20){
-
+      
+            TabView(selection: $ItemIndex){
+                
+                ForEach(livros, id: \.id) { page in
+                    VStack (spacing: 10){
+                        
                         Text(page.volumeInfo.title)
-                            .font(Font.custom("Raleway", size: 20))
+                            .font(Font.custom("Raleway", size: 18))
                             .multilineTextAlignment(.leading)
                         
                         Text(page.volumeInfo.authors?.first ?? "")
-                            .font(Font.custom("Raleway", size: 20))
+                            .font(Font.custom("Raleway", size: 15).weight(.light))
                             .multilineTextAlignment(.leading)
                         
                         ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
+                        
                         Text("Page \(Int(numberPage)) (\(Int(totalPage)) )")
                             .font(Font.custom("RalewayExtraLight", size: 12))
                             .foregroundColor(Color.corCinzaEscuro)
                             .multilineTextAlignment(TextAlignment.trailing)
-                        
                         
                         NavigationLink {
                             InfoBookView(item: page, countPage: $countPage)
@@ -47,76 +47,68 @@ struct ScrollBookReading: View {
                             AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
                                 image.resizable()
                                     .scaledToFit()
-                                    .frame(width: 261, height: 403)
+                                    .frame(width: 291, height: 433)
                             } placeholder: {
                                 Image("PlaceHolder")
                                     .resizable()
-                                        .padding(.top)
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 261, maxHeight: 403)
-                                        .padding(.bottom)
+                                    .padding(.top)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 200, maxHeight: 150)
+                                    .padding(.bottom)
                             }
-                        }.buttonStyle(.plain)
-                           // .tint(Color.corPreto)
-
-                        button
+                        }
+                        .buttonStyle(.plain)
+                        
+                        if page == (livros.last)! {
+                            Button (action: goToZero) {
+                                
+                            }.buttonStyle(.plain)
+                            
+                        } else{
+                            Button (action: addPage) {
+                                
+                            }
+                        }
+                        
                     }
-                   // .tag(page.volumeInfo.)
+                    .tag(page.volumeInfo)
+                        
+                }
+             
                 
             }
-
-        }
-        .animation(.easeInOut, value: pageIndex)
-        .tabViewStyle(.page)
-        .indexViewStyle(.page(backgroundDisplayMode: .interactive))
-        .onAppear{
-
-            //TODO: melhorar, entender DAO no SwiftUI
-            // depois explicar pro pg
-            livros = DAO.shared.readingList
-            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corRosa)
-            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
-            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
-
-
-        }
-       
-
+            .animation(.easeInOut, value: ItemIndex)
+            .tabViewStyle(.page)
+            .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+            .onAppear{
+                
+                //TODO: melhorar, entender DAO no SwiftUI
+                // depois explicar pro pg
+                livros = DAO.shared.readingList
+                dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corRosa)
+                dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
+                dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
+                
+                
+            }
+  
     }
     
+       
 
-    var button: some View {
-        //let page: Item
+        func addPage() {
+            ItemIndex += 1
+        }
 
-        VStack {
-//            if page == (livros.last) {
-//                Button (action: goToZero) {
-//
-//                }.buttonStyle(.plain)
-//
-//            } else{
-//                Button (action: addPage) {
-//
-//                }.buttonStyle(.plain)
-//
-//            }
+        func goToZero() {
+            ItemIndex = 0
+            
         }
     }
-
-    func addPage() {
-        pageIndex += 1
-    }
-
-    func goToZero() {
-        pageIndex = 0
-
-
-    }
-}
-
 
 struct ScrollBookReading_Previews: PreviewProvider {
     static var previews: some View {
         ScrollBookReading()
     }
 }
+

@@ -33,7 +33,7 @@ struct ContentCell: View {
                 }
                 if isExpanded {
                     VStack{
-                        LabelAlignment(text: item.volumeInfo.description ?? "", textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 40, color: UIColor(Color.corRosa), font: UIFont(name: "Raleway", size: 15)!)
+                        LabelAlignment(text: item.volumeInfo.description ?? "", textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 40, color: UIColor(Color.corCinzaEscuro), font: UIFont(name: "Raleway", size: 15)!)
                             .padding(. top, 16)
                             .padding (.horizontal, 16)
                     }

@@ -3,15 +3,35 @@
 //  BookDay
 //
 //  Created by Vivian Bacelar on 25/01/23.
-//
+
 
 import SwiftUI
+extension UIFont {
+    var bold: UIFont { return withWeight(.bold) }
+    var semibold: UIFont { return withWeight(.semibold) }
+    var medium: UIFont { return withWeight(.medium) }
+    var regular: UIFont { return withWeight(.regular) }
+    var light: UIFont { return withWeight(.light) }
 
+    private func withWeight(_ weight: UIFont.Weight) -> UIFont {
+        var attributes = fontDescriptor.fontAttributes
+        var traits = (attributes[.traits] as? [UIFontDescriptor.TraitKey: Any]) ?? [:]
+
+        traits[.weight] = weight
+
+        attributes[.name] = nil
+        attributes[.traits] = traits
+        attributes[.family] = familyName
+
+        let descriptor = UIFontDescriptor(fontAttributes: attributes)
+
+        return UIFont(descriptor: descriptor, size: pointSize)
+    }
+}
 struct Library: View {
     
     @State private var selected = "Want to Read"
-    @State var livrosW: [Item] = DAO.shared.wantToReadList
-    @State var livrosR: [Item] = DAO.shared.readList
+    /// Lista que é mostrada de fato
     @State var livros: [Item] = []
     @State var count: Int = 0
 //    let itens: [Item]
@@ -23,14 +43,13 @@ struct Library: View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "cinzaClaro")
         UISegmentedControl.appearance().setTitleTextAttributes(
             [
-                .font: UIFont(name: "Raleway", size: 18)!,
-                .foregroundColor: UIColor(named: "fundo")!
+                .font: UIFont(name: "Raleway", size: 18)!.regular,
+                .foregroundColor: UIColor(named: "preto")!
             ], for: .selected)
-        
         UISegmentedControl.appearance().setTitleTextAttributes(
             [
-                .font: UIFont(name: "Raleway", size: 18)!,
-                .foregroundColor: UIColor(named: "preto")!
+                .font: UIFont(name: "Raleway", size: 18)!.regular,
+                .foregroundColor: UIColor(named: "cinzaMaisEscuro")!
             ], for: .normal)
         
     }
@@ -66,31 +85,44 @@ struct Library: View {
                 }
                 .pickerStyle(.segmented)
                 .frame(width: 300)
-               
+                
                 ScrollView() {
                     ZStack {
                         shelfBooks
                         collectionBooks
                     }
                 }
-               
-            }
+                
+            }.padding(.horizontal, 10)
         }
         //TODO: melhorar, entender DAO no SwiftUI
         // depois explicar pro pg
         
         .onAppear(){
-            livrosW = DAO.shared.wantToReadList
-            livrosR = DAO.shared.readList
+            livros = getBook(of: selected)
         }.onChange(of: selected) { newValue in
-            if newValue == "Want to Read" {
-                livros = DAO.shared.wantToReadList
-            } else {
-                livros = DAO.shared.readList
-            }
+            livros = getBook(of: newValue)
         }
+        
+//        .onDelete (){ { newValue in
+//            livros = deleteBook(of: newValue)
+//        }
     }
     
+    func getBook(of selected: String) -> [Item] {
+        if selected == "Want to Read" {
+            return DAO.shared.wantToReadList
+        } else {
+            return DAO.shared.readList
+        }
+    }
+//
+//    func deleteBook(of selected: ImageLinks) -> [Item]{
+//        if selected ==  AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){
+//            return DAO.shared.readingList
+//        }
+//    }
+//
     let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var collectionBooks: some View {
@@ -122,7 +154,7 @@ struct Library: View {
     }
     
     var shelfNumber: Int {
-        return max(3, livros.count % 3)
+        return max(3, Int((livros.count + 2) / 3))
     }
     
     var shelfBooks: some View {
@@ -148,4 +180,5 @@ struct Library: View {
             Library()
         }
     }
+
 

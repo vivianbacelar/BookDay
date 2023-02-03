@@ -12,10 +12,11 @@ struct InfoBookView: View {
     
     let item: Item
     @State private var selectedCells: Set<Item> = []
+    @State var deleteAlert = false
     @Binding var countPage: String
     
     var percentage: Double {
-                (Double(countPage)! * 100) / (Double(item.volumeInfo.pageCount ?? 100) )
+        (Double(countPage) ?? 0 * 100) / (Double(item.volumeInfo.pageCount ?? 100))
         
     }
     
@@ -100,7 +101,6 @@ struct InfoBookView: View {
                             .font(Font.custom("RalewayBold", size: 15))
                         
                         Spacer()
-                        
                         Text(percentageText)
                             .font(Font.custom("RalewayBold", size: 15))
                         
@@ -109,6 +109,9 @@ struct InfoBookView: View {
                     
                     VStack{
                         Button{
+                            withAnimation{
+                                deleteAlert.toggle()
+                            }
                             print("delete")
                         }label:{
                             Image("deleteButtom")
@@ -138,6 +141,11 @@ struct InfoBookView: View {
                     .blur(radius: 6, opaque: false)
                     .frame(height: 95)
             }.edgesIgnoringSafeArea(.all)
+            
+            if deleteAlert {
+                DeleteAlertView(showDelete: $deleteAlert)
+            }
+            
         }
         
         
@@ -157,6 +165,47 @@ struct InfoBookView: View {
     //
     //    }
 }
+
+
+struct DeleteAlertView: View {
+
+    @Binding var showDelete: Bool
+//    var selectedItem: Item?
+
+    var body: some View{
+        ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+            VStack (spacing: 25){
+                Image("sureDeleteButton")
+                    .overlay(content: {
+                        VStack{
+                            Spacer()
+                            
+                            Button(action: {
+//                                withAnimation{
+                                    print("delButton")
+                                    showDelete.toggle()
+//                                }
+                            }){
+                                Image("delButton")
+                            }.buttonStyle(.plain)
+                        }
+                    })
+            }
+            .background(BlurView())
+            .cornerRadius(20)
+
+
+        }
+        
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.corCinzaEscuro.opacity(0.7))
+    
+
+    }
+}
+
+
+
 
 //struct InfoBookView_Previews: PreviewProvider {
 //    static var previews: some View {
