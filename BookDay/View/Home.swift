@@ -15,33 +15,33 @@ struct Home: View {
     //    Pensar em como colocar o número de páginas totais
     @State var totalPage: CGFloat = 0
     var page: Page
-    
-    
-    
-    
+
+
+
+
     var body: some View {
-        
+
         NavigationView{
-            
+
             ZStack{
                 Color.corGelo
                     .ignoresSafeArea()
-                
-                
+
+
                 VStack{
-                    
+
                     Text("BookDay")
                         .font(Font.custom("BelyDisplay-Regular", size: 23))
                         .padding(.top, 40)
                         .padding(.bottom, 40)
-                    
-                    
-                    
-                    
+
+
+
+
 //                    HStack{
 //
 
-//                   
+//
 //                        Image("AddNewBook")
 //                            .resizable()
 //                            .scaledToFit()
@@ -55,13 +55,13 @@ struct Home: View {
 //
 //                    }
                     ScrollBookReading()
-                    
+
                 }
             }
             
         } .accentColor(Color.corPreta)
-        
-            
+
+
 
 //                        struct Home_Previews: PreviewProvider {
 //                            static var previews: some View {
@@ -70,6 +70,3 @@ struct Home: View {
 //                        }
     }
 }
-
-
-

@@ -5,7 +5,6 @@
 //  Created by Isabella Gomes  on 25/01/23.
 //
 
-
 import SwiftUI
 
 struct SearchView: View {
@@ -54,13 +53,13 @@ struct SearchView: View {
                                             .font(Font.custom("Raleway", size: 18))
                                             .multilineTextAlignment(.leading)
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                         
+
                                         Text(item.volumeInfo.authors?.first ?? "")
                                             .font(Font.custom("Raleway", size: 13).weight(.thin))
                                             .multilineTextAlignment(.leading)
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .padding(.top,1)
-                                            
+
                                         Spacer()
 
                                         HStack {
@@ -76,8 +75,6 @@ struct SearchView: View {
                                                     .scaledToFit()
                                                     .frame(width: 30)
                                                     .foregroundColor(Color.corLaranja)
-//                                                    .padding(.trailing)
-//                                                    .padding(.horizontal)
                                             }
                                             .buttonStyle(.plain)
                                         }
@@ -86,10 +83,8 @@ struct SearchView: View {
 
                                     }
                                     .frame(maxHeight: .infinity)
-//                                    .border(.orange)
                                 }
                                 .padding(.horizontal, 20)
-//                                .border(.blue)
                                 RoundedRectangle(cornerRadius: 15)
                                     .foregroundColor(Color.corCinzaClaro)
                                     .frame(height: 0.75)
@@ -101,7 +96,7 @@ struct SearchView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .searchable(text: $networkModel.search, placement: .navigationBarDrawer(displayMode: .always))
                     .padding(.vertical)
-                
+
                     .onSubmit(of: .search) {
                         Task {
                             do {
@@ -156,45 +151,51 @@ struct CustomAlertView: View {
     var body: some View{
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
             VStack (spacing: 25){
-                Image("bookStatus")
+                Image("bookStatus2")
                     .overlay(content: {
                         VStack{
                             Spacer()
-                            HStack{
-                                Button{
-                                    print("read")
-                                    show.toggle()
-                                    DAO.shared.addToReadList(item: selectedItem!)
-                                }label:{
-                                    Image("readButtom")
-                                }.buttonStyle(.plain)
-
+                            VStack{
                                 Button{
                                     print("reading")
                                     show.toggle()
                                     DAO.shared.addToReadingList(item: selectedItem!)
+
                                 }label:{
-                                    Image("readingButtom")
+                                    Image("readingButtom2")
+                                        .padding(.bottom, UIScreen.main.bounds.height/150)
                                 }.buttonStyle(.plain)
 
                                 Button{
                                     print("want to read")
                                     show.toggle()
                                     DAO.shared.addToWantList(item: selectedItem!)
+
                                 }label:{
-                                    Image("wantToReadButtom")
+                                    Image("wantToReadButtom2")
+                                       .padding(.bottom, UIScreen.main.bounds.height/150)
                                 }.buttonStyle(.plain)
 
-                            }.padding(.bottom)
-                                .padding(.horizontal)
+                                Button{
+                                    print("read")
+
+                                    show.toggle()
+                                    DAO.shared.addToReadList(item: selectedItem!)
+                                }label:{
+                                    Image("readButtom2")
+                                        .padding(.bottom, UIScreen.main.bounds.height/45)
+                                }.buttonStyle(.plain)
+
+                            }
 
 
                             Button(action: {
                                 withAnimation{
+                                    print("okButton")
                                     show.toggle()
                                 }
                             }){
-                                Image("okButton")
+                                Image("okButton2")
                             }.buttonStyle(.plain)
                         }
                     })
@@ -206,7 +207,7 @@ struct CustomAlertView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinzaEscuro.opacity(0.7))
-    
+
 
     }
 }
