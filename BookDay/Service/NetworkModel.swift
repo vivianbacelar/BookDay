@@ -7,11 +7,16 @@
 
 import Foundation
 
+enum NetworkError: Error {
+    case badURL
+}
+
+
 @MainActor
 class NetworkModel: ObservableObject{
     
     @Published var items: [Item] = []
-    @Published var search: String = ""
+    @Published var search: String = "Love hyphotesis"
     
     
     func fetchBooks() async throws {
@@ -31,8 +36,12 @@ class NetworkModel: ObservableObject{
         request.addValue(":keyes&key=AIzaSyBnnuLvW6SMTK3G6VOvwb-36kCr4zW7kvg", forHTTPHeaderField: "Authorization")
         print(request.url!.absoluteString)
         
+        guard let url = request.url else {
+            throw NetworkError.badURL
+        }
         
-        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
         
         var bookResponse: Welcome?
         do {

@@ -15,13 +15,18 @@ struct InfoBookView: View {
     @State var deleteAlert = false
     @Binding var countPage: String
     
-    var percentage: Double {
-        (Double(countPage) ?? 0 * 100) / (Double(item.volumeInfo.pageCount ?? 100))
-        
+    var stars: Double {
+        item.volumeInfo.averageRating ?? 0
     }
     
+    var percentage: Double {
+        ((Double(countPage) ?? 0.0) * 100) / (Double(item.volumeInfo.pageCount ?? 100))
+    }
+    
+    
     var percentageText: String {
-        var str = "\(percentage)"
+        let formattedValue = String(format: "%.2f", percentage)
+        var str = "\(formattedValue)"
         str += item.volumeInfo.pageCount != nil ? "%" : ""
         return str
     }
@@ -29,20 +34,39 @@ struct InfoBookView: View {
     var body: some View {
         
         ZStack(alignment: .top){
-            
+            Color.corGelo
             ScrollView{
                 VStack{
                     
-                    AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail){ image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } placeholder: {
-                        Image("PlaceHolder")
-                            .resizable()
-                            .scaledToFill()
+                    VStack{
+                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail){ image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        } placeholder: {
+                            Image("PlaceHolder")
+                                .resizable()
+                                .scaledToFill()
+                        }
+                    }.overlay(alignment: .bottom){
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                                .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.width/13)
+                                .foregroundColor(Color.white.opacity(0.9))
+                                
+                            HStack{
+                                // funciona com numeros inteiros mas se a avaliacao for 4.5 nao vai
+                                ForEach(0 ..< Int(stars)) { i in
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(Color.corLaranja)
+                                        .frame(width: UIScreen.main.bounds.width/28,height: UIScreen.main.bounds.height/50)
+                                }
+                                Text(String(stars))
+                                    .font(Font.custom("RalewayBold", size: 15))
+                            }
+                        }.padding(.bottom)
+                            .padding(.leading, UIScreen.main.bounds.width/2)
                     }
-                    
                     
                     Spacer()
                     
@@ -63,7 +87,6 @@ struct InfoBookView: View {
                                     self.selectedCells.insert (item)
                                 }
                             }
-                            .animation(.easeInOut(duration: 0.2))
                             .padding(.vertical,5)
                     }.padding(.vertical)
                     
@@ -109,36 +132,29 @@ struct InfoBookView: View {
                     
                     VStack{
                         Button{
-                            withAnimation{
-                                deleteAlert.toggle()
-                            }
+                            deleteAlert.toggle()
                             print("delete")
                         }label:{
                             Image("deleteButtom")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/1.5)
-                                
-                            
-                            
+                                .frame(width: UIScreen.main.bounds.width/1.8, height: UIScreen.main.bounds.height/5)
+                         
                         }.buttonStyle(.plain)
-                        
+                        Rectangle()
+                            .foregroundColor(Color.corGelo)
+                            .frame(height: UIScreen.main.bounds.height/10)
                     }
-                    
-   
-                    
                 }
             }
-            
-            
             
         }
         .ignoresSafeArea()
         .overlay(alignment: .top){
             HStack {
                 Rectangle()
-                    .foregroundColor(Color.white.opacity(0.2))
-                    .blur(radius: 6, opaque: false)
+                    .foregroundColor(Color.white.opacity(0.7))
+                    .blur(radius: 4, opaque: false)
                     .frame(height: 95)
             }.edgesIgnoringSafeArea(.all)
             
@@ -147,23 +163,8 @@ struct InfoBookView: View {
             }
             
         }
-        
-        
-        
     }
-    
-    //    var returnImage: some View {
-    //        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail){ image in
-    //            image
-    //                .resizable()
-    //                .scaledToFill()
-    //        } placeholder: {
-    //            Image("PlaceHolder")
-    //                .resizable()
-    //                .scaledToFill()
-    //        }
-    //
-    //    }
+  
 }
 
 

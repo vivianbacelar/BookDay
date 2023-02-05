@@ -34,7 +34,6 @@ struct SearchView: View {
                                     AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
                                         image
                                             .resizable()
-//                                            .padding(.top)
                                             .aspectRatio(contentMode: .fit)
                                             .frame(maxWidth: 130, maxHeight: 150)
 //                                            .padding(.bottom)
@@ -70,7 +69,7 @@ struct SearchView: View {
                                                     selectedItem = item
                                                 }
                                             }) {
-                                                Image("addButtom")
+                                                Image("addButton")
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 30)
@@ -90,11 +89,19 @@ struct SearchView: View {
                                     .frame(height: 0.75)
                                     .padding(.horizontal, 20)
                             }
-//                            .border(.red)
                         }
                     }
                     .navigationBarTitleDisplayMode(.inline)
                     .searchable(text: $networkModel.search, placement: .navigationBarDrawer(displayMode: .always))
+//                    .onChange(of: networkModel.search) { value in
+//                        async{
+//                            if !value.isEmpty && value.count > 1 {
+//                                networkModel.search
+//                            }else {
+//                                networkModel.items.removeAll()
+//                            }
+//                        }
+//                    }
                     .padding(.vertical)
 
                     .onSubmit(of: .search) {
