@@ -25,6 +25,7 @@ struct ScrollBookReading: View {
       
             TabView(selection: $ItemIndex){
                 
+                
                 ForEach(livros, id: \.id) { page in
                     VStack (spacing: 10){
                         Text(page.volumeInfo.title)
