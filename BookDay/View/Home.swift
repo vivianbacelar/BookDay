@@ -32,17 +32,18 @@ struct Home: View {
                     
                     Text("BookDay")
                         .font(Font.custom("BelyDisplay-Regular", size: 23))
+                        .foregroundColor(Color.corPreta)
                         .padding(.top, 40)
                         .padding(.bottom, 40)
                     
                     Spacer()
                     
                     VStack{
-                        
-                        Text("Add New Book")
-                            .font(Font.custom("Raleway", size: 18))
-                            .padding(.top)
-                            .padding(.bottom, 100)
+//                        
+//                        Text("Add New Book")
+//                            .font(Font.custom("Raleway", size: 18))
+//                            .padding(.top)
+//                            .padding(.bottom, 100)
                       
                         ScrollBookReading()
                         

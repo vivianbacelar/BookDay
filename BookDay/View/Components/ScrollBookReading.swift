@@ -27,14 +27,15 @@ struct ScrollBookReading: View {
                 
                 ForEach(livros, id: \.id) { page in
                     VStack (spacing: 10){
-                        
                         Text(page.volumeInfo.title)
                             .font(Font.custom("Raleway", size: 18))
                             .multilineTextAlignment(.leading)
+                            .foregroundColor(Color.corPreta)
                         
                         Text(page.volumeInfo.authors?.first ?? "")
                             .font(Font.custom("Raleway", size: 15).weight(.light))
                             .multilineTextAlignment(.leading)
+                            .foregroundColor(Color.corPreta)
                         
                         ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
                         
@@ -43,29 +44,34 @@ struct ScrollBookReading: View {
                             .foregroundColor(Color.corCinzaEscuro)
                             .multilineTextAlignment(TextAlignment.trailing)
                         
-                        if livros == []{
-                            Image("AddNewBook")
+                        AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
+                            image.resizable()
+                                .scaledToFit()
+                                .frame(width: 291, height: 433)
+                        } placeholder: {
+                            Image("PlaceHolder")
                                 .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 291, height: 433)
-                        } else {
-                        NavigationLink {
-                            InfoBookView(item: page, countPage: $countPage)
-                        } label: {
-                            AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
-                                image.resizable()
-                                    .scaledToFit()
-                                    .frame(width: 291, height: 433)
-                            } placeholder: {
-                                Image("PlaceHolder")
-                                    .resizable()
-                                    .padding(.top)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 200, maxHeight: 150)
-                                    .padding(.bottom)
-                            }
+                                .padding(.top)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 291, maxHeight: 433)
+                                .padding(.bottom)
                         }
-                    }
+                        
+                        
+//                        if livros == []{
+//                            Image("AddNewBook")
+//                                .resizable()
+//                                    .scaledToFit()
+//                                    .frame(width: 291, height: 433)
+//                        } else {
+//                        NavigationLink {
+//                            InfoBookView(item: page, countPage: $countPage)
+//                        } label: {
+//                            VStack{
+//
+//                            }
+//                        }
+//                    }
                         
                         
                         if page == (livros.last)! {
@@ -113,7 +119,7 @@ struct ScrollBookReading: View {
             ItemIndex = 0
             
         }
-    }
+}
 
 struct ScrollBookReading_Previews: PreviewProvider {
     static var previews: some View {
