@@ -8,14 +8,14 @@
 import Foundation
 
 // MARK: - Welcome
-struct Welcome: Decodable {
+struct Welcome: Codable {
     //let kind: String
    // let totalItems: Int
     let items: [Item]
 }
 
 // MARK: - Item
-struct Item: Decodable, Identifiable, Hashable{
+struct Item: Codable, Identifiable, Hashable {
    
     let id: String
     let selfLink: String
@@ -35,7 +35,7 @@ struct Item: Decodable, Identifiable, Hashable{
 }
 
 // MARK: - VolumeInfo
-struct VolumeInfo: Decodable, Hashable {
+struct VolumeInfo: Hashable, Codable {
     let title: String
     let authors: [String]?
     let publishedDate: String?

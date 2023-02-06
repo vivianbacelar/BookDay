@@ -8,15 +8,16 @@
 import Foundation
 
 // Singleton
-class DAO {
-    
+class DAO: ObservableObject {
+
     static let shared = DAO()
+    
+    var appData = AppData()
     
     var readingList: [Item] = []
     var wantToReadList: [Item] = []
     var readList: [Item] = []
-    
-    private init() {}
+
     
     func addToReadingList(item: Item) {
         readingList.append(item)
@@ -28,6 +29,14 @@ class DAO {
     
     func addToReadList(item: Item){
         readList.append(item)
+    }
+    
+    func save() {
+        appData.saveData()
+    }
+    
+    func load() {
+        self.appData = AppData.loadData()
     }
 }
 

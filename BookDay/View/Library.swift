@@ -106,7 +106,7 @@ struct Library: View {
             livros = getBook(of: newValue)
         }
 
-//        .onDelete (){ { newValue in
+//        .onDelete(of: selected) { newValue in
 //            livros = deleteBook(of: newValue)
 //        }
     }
@@ -118,13 +118,13 @@ struct Library: View {
             return DAO.shared.readList
         }
     }
-//
+
 //    func deleteBook(of selected: ImageLinks) -> [Item]{
 //        if selected ==  AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){
 //            return DAO.shared.readingList
 //        }
 //    }
-//
+
     let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
     var collectionBooks: some View {

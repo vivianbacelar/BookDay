@@ -16,8 +16,10 @@ struct ScrollBookReading: View {
     //    Pensar em como colocar o número de páginas totais
     @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
+//    @Binding var show: Bool
     @State var countPage: String =
         UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
+    
   
     var body: some View {
       
@@ -41,6 +43,12 @@ struct ScrollBookReading: View {
                             .foregroundColor(Color.corCinzaEscuro)
                             .multilineTextAlignment(TextAlignment.trailing)
                         
+                        if livros == []{
+                            Image("AddNewBook")
+                                .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 291, height: 433)
+                        } else {
                         NavigationLink {
                             InfoBookView(item: page, countPage: $countPage)
                         } label: {
@@ -57,7 +65,8 @@ struct ScrollBookReading: View {
                                     .padding(.bottom)
                             }
                         }
-                        .buttonStyle(.plain)
+                    }
+                        
                         
                         if page == (livros.last)! {
                             Button (action: goToZero) {

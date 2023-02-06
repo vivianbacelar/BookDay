@@ -19,7 +19,7 @@ struct ContentCell: View {
                 HStack {
                     
                     Text ("Description")
-                        .font(.custom("Raleway", size: 20, relativeTo: .title))
+                        .font(.custom("Raleway", size: 18).weight(.bold))
                         .foregroundColor(Color.corPreto)
                         .padding (.leading, 16)
                         .padding(.top)

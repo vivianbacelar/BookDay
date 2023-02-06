@@ -48,7 +48,7 @@ struct InfoBookView: View {
                     
                     Text(item.volumeInfo.title)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        .font(Font.custom("RalewayBold", size: 25))
+                        .font(Font.custom("Raleway", size: 25).weight(.bold))
                         .padding(.horizontal)
                         .padding(.bottom)
                     
@@ -63,7 +63,7 @@ struct InfoBookView: View {
                                     self.selectedCells.insert (item)
                                 }
                             }
-                            .animation(.easeInOut(duration: 0.2))
+                            //.animation(.easeInOut(duration: 0.2))
                             .padding(.vertical,5)
                     }.padding(.vertical)
                     
@@ -77,7 +77,7 @@ struct InfoBookView: View {
                             
                             Text("Page")
                                 .foregroundColor(Color.corCinza3)
-                                .font(Font.custom("RalewayBold", size: 15))
+                                .font(Font.custom("Raleway", size: 15).weight(.semibold))
                             
                             Spacer()
                             
@@ -98,11 +98,11 @@ struct InfoBookView: View {
                     
                     HStack{
                         Text("Progress")
-                            .font(Font.custom("RalewayBold", size: 15))
+                            .font(Font.custom("Raleway", size: 15).weight(.bold))
                         
                         Spacer()
                         Text(percentageText)
-                            .font(Font.custom("RalewayBold", size: 15))
+                            .font(Font.custom("Raleway", size: 15))
                         
                     }.padding(.horizontal, UIScreen.main.bounds.width/11)
                     

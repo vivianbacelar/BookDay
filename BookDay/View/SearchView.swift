@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct SearchView: View {
-
+    
     @State var filteredItems: [Item] = []
     @State var customAlert = false
     @StateObject var networkModel = NetworkModel()
     @State var selectedItem: Item?
+    private let userDefaults = UserDefaults.standard
 
     var items: [Item]{
         filteredItems.isEmpty ? networkModel.items: filteredItems
@@ -70,7 +71,7 @@ struct SearchView: View {
                                                     selectedItem = item
                                                 }
                                             }) {
-                                                Image("addButtom")
+                                                Image("AddButtom")
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 30)
@@ -144,7 +145,7 @@ struct SearchView: View {
 
 
 struct CustomAlertView: View {
-
+    
     @Binding var show: Bool
     var selectedItem: Item?
 
@@ -160,7 +161,6 @@ struct CustomAlertView: View {
                                     print("reading")
                                     show.toggle()
                                     DAO.shared.addToReadingList(item: selectedItem!)
-
                                 }label:{
                                     Image("readingButtom2")
                                         .padding(.bottom, UIScreen.main.bounds.height/150)
@@ -170,7 +170,7 @@ struct CustomAlertView: View {
                                     print("want to read")
                                     show.toggle()
                                     DAO.shared.addToWantList(item: selectedItem!)
-
+//
                                 }label:{
                                     Image("wantToReadButtom2")
                                        .padding(.bottom, UIScreen.main.bounds.height/150)
@@ -178,7 +178,6 @@ struct CustomAlertView: View {
 
                                 Button{
                                     print("read")
-
                                     show.toggle()
                                     DAO.shared.addToReadList(item: selectedItem!)
                                 }label:{
@@ -208,6 +207,16 @@ struct CustomAlertView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinzaEscuro.opacity(0.7))
 
+        
+//        func addNewBook(newBook: Item){
+//            self.objectWillChange.send()
+//            DAO.shared.wantToReadList.append(newBook)
+//            DAO.shared.readingList.append(newBook)
+//            DAO.shared.readList.append(newBook)
+//            userDefaults.set(DAO.shared.wantToReadList, forKey: "Want")
+//            userDefaults.set( DAO.shared.readingList, forKey: "Reading")
+//            userDefaults.set( DAO.shared.readList, forKey: "Read")
+//        }
 
     }
 }
