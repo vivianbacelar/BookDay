@@ -54,13 +54,18 @@ struct InfoBookView: View {
                                 .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.width/13)
                                 .foregroundColor(Color.white.opacity(0.7))
                                 
-                            HStack{
-                                // funciona com numeros inteiros mas se a avaliacao for 4.5 nao vai
+                            HStack {
                                 ForEach(0 ..< Int(stars)) { i in
                                     Image(systemName: "star.fill")
                                         .foregroundColor(Color.corLaranja)
                                         .frame(width: UIScreen.main.bounds.width/28,height: UIScreen.main.bounds.height/50)
                                 }
+                                if Int(stars * 2) % 2 != 0 {
+                                    Image(systemName: "star.leadinghalf.filled")
+                                        .foregroundColor(Color.corLaranja)
+                                        .frame(width: UIScreen.main.bounds.width/28,height: UIScreen.main.bounds.height/50)
+                                }
+                            
                                 Text(String(stars))
                                     .font(Font.custom("RalewayBold", size: 18))
                                     .foregroundColor(Color.corPreta)

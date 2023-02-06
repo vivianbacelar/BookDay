@@ -55,7 +55,7 @@ struct ScrollBookReading: View {
                                     .resizable()
                                     .padding(.top)
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 200, maxHeight: 150)
+                                    .frame(maxWidth: 291, maxHeight: 433)
                                     .padding(.bottom)
                             }
                         }
