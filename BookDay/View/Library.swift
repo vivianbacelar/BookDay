@@ -169,7 +169,7 @@ struct Library: View {
                     .frame(width: 310, height: 150)
 
                 Rectangle()
-                    .fill(Color(red: 0.85, green: 0.85, blue: 0.85))
+                    .fill(Color.corCinzaClaro)
                     .frame(width: 310, height: 8)
             }
         }

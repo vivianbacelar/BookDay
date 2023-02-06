@@ -204,15 +204,12 @@ struct CustomAlertView: View {
                         }
                     })
             }
-            //.background(BlurView())
             .cornerRadius(20)
 
 
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.corGelo.opacity(0.7))
-
-
+        .background(Color.corCinza3.opacity(0.7))
     }
 }
 

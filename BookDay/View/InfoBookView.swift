@@ -101,14 +101,14 @@ struct InfoBookView: View {
                         HStack{
                             
                             Text("Page")
-                                .foregroundColor(Color.corCinza3)
+                                .foregroundColor(Color.corCinzaMaisEscuro)
                                 .font(Font.custom("RalewayBold", size: 15))
                             
                             Spacer()
                             
                             TextField("0", text: $countPage)
                                 .multilineTextAlignment(.trailing)
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color.corPreta)
                                 .padding()
                                 .onSubmit {
                                     UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
@@ -176,29 +176,30 @@ struct DeleteAlertView: View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
             VStack (spacing: 25){
                 Image("sureDeleteButton")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/1.5 ,height: UIScreen.main.bounds.height/4.5)
                     .overlay(content: {
                         VStack{
                             Spacer()
-                            
+
                             Button(action: {
-//                                withAnimation{
                                     print("delButton")
                                     showDelete.toggle()
-//                                }
                             }){
                                 Image("delButton")
+                                    .resizable()
+                                    .frame(width: UIScreen.main.bounds.width/1.4 ,height: UIScreen.main.bounds.height/18)
                             }.buttonStyle(.plain)
                         }
                     })
             }
-            .background(BlurView())
             .cornerRadius(20)
 
 
         }
         
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.corCinzaEscuro.opacity(0.7))
+        .background(Color.corCinza3.opacity(0.7))
     
 
     }
