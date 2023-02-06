@@ -18,7 +18,7 @@ struct SearchView: View {
     var items: [Item] {
         filteredItems.isEmpty ? networkModel.items: filteredItems
     }
-
+    
     var body: some View {
         ZStack {
 

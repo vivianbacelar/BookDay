@@ -80,6 +80,7 @@ struct InfoBookView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .font(Font.custom("Raleway", size: 25).weight(.bold))
                         .foregroundColor(Color.corPreta)
+                        .font(Font.custom("RalewayBold", size: 25))
                         .padding(.horizontal)
                         .padding(.bottom)
 
