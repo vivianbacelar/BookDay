@@ -29,10 +29,12 @@ struct ScrollBookReading: View {
                         Text(page.volumeInfo.title)
                             .font(Font.custom("Raleway", size: 18))
                             .multilineTextAlignment(.leading)
+                            .foregroundColor(Color.corPreta)
                         
                         Text(page.volumeInfo.authors?.first ?? "")
                             .font(Font.custom("Raleway", size: 15).weight(.light))
                             .multilineTextAlignment(.leading)
+                            .foregroundColor(Color.corPreta)
                         
                         ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
                         

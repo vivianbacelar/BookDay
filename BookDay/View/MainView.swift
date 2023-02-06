@@ -56,7 +56,7 @@ struct MainView: View {
             let appearenceNavBar = UINavigationBarAppearance()
             appearenceNavBar.configureWithTransparentBackground()
             appearenceNavBar.backgroundImage = UIImage().withTintColor(.blue)
-            appearenceNavBar.backgroundColor = . white.withAlphaComponent(0.5)
+            appearenceNavBar.backgroundColor = UIColor(Color.corGelo).withAlphaComponent(0.5)
             appearenceNavBar.shadowColor = nil
             UINavigationBar.appearance().standardAppearance = appearenceNavBar
             UINavigationBar.appearance().scrollEdgeAppearance = appearenceNavBar

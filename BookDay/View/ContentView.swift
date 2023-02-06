@@ -29,11 +29,13 @@ struct ContentView: View {
 
                     Text("\(Int(percent))%")
                         .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(Color.corPreta)
                         .multilineTextAlignment(.leading)
 
                     //Descobrir como colocar o número da página que está
                     Text("\(Int(numberPage))")
                         .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(Color.corPreta)
 
 
                 }

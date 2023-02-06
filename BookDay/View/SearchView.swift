@@ -13,95 +13,97 @@ struct SearchView: View {
     @State var customAlert = false
     @StateObject var networkModel = NetworkModel()
     @State var selectedItem: Item?
+   
 
-    var items: [Item]{
+    var items: [Item] {
         filteredItems.isEmpty ? networkModel.items: filteredItems
     }
-
+    
     var body: some View {
         ZStack {
+        
             Color.corGelo
                 .ignoresSafeArea()
             NavigationView {
 
                 ScrollView () {
                     VStack {
+                        if items.isEmpty && !networkModel.searchEmpty {
+                            VStack{
+                                Spacer()
+                                
+                                Text("So sorry, your book is not here 😭")
+                                    .font(Font.custom("Raleway", size: 18))
+                                    .foregroundColor(Color.corPreta)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.vertical,  UIScreen.main.bounds.height/3)
+                                
+                            }
+                        } else {
+                            ForEach(items) { item in
 
-                        ForEach(items) { item in
-
-                            VStack {
-                                HStack {
-                                    AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(maxWidth: 130, maxHeight: 150)
-//                                            .padding(.bottom)
-                                    } placeholder: {
-                                        Image("PlaceHolder")
-                                            .resizable()
-//                                                .padding(.top)
+                                VStack {
+                                   
+                                    HStack {
+                                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
+                                            image
+                                                .resizable()
                                                 .aspectRatio(contentMode: .fit)
-                                                .frame(maxHeight: 150)
-//                                                .padding(.bottom)
-                                    }
-                                    .padding(.trailing, 8)
-//                                    .border(.green)
-                                    VStack(spacing: 5) {
-                                        Text(item.volumeInfo.title)
-                                            .font(Font.custom("Raleway", size: 18))
-                                            .multilineTextAlignment(.leading)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-
-                                        Text(item.volumeInfo.authors?.first ?? "")
-                                            .font(Font.custom("Raleway", size: 13).weight(.thin))
-                                            .multilineTextAlignment(.leading)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                            .padding(.top,1)
-
-                                        Spacer()
-
-                                        HStack {
-                                            Spacer()
-                                            Button (action:{
-                                                withAnimation{
-                                                    customAlert.toggle()
-                                                    selectedItem = item
-                                                }
-                                            }) {
-                                                Image("addButton")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 30)
-                                                    .foregroundColor(Color.corLaranja)
-                                            }
-                                            .buttonStyle(.plain)
+                                                .frame(maxWidth: 130, maxHeight: 150)
+                                        } placeholder: {
+                                            Image("PlaceHolder")
+                                                .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(maxHeight: 150)
                                         }
-                                        .padding(.top)
+                                        .padding(.trailing, 8)
+                                        VStack(spacing: 5) {
+                                            Text(item.volumeInfo.title)
+                                                .font(Font.custom("Raleway", size: 18))
+                                                .foregroundColor(Color.corPreta)
+                                                .multilineTextAlignment(.leading)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
 
+                                            Text(item.volumeInfo.authors?.first ?? "")
+                                                .font(Font.custom("Raleway", size: 13).weight(.thin))
+                                                .foregroundColor(Color.corPreta)
+                                                .multilineTextAlignment(.leading)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .padding(.top,1)
 
+                                            Spacer()
+
+                                            HStack {
+                                                Spacer()
+                                                Button (action:{
+                                                    withAnimation{
+                                                        customAlert.toggle()
+                                                        selectedItem = item
+                                                    }
+                                                }) {
+                                                    Image("AddButton")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 30)
+                                                        .foregroundColor(Color.corLaranja)
+                                                }
+                                                .buttonStyle(.plain)
+                                            }
+                                            .padding(.top)
+                                        }
+                                        .frame(maxHeight: .infinity)
                                     }
-                                    .frame(maxHeight: .infinity)
-                                }
-                                .padding(.horizontal, 20)
-                                RoundedRectangle(cornerRadius: 15)
-                                    .foregroundColor(Color.corCinzaClaro)
-                                    .frame(height: 0.75)
                                     .padding(.horizontal, 20)
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .foregroundColor(Color.corCinzaClaro)
+                                        .frame(height: 0.75)
+                                        .padding(.horizontal, 20)
+                                }
                             }
                         }
                     }
                     .navigationBarTitleDisplayMode(.inline)
                     .searchable(text: $networkModel.search, placement: .navigationBarDrawer(displayMode: .always))
-//                    .onChange(of: networkModel.search) { value in
-//                        async{
-//                            if !value.isEmpty && value.count > 1 {
-//                                networkModel.search
-//                            }else {
-//                                networkModel.items.removeAll()
-//                            }
-//                        }
-//                    }
                     .padding(.vertical)
 
                     .onSubmit(of: .search) {
@@ -121,6 +123,7 @@ struct SearchView: View {
                     ToolbarItem(placement: .principal) {
                         Text("BookDay")
                             .font(Font.custom("BelyDisplay-Regular", size: 23))
+                            .foregroundColor(Color.corPreta)
                     }
                 }.frame(maxWidth: .infinity)
                     .background(Color.corGelo)
@@ -134,20 +137,14 @@ struct SearchView: View {
                 CustomAlertView(show: $customAlert, selectedItem: selectedItem)
             }
         })
-
-
-
     }
-
-
-
     private func performSearch (keyWord: String) {
         filteredItems = networkModel.items.filter{ item in
             item.volumeInfo.title.contains(keyWord)
         }
     }
-
 }
+
 
 
 struct CustomAlertView: View {
@@ -207,13 +204,13 @@ struct CustomAlertView: View {
                         }
                     })
             }
-            .background(BlurView())
+            //.background(BlurView())
             .cornerRadius(20)
 
 
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.corCinzaEscuro.opacity(0.7))
+        .background(Color.corGelo.opacity(0.7))
 
 
     }

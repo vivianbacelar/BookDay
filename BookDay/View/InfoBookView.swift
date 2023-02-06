@@ -52,7 +52,7 @@ struct InfoBookView: View {
                         ZStack{
                             RoundedRectangle(cornerRadius: 30, style: .continuous)
                                 .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.width/13)
-                                .foregroundColor(Color.white.opacity(0.9))
+                                .foregroundColor(Color.white.opacity(0.7))
                                 
                             HStack{
                                 // funciona com numeros inteiros mas se a avaliacao for 4.5 nao vai
@@ -62,7 +62,8 @@ struct InfoBookView: View {
                                         .frame(width: UIScreen.main.bounds.width/28,height: UIScreen.main.bounds.height/50)
                                 }
                                 Text(String(stars))
-                                    .font(Font.custom("RalewayBold", size: 15))
+                                    .font(Font.custom("RalewayBold", size: 18))
+                                    .foregroundColor(Color.corPreta)
                             }
                         }.padding(.bottom)
                             .padding(.leading, UIScreen.main.bounds.width/2)
@@ -72,6 +73,7 @@ struct InfoBookView: View {
                     
                     Text(item.volumeInfo.title)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .foregroundColor(Color.corPreta)
                         .font(Font.custom("RalewayBold", size: 25))
                         .padding(.horizontal)
                         .padding(.bottom)
@@ -106,26 +108,23 @@ struct InfoBookView: View {
                             
                             TextField("0", text: $countPage)
                                 .multilineTextAlignment(.trailing)
+                                .foregroundColor(Color.black)
                                 .padding()
                                 .onSubmit {
                                     UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
                                 }
-                            
-                          
-                            
                         }.padding(.horizontal, UIScreen.main.bounds.width/11)
                         
                     }
-                    
-                    
-                    
                     HStack{
                         Text("Progress")
                             .font(Font.custom("RalewayBold", size: 15))
+                            .foregroundColor(Color.corPreta)
                         
                         Spacer()
                         Text(percentageText)
                             .font(Font.custom("RalewayBold", size: 15))
+                            .foregroundColor(Color.corPreta)
                         
                     }.padding(.horizontal, UIScreen.main.bounds.width/11)
                     
@@ -153,7 +152,7 @@ struct InfoBookView: View {
         .overlay(alignment: .top){
             HStack {
                 Rectangle()
-                    .foregroundColor(Color.white.opacity(0.7))
+                    .foregroundColor(Color.corGelo.opacity(0.7))
                     .blur(radius: 4, opaque: false)
                     .frame(height: 95)
             }.edgesIgnoringSafeArea(.all)

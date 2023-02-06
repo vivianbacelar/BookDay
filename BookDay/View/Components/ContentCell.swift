@@ -20,7 +20,7 @@ struct ContentCell: View {
                     
                     Text ("Description")
                         .font(.custom("Raleway", size: 20, relativeTo: .title))
-                        .foregroundColor(Color.corPreto)
+                        .foregroundColor(Color.corPreta)
                         .padding (.leading, 16)
                         .padding(.top)
                     
