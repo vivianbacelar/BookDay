@@ -8,90 +8,98 @@
 import SwiftUI
 
 struct SearchView: View {
-    
+
     @State var filteredItems: [Item] = []
     @State var customAlert = false
     @StateObject var networkModel = NetworkModel()
     @State var selectedItem: Item?
     private let userDefaults = UserDefaults.standard
 
-    var items: [Item]{
+    var items: [Item] {
         filteredItems.isEmpty ? networkModel.items: filteredItems
     }
 
     var body: some View {
         ZStack {
+
             Color.corGelo
                 .ignoresSafeArea()
             NavigationView {
 
                 ScrollView () {
                     VStack {
+                        if items.isEmpty && !networkModel.searchEmpty {
+                            VStack{
+                                Spacer()
 
-                        ForEach(items) { item in
+                                Text("So sorry, your book is not here 😭")
+                                    .font(Font.custom("Raleway", size: 18))
+                                    .foregroundColor(Color.corPreta)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.vertical,  UIScreen.main.bounds.height/3)
 
-                            VStack {
-                                HStack {
-                                    AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
-                                        image
-                                            .resizable()
-//                                            .padding(.top)
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(maxWidth: 130, maxHeight: 150)
-//                                            .padding(.bottom)
-                                    } placeholder: {
-                                        Image("PlaceHolder")
-                                            .resizable()
-//                                                .padding(.top)
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(maxHeight: 150)
-//                                                .padding(.bottom)
-                                    }
-                                    .padding(.trailing, 8)
-//                                    .border(.green)
-                                    VStack(spacing: 5) {
-                                        Text(item.volumeInfo.title)
-                                            .font(Font.custom("Raleway", size: 18))
-                                            .multilineTextAlignment(.leading)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-
-                                        Text(item.volumeInfo.authors?.first ?? "")
-                                            .font(Font.custom("Raleway", size: 13).weight(.thin))
-                                            .multilineTextAlignment(.leading)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                            .padding(.top,1)
-
-                                        Spacer()
-
-                                        HStack {
-                                            Spacer()
-                                            Button (action:{
-                                                withAnimation{
-                                                    customAlert.toggle()
-                                                    selectedItem = item
-                                                }
-                                            }) {
-                                                Image("AddButtom")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 30)
-                                                    .foregroundColor(Color.corLaranja)
-                                            }
-                                            .buttonStyle(.plain)
-                                        }
-                                        .padding(.top)
-
-
-                                    }
-                                    .frame(maxHeight: .infinity)
-                                }
-                                .padding(.horizontal, 20)
-                                RoundedRectangle(cornerRadius: 15)
-                                    .foregroundColor(Color.corCinzaClaro)
-                                    .frame(height: 0.75)
-                                    .padding(.horizontal, 20)
                             }
-//                            .border(.red)
+                        } else {
+                            ForEach(items) { item in
+
+                                VStack {
+
+                                    HStack {
+                                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(maxWidth: 130, maxHeight: 150)
+                                        } placeholder: {
+                                            Image("PlaceHolder")
+                                                .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(maxHeight: 150)
+                                        }
+                                        .padding(.trailing, 8)
+                                        VStack(spacing: 5) {
+                                            Text(item.volumeInfo.title)
+                                                .font(Font.custom("Raleway", size: 18))
+                                                .foregroundColor(Color.corPreta)
+                                                .multilineTextAlignment(.leading)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+
+                                            Text(item.volumeInfo.authors?.first ?? "")
+                                                .font(Font.custom("Raleway", size: 13).weight(.thin))
+                                                .foregroundColor(Color.corPreta)
+                                                .multilineTextAlignment(.leading)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .padding(.top,1)
+
+                                            Spacer()
+
+                                            HStack {
+                                                Spacer()
+                                                Button (action:{
+                                                    withAnimation{
+                                                        customAlert.toggle()
+                                                        selectedItem = item
+                                                    }
+                                                }) {
+                                                    Image("addButton")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 30)
+                                                        .foregroundColor(Color.corLaranja)
+                                                }
+                                                .buttonStyle(.plain)
+                                            }
+                                            .padding(.top)
+                                        }
+                                        .frame(maxHeight: .infinity)
+                                    }
+                                    .padding(.horizontal, 20)
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .foregroundColor(Color.corCinzaClaro)
+                                        .frame(height: 0.75)
+                                        .padding(.horizontal, 20)
+                                }
+                            }
                         }
                     }
                     .navigationBarTitleDisplayMode(.inline)
@@ -115,6 +123,7 @@ struct SearchView: View {
                     ToolbarItem(placement: .principal) {
                         Text("BookDay")
                             .font(Font.custom("BelyDisplay-Regular", size: 23))
+                            .foregroundColor(Color.corPreta)
                     }
                 }.frame(maxWidth: .infinity)
                     .background(Color.corGelo)
@@ -128,24 +137,18 @@ struct SearchView: View {
                 CustomAlertView(show: $customAlert, selectedItem: selectedItem)
             }
         })
-
-
-
     }
-
-
-
     private func performSearch (keyWord: String) {
         filteredItems = networkModel.items.filter{ item in
             item.volumeInfo.title.contains(keyWord)
         }
     }
-
 }
 
 
+
 struct CustomAlertView: View {
-    
+
     @Binding var show: Bool
     var selectedItem: Item?
 
@@ -199,25 +202,12 @@ struct CustomAlertView: View {
                         }
                     })
             }
-            .background(BlurView())
             .cornerRadius(20)
 
 
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.corCinzaEscuro.opacity(0.7))
-
-        
-//        func addNewBook(newBook: Item){
-//            self.objectWillChange.send()
-//            DAO.shared.wantToReadList.append(newBook)
-//            DAO.shared.readingList.append(newBook)
-//            DAO.shared.readList.append(newBook)
-//            userDefaults.set(DAO.shared.wantToReadList, forKey: "Want")
-//            userDefaults.set( DAO.shared.readingList, forKey: "Reading")
-//            userDefaults.set( DAO.shared.readList, forKey: "Read")
-//        }
-
+        .background(Color.corCinza3.opacity(0.7))
     }
 }
 

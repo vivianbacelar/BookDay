@@ -17,6 +17,7 @@
 		8A7D8EED298993DE000FC836 /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EEC298993DE000FC836 /* LabelAlignment.swift */; };
 		8A7D8EEF2989B800000FC836 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EEE2989B800000FC836 /* ContentCell.swift */; };
 		8A7D8EF52989D237000FC836 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EF42989D237000FC836 /* DAO.swift */; };
+		8A7D8EF729916F82000FC836 /* Accent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EF629916F82000FC836 /* Accent.swift */; };
 		A13E8477298C2B0700FCDEDB /* ChangePages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13E8476298C2B0700FCDEDB /* ChangePages.swift */; };
 		A14899542980541A00402C94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14899532980541A00402C94 /* Assets.xcassets */; };
 		A14899572980541A00402C94 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14899562980541A00402C94 /* Preview Assets.xcassets */; };
@@ -24,8 +25,6 @@
 		A14FC1812982F969009F0075 /* FlowOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC1802982F969009F0075 /* FlowOrganizer.swift */; };
 		A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC184298305FE009F0075 /* ProgressBar.swift */; };
 		A14FC18729832DB5009F0075 /* BelyDisplay.otf in Resources */ = {isa = PBXBuildFile; fileRef = A14FC17B2982F72A009F0075 /* BelyDisplay.otf */; };
-		A14FFFEF298AE73D0067440E /* RalewayExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A14FFFEE298AE73D0067440E /* RalewayExtraBold.otf */; };
-		A14FFFF3298AE7840067440E /* RalewayBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A14FFFF2298AE7840067440E /* RalewayBold.otf */; };
 		A152AC482984425E00D21DDC /* RalewayExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3C2984425E00D21DDC /* RalewayExtraLight.otf */; };
 		A152AC4A2984425E00D21DDC /* RalewayRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3E2984425E00D21DDC /* RalewayRegular.otf */; };
 		A152AC4B2984425E00D21DDC /* RalewayMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3F2984425E00D21DDC /* RalewayMedium.otf */; };
@@ -56,6 +55,7 @@
 		8A7D8EF02989D11E000FC836 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		8A7D8EF22989D169000FC836 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		8A7D8EF42989D237000FC836 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		8A7D8EF629916F82000FC836 /* Accent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accent.swift; sourceTree = "<group>"; };
 		A13E8476298C2B0700FCDEDB /* ChangePages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePages.swift; sourceTree = "<group>"; };
 		A148994C2980541900402C94 /* BookDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14899532980541A00402C94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,8 +65,6 @@
 		A14FC17B2982F72A009F0075 /* BelyDisplay.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BelyDisplay.otf; sourceTree = "<group>"; };
 		A14FC1802982F969009F0075 /* FlowOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowOrganizer.swift; sourceTree = "<group>"; };
 		A14FC184298305FE009F0075 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		A14FFFEE298AE73D0067440E /* RalewayExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = RalewayExtraBold.otf; path = ../../../../Downloads/RalewayExtraBold.otf; sourceTree = "<group>"; };
-		A14FFFF2298AE7840067440E /* RalewayBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = RalewayBold.otf; path = ../../../../Downloads/RalewayBold.otf; sourceTree = "<group>"; };
 		A152AC3C2984425E00D21DDC /* RalewayExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayExtraLight.otf; sourceTree = "<group>"; };
 		A152AC3E2984425E00D21DDC /* RalewayRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayRegular.otf; sourceTree = "<group>"; };
 		A152AC3F2984425E00D21DDC /* RalewayMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayMedium.otf; sourceTree = "<group>"; };
@@ -153,8 +151,6 @@
 				A152AC3E2984425E00D21DDC /* RalewayRegular.otf */,
 				A152AC462984425E00D21DDC /* Raleway.otf */,
 				A152AC442984425E00D21DDC /* RalewayLight.otf */,
-				A14FFFF2298AE7840067440E /* RalewayBold.otf */,
-				A14FFFEE298AE73D0067440E /* RalewayExtraBold.otf */,
 				A14FC1722982EDF3009F0075 /* Info.plist */,
 				A14899552980541A00402C94 /* Preview Content */,
 			);
@@ -178,6 +174,7 @@
 				A152AC5D298449A200D21DDC /* PageModel.swift */,
 				8A7D8EF42989D237000FC836 /* DAO.swift */,
 				A15BD0242991A9E6009AEC1A /* AppData.swift */,
+				8A7D8EF629916F82000FC836 /* Accent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,14 +259,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A152AC4B2984425E00D21DDC /* RalewayMedium.otf in Resources */,
-				A14FFFEF298AE73D0067440E /* RalewayExtraBold.otf in Resources */,
 				A14FC18729832DB5009F0075 /* BelyDisplay.otf in Resources */,
 				A152AC482984425E00D21DDC /* RalewayExtraLight.otf in Resources */,
 				A152AC522984425E00D21DDC /* Raleway.otf in Resources */,
 				A14899572980541A00402C94 /* Preview Assets.xcassets in Resources */,
 				A14899542980541A00402C94 /* Assets.xcassets in Resources */,
 				A152AC4A2984425E00D21DDC /* RalewayRegular.otf in Resources */,
-				A14FFFF3298AE7840067440E /* RalewayBold.otf in Resources */,
 				A152AC502984425E00D21DDC /* RalewayLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +297,7 @@
 				A14FC1812982F969009F0075 /* FlowOrganizer.swift in Sources */,
 				8A541B8829885E7F00E8E87F /* BlurView.swift in Sources */,
 				8A7D8EEF2989B800000FC836 /* ContentCell.swift in Sources */,
+				8A7D8EF729916F82000FC836 /* Accent.swift in Sources */,
 				A152AC5E298449A200D21DDC /* PageModel.swift in Sources */,
 				A159F6012981CA740054BBC4 /* Home.swift in Sources */,
 			);
@@ -432,7 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookDay/Preview Content\"";
-				DEVELOPMENT_TEAM = S5PMJAY297;
+				DEVELOPMENT_TEAM = J494PVQ4KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookDay/Info.plist;
@@ -467,7 +463,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookDay/Preview Content\"";
-				DEVELOPMENT_TEAM = S5PMJAY297;
+				DEVELOPMENT_TEAM = J494PVQ4KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookDay/Info.plist;

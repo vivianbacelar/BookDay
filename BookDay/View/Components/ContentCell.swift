@@ -11,21 +11,21 @@ import SwiftUI
 struct ContentCell: View {
     let item: Item
     let isExpanded: Bool
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                
+
                 HStack {
-                    
+
                     Text ("Description")
                         .font(.custom("Raleway", size: 18).weight(.bold))
-                        .foregroundColor(Color.corPreto)
+                        .foregroundColor(Color.corPreta)
                         .padding (.leading, 16)
                         .padding(.top)
-                    
+
                     Spacer()
-                    
+
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .foregroundColor(Color.corRosa)
                         .font(.system(size: 22, weight: .regular))
@@ -40,7 +40,7 @@ struct ContentCell: View {
                 }
                 Spacer()
             }.contentShape(Rectangle())
-            
+
         }
     }
 }

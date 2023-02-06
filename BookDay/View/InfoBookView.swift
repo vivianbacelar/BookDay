@@ -8,52 +8,83 @@
 import SwiftUI
 
 struct InfoBookView: View {
-    
-    
+
+
     let item: Item
     @State private var selectedCells: Set<Item> = []
     @State var deleteAlert = false
     @Binding var countPage: String
-    
-    var percentage: Double {
-        (Double(countPage) ?? 0 * 100) / (Double(item.volumeInfo.pageCount ?? 100))
-        
+
+    var stars: Double {
+        item.volumeInfo.averageRating ?? 0
     }
-    
+
+    var percentage: Double {
+        ((Double(countPage) ?? 0.0) * 100) / (Double(item.volumeInfo.pageCount ?? 100))
+    }
+
+
     var percentageText: String {
-        var str = "\(percentage)"
+        let formattedValue = String(format: "%.2f", percentage)
+        var str = "\(formattedValue)"
         str += item.volumeInfo.pageCount != nil ? "%" : ""
         return str
     }
-    
+
     var body: some View {
-        
+
         ZStack(alignment: .top){
-            
+            Color.corGelo
             ScrollView{
                 VStack{
-                    
-                    AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail){ image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } placeholder: {
-                        Image("PlaceHolder")
-                            .resizable()
-                            .scaledToFill()
+
+                    VStack{
+                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail){ image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        } placeholder: {
+                            Image("PlaceHolder")
+                                .resizable()
+                                .scaledToFill()
+                        }
+                    }.overlay(alignment: .bottom){
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                                .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.width/13)
+                                .foregroundColor(Color.white.opacity(0.7))
+
+                            HStack {
+                                ForEach(0 ..< Int(stars)) { i in
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(Color.corLaranja)
+                                        .frame(width: UIScreen.main.bounds.width/28,height: UIScreen.main.bounds.height/50)
+                                }
+                                if Int(stars * 2) % 2 != 0 {
+                                    Image(systemName: "star.leadinghalf.filled")
+                                        .foregroundColor(Color.corLaranja)
+                                        .frame(width: UIScreen.main.bounds.width/28,height: UIScreen.main.bounds.height/50)
+                                }
+
+                                Text(String(stars))
+                                    .font(Font.custom("RalewayBold", size: 18))
+                                    .foregroundColor(Color.corPreta)
+                            }
+                        }.padding(.bottom)
+                            .padding(.leading, UIScreen.main.bounds.width/2)
                     }
-                    
-                    
+
                     Spacer()
-                    
+
                     Text(item.volumeInfo.title)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .font(Font.custom("Raleway", size: 25).weight(.bold))
+                        .foregroundColor(Color.corPreta)
                         .padding(.horizontal)
                         .padding(.bottom)
-                    
+
                     Spacer()
-                    
+
                     VStack{
                         ContentCell(item: item, isExpanded: self.selectedCells.contains (item))
                             .onTapGesture {
@@ -63,107 +94,81 @@ struct InfoBookView: View {
                                     self.selectedCells.insert (item)
                                 }
                             }
-                            //.animation(.easeInOut(duration: 0.2))
                             .padding(.vertical,5)
                     }.padding(.vertical)
-                    
+
                     Spacer()
-                    
+
                     ZStack {
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                             .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.width/9.5)
                             .foregroundColor(Color.corFundo)
                         HStack{
-                            
+
                             Text("Page")
-                                .foregroundColor(Color.corCinza3)
                                 .font(Font.custom("Raleway", size: 15).weight(.semibold))
-                            
+                                .foregroundColor(Color.corCinzaMaisEscuro)
+
                             Spacer()
-                            
+
                             TextField("0", text: $countPage)
                                 .multilineTextAlignment(.trailing)
+                                .foregroundColor(Color.corPreta)
                                 .padding()
                                 .onSubmit {
                                     UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
                                 }
-                            
-                          
-                            
                         }.padding(.horizontal, UIScreen.main.bounds.width/11)
-                        
+
                     }
-                    
-                    
-                    
                     HStack{
                         Text("Progress")
                             .font(Font.custom("Raleway", size: 15).weight(.bold))
-                        
+                            .foregroundColor(Color.corPreta)
+
                         Spacer()
                         Text(percentageText)
-                            .font(Font.custom("Raleway", size: 15))
-                        
+                            .font(Font.custom("Raleway", size: 15).weight(.bold))
+                            .foregroundColor(Color.corPreta)
+
                     }.padding(.horizontal, UIScreen.main.bounds.width/11)
-                    
-                    
+
+
                     VStack{
                         Button{
-                            withAnimation{
-                                deleteAlert.toggle()
-                            }
+                            deleteAlert.toggle()
                             print("delete")
                         }label:{
                             Image("deleteButtom")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/1.5)
-                                
-                            
-                            
+                                .frame(width: UIScreen.main.bounds.width/1.8, height: UIScreen.main.bounds.height/5)
+
                         }.buttonStyle(.plain)
-                        
+                        Rectangle()
+                            .foregroundColor(Color.corGelo)
+                            .frame(height: UIScreen.main.bounds.height/10)
                     }
-                    
-   
-                    
                 }
             }
-            
-            
-            
+
         }
         .ignoresSafeArea()
         .overlay(alignment: .top){
             HStack {
                 Rectangle()
-                    .foregroundColor(Color.white.opacity(0.2))
-                    .blur(radius: 6, opaque: false)
+                    .foregroundColor(Color.corGelo.opacity(0.7))
+                    .blur(radius: 4, opaque: false)
                     .frame(height: 95)
             }.edgesIgnoringSafeArea(.all)
-            
+
             if deleteAlert {
                 DeleteAlertView(showDelete: $deleteAlert)
             }
-            
+
         }
-        
-        
-        
     }
-    
-    //    var returnImage: some View {
-    //        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail){ image in
-    //            image
-    //                .resizable()
-    //                .scaledToFill()
-    //        } placeholder: {
-    //            Image("PlaceHolder")
-    //                .resizable()
-    //                .scaledToFill()
-    //        }
-    //
-    //    }
+
 }
 
 
@@ -176,30 +181,31 @@ struct DeleteAlertView: View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
             VStack (spacing: 25){
                 Image("sureDeleteButton")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/1.5 ,height: UIScreen.main.bounds.height/4.5)
                     .overlay(content: {
                         VStack{
                             Spacer()
-                            
+
                             Button(action: {
-//                                withAnimation{
                                     print("delButton")
                                     showDelete.toggle()
-//                                }
                             }){
                                 Image("delButton")
+                                    .resizable()
+                                    .frame(width: UIScreen.main.bounds.width/1.4 ,height: UIScreen.main.bounds.height/18)
                             }.buttonStyle(.plain)
                         }
                     })
             }
-            .background(BlurView())
             .cornerRadius(20)
 
 
         }
-        
+
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.corCinzaEscuro.opacity(0.7))
-    
+        .background(Color.corCinza3.opacity(0.7))
+
 
     }
 }
