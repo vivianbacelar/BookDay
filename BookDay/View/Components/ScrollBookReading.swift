@@ -45,18 +45,25 @@ struct ScrollBookReading: View {
                             .foregroundColor(Color.corCinzaEscuro)
                             .multilineTextAlignment(TextAlignment.trailing)
                         
-                        AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
-                            image.resizable()
-                                .scaledToFit()
-                                .frame(width: 291, height: 433)
-                        } placeholder: {
-                            Image("PlaceHolder")
-                                .resizable()
-                                .padding(.top)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 291, maxHeight: 433)
-                                .padding(.bottom)
+                        NavigationLink {
+                            InfoBookView(item: page, countPage: $countPage)
+                        } label: {
+                            VStack{
+                                AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
+                                    image.resizable()
+                                        .scaledToFit()
+                                        .frame(width: 291, height: 433)
+                                } placeholder: {
+                                    Image("PlaceHolder")
+                                        .resizable()
+                                        .padding(.top)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxWidth: 291, maxHeight: 433)
+                                        .padding(.bottom)
+                                }
+                            }
                         }
+                        
                         
                         
 //                        if livros == []{
@@ -65,13 +72,7 @@ struct ScrollBookReading: View {
 //                                    .scaledToFit()
 //                                    .frame(width: 291, height: 433)
 //                        } else {
-//                        NavigationLink {
-//                            InfoBookView(item: page, countPage: $countPage)
-//                        } label: {
-//                            VStack{
-//
-//                            }
-//                        }
+                       
 //                    }
                         
                         

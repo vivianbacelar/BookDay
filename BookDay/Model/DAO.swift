@@ -9,6 +9,12 @@ import Foundation
 
 // Singleton
 class DAO: ObservableObject {
+    
+    enum List {
+        case reading
+        case read
+        case wantToRead
+    }
 
     static let shared = DAO()
     
@@ -17,19 +23,6 @@ class DAO: ObservableObject {
     var readingList: [Item] = []
     var wantToReadList: [Item] = []
     var readList: [Item] = []
-
-    
-    func addToReadingList(item: Item) {
-        readingList.append(item)
-    }
-    
-    func addToWantList(item: Item){
-        wantToReadList.append(item)
-    }
-    
-    func addToReadList(item: Item){
-        readList.append(item)
-    }
     
     func save() {
         appData.saveData()
@@ -37,6 +30,35 @@ class DAO: ObservableObject {
     
     func load() {
         self.appData = AppData.loadData()
+    }
+    
+    func change(item: Item, from rList: List, to aList: List) {
+        add(to: aList, item)
+        remove(from: rList, item)
+    }
+    
+    func add(to list: List, _ item: Item ){
+        switch list {
+        case .read:
+           readList.append(item)
+        case .reading:
+            readingList.append(item)
+        case .wantToRead:
+          wantToReadList.append(item)
+        }
+    }
+    
+    func remove(from list: List, _ item: Item) {
+        
+        switch list {
+        case .read:
+            readList = readList.filter({$0 != item})
+        case .reading:
+            readingList = readingList.filter({$0 != item})
+        case .wantToRead:
+            wantToReadList = wantToReadList.filter({$0 != item})
+        }
+    
     }
 }
 
