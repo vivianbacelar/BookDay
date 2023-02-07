@@ -164,7 +164,7 @@ struct InfoBookView: View {
             }.edgesIgnoringSafeArea(.all)
 
             if deleteAlert {
-                DeleteAlertView(showDelete: $deleteAlert)
+                DeleteAlertView(deleteAlert: $deleteAlert, selectedItem: item)
             }
 
         }
@@ -179,21 +179,39 @@ struct InfoBookView: View {
 
 struct DeleteAlertView: View {
 
-    @Binding var showDelete: Bool
-    @State private var selectedItem: Item?
-    @State var livros: [Item] = []
-    
-    
+    @Binding var deleteAlert: Bool
+    var selectedItem: Item
 
     var body: some View{
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+
             VStack (spacing: 25){
-                Image("sureDeleteButton")
+                Image("sureAbandon")
                     .resizable()
-                    .frame(width: UIScreen.main.bounds.width/1.5 ,height: UIScreen.main.bounds.height/4.5)
-                    .overlay(content: {
-                        VStack{
-                            Spacer()
+                    .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/4.6)
+                    .overlay {
+                        Button {
+                            print("close")
+                            deleteAlert = false
+                        } label: {
+                            Image("closeBottom")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width/25, height: UIScreen.main.bounds.height/50)
+                                .padding(.bottom,UIScreen.main.bounds.height/7)
+                                .padding(.trailing,UIScreen.main.bounds.width/2)
+                        }
+
+                        Spacer()
+
+                        Button{
+                            print("abandon")
+                            deleteAlert = false
+                            DAO.shared.remove(from: .reading, selectedItem)
+                        } label: {
+                            Image("abandonBottom")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/18)
+                                .padding(.top,UIScreen.main.bounds.height/6.1)
 
                             Button(action: {
                                     print("delButton")
@@ -212,9 +230,7 @@ struct DeleteAlertView: View {
 //                            }
 //                                .onDelete(perform: removeItem)
                         }
-                    })
-                
-                   
+                    }
             }
             .cornerRadius(20)
 

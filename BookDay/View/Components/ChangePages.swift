@@ -21,7 +21,7 @@ struct ChangePages: View {
                     Button{
                         print("Reading")
                         show.toggle()
-                        DAO.shared.addToReadingList(item: selectedItem!)
+                        DAO.shared.add(to: .reading, selectedItem!)
                     }label:{
                         Image("moveReading")
                     }.buttonStyle(.plain)
@@ -29,7 +29,7 @@ struct ChangePages: View {
                     Button{
                         print("moveRead")
                         show.toggle()
-                        DAO.shared.addToReadList(item: selectedItem!)
+                        DAO.shared.add(to: .read, selectedItem!)
                     }label:{
                         Image("moveRead")
                     }.buttonStyle(.plain)
