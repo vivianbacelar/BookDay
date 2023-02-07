@@ -41,21 +41,26 @@ struct ScrollBookReading: View {
                         ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
                         
                         Text("Page \(Int(numberPage)) (\(Int(totalPage)) )")
-                            .font(Font.custom("RalewayExtraLight", size: 12))
+                            .font(Font.custom("RalewayExtraLight ", size: 12))
                             .foregroundColor(Color.corCinzaEscuro)
                             .multilineTextAlignment(TextAlignment.trailing)
-                        
-                        AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
-                            image.resizable()
-                                .scaledToFit()
-                                .frame(width: 291, height: 433)
-                        } placeholder: {
-                            Image("PlaceHolder")
-                                .resizable()
-                                .padding(.top)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 291, maxHeight: 433)
-                                .padding(.bottom)
+                        NavigationLink {
+                            InfoBookView(item: page, countPage: $countPage)
+                        } label: {
+                            VStack{
+                                AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
+                                    image.resizable()
+                                        .scaledToFit()
+                                        .frame(width: 291, height: 433)
+                                } placeholder: {
+                                    Image("PlaceHolder")
+                                        .resizable()
+                                        .padding(.top)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxWidth: 291, maxHeight: 433)
+                                        .padding(.bottom)
+                                }
+                            }
                         }
                         
                         

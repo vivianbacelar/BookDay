@@ -116,9 +116,9 @@ struct InfoBookView: View {
                                 .multilineTextAlignment(.trailing)
                                 .foregroundColor(Color.corPreta)
                                 .padding()
-                                .onSubmit {
-                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
-                                }
+//                                .onSubmit {
+//                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
+//                                }
                         }.padding(.horizontal, UIScreen.main.bounds.width/11)
 
                     }
