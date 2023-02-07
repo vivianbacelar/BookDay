@@ -65,13 +65,13 @@ struct ScrollBookReading: View {
 //                                    .scaledToFit()
 //                                    .frame(width: 291, height: 433)
 //                        } else {
-//                        NavigationLink {
-//                            InfoBookView(item: page, countPage: $countPage)
-//                        } label: {
+                        NavigationLink {
+                            InfoBookView(item: page, countPage: $countPage)
+                        } label: {
 //                            VStack{
 //
 //                            }
-//                        }
+                        }
 //                    }
                         
                         
