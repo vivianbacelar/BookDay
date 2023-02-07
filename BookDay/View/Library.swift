@@ -57,59 +57,65 @@ struct Library: View {
 
 
     var body: some View {
-
-        ZStack{
-            Color.corGelo
-                .ignoresSafeArea()
-
-
-            VStack{
-
-                Text("BookDay")
-                    .font(Font.custom("BelyDisplay-Regular", size: 23))
-                    .foregroundColor(Color.corPreta)
-                    .padding(.top, 40)
-                    .padding(.bottom, 40)
-
-                Picker("", selection: $selected){
-
-
-                    Text("Want to Read")
-                        .font(Font.custom("Raleway", size: 18))
-                        .tag("Want to Read")
-
-                    Text("Read")
-                        .font(Font.custom("Raleway", size: 18))
-                        .tag("Read")
-
-
-                }
-                .pickerStyle(.segmented)
-                .frame(width: 300)
-
-                ScrollView() {
-                    ZStack {
-                        shelfBooks
-                        collectionBooks
-//                        ChangePages(show: $volumeInfo)
-
+        
+        NavigationView{
+            
+            ZStack{
+                Color.corGelo
+                    .ignoresSafeArea()
+                
+                
+                VStack{
+                    
+                    Text("BookDay")
+                        .font(Font.custom("BelyDisplay-Regular", size: 23))
+                        .foregroundColor(Color.corPreta)
+                        .padding(.top, 40)
+                        .padding(.bottom, 40)
+                    
+                    Picker("", selection: $selected){
+                        
+                        
+                        Text("Want to Read")
+                            .font(Font.custom("Raleway", size: 18))
+                            .tag("Want to Read")
+                        
+                        Text("Read")
+                            .font(Font.custom("Raleway", size: 18))
+                            .tag("Read")
+                        
+                        
                     }
-                }
-
-            }.padding(.horizontal, 10)
+                    .pickerStyle(.segmented)
+                    .frame(width: 300)
+                    
+                    ScrollView() {
+                        ZStack {
+                            shelfBooks
+                            collectionBooks
+                            //                        ChangePages(show: $volumeInfo)
+                            
+                        }
+                    }
+                    
+                }.padding(.horizontal, 10)
+            }
+            //TODO: melhorar, entender DAO no SwiftUI
+            // depois explicar pro pg
+            
+            .onAppear(){
+                livros = getBook(of: selected)
+            }.onChange(of: selected) { newValue in
+                livros = getBook(of: newValue)
+            }
+            
+//            .onDelete(of: selected) { newValue in
+//                livros = deleteBook(of: newValue)
+//            }
         }
-        //TODO: melhorar, entender DAO no SwiftUI
-        // depois explicar pro pg
-
-        .onAppear(){
-            livros = getBook(of: selected)
-        }.onChange(of: selected) { newValue in
-            livros = getBook(of: newValue)
-        }
-
-//        .onDelete(of: selected) { newValue in
-//            livros = deleteBook(of: newValue)
-//        }
+        .toolbar{
+            EditButton()
+        }.tint(Color.corPreta)
     }
 
     func getBook(of selected: String) -> [Item] {
@@ -120,7 +126,7 @@ struct Library: View {
         }
     }
 
-//    func deleteBook(of selected: ImageLinks) -> [Item]{
+//    func deleteBook(of selectedItem: ImageLinks) -> [Item]{
 //        if selected ==  AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){
 //            return DAO.shared.readingList
 //        }

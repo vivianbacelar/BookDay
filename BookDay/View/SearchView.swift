@@ -76,10 +76,11 @@ struct SearchView: View {
                                             HStack {
                                                 Spacer()
                                                 Button (action:{
-                                                    withAnimation{
+//                                                    withAnimation{
                                                         customAlert.toggle()
+                                                    //ação que inverte a boleana
                                                         selectedItem = item
-                                                    }
+//                                                    }
                                                 }) {
                                                     Image("addButton")
                                                         .resizable()
@@ -163,16 +164,17 @@ struct CustomAlertView: View {
                                 Button{
                                     print("reading")
                                     show.toggle()
-                                    DAO.shared.addToReadingList(item: selectedItem!)
+                                    DAO.shared.add(to: .reading, selectedItem!)
                                 }label:{
                                     Image("readingButtom2")
                                         .padding(.bottom, UIScreen.main.bounds.height/150)
                                 }.buttonStyle(.plain)
+                                
 
                                 Button{
                                     print("want to read")
                                     show.toggle()
-                                    DAO.shared.addToWantList(item: selectedItem!)
+                                    DAO.shared.add(to: .wantToRead, selectedItem!)
 //
                                 }label:{
                                     Image("wantToReadButtom2")
@@ -182,7 +184,7 @@ struct CustomAlertView: View {
                                 Button{
                                     print("read")
                                     show.toggle()
-                                    DAO.shared.addToReadList(item: selectedItem!)
+                                    DAO.shared.add(to: .read, selectedItem!)
                                 }label:{
                                     Image("readButtom2")
                                         .padding(.bottom, UIScreen.main.bounds.height/45)

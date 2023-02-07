@@ -44,6 +44,7 @@ struct ScrollBookReading: View {
                             .font(Font.custom("RalewayExtraLight ", size: 12))
                             .foregroundColor(Color.corCinzaEscuro)
                             .multilineTextAlignment(TextAlignment.trailing)
+                        
                         NavigationLink {
                             InfoBookView(item: page, countPage: $countPage)
                         } label: {
@@ -64,19 +65,14 @@ struct ScrollBookReading: View {
                         }
                         
                         
+                        
 //                        if livros == []{
 //                            Image("AddNewBook")
 //                                .resizable()
 //                                    .scaledToFit()
 //                                    .frame(width: 291, height: 433)
 //                        } else {
-//                        NavigationLink {
-//                            InfoBookView(item: page, countPage: $countPage)
-//                        } label: {
-//                            VStack{
-//
-//                            }
-//                        }
+                       
 //                    }
                         
                         
