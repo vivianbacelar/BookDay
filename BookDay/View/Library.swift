@@ -34,11 +34,9 @@ struct Library: View {
     /// Lista que é mostrada de fato
     @State var livros: [Item] = []
     @State var count: Int = 0
-//    let itens: [Item]
+    @State var changePages = false
+    @State var selectedItem: Item?
 
-    //    let attr = NSDictionary(object: UIFont(name: "Raleway", size: 16.0)!], forKey: NSFontAttributeName)
-    //    seg.setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
-    //
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "cinzaClaro")
         UISegmentedControl.appearance().setTitleTextAttributes(
@@ -93,8 +91,6 @@ struct Library: View {
                         ZStack {
                             shelfBooks
                             collectionBooks
-                            //                        ChangePages(show: $volumeInfo)
-                            
                         }
                     }
                     
@@ -109,9 +105,6 @@ struct Library: View {
                 livros = getBook(of: newValue)
             }
             
-//            .onDelete(of: selected) { newValue in
-//                livros = deleteBook(of: newValue)
-//            }
         }
         .toolbar{
             EditButton()
@@ -126,12 +119,6 @@ struct Library: View {
         }
     }
 
-//    func deleteBook(of selectedItem: ImageLinks) -> [Item]{
-//        if selected ==  AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){
-//            return DAO.shared.readingList
-//        }
-//    }
-
     let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
     var collectionBooks: some View {
@@ -139,26 +126,34 @@ struct Library: View {
             VStack {
                 LazyVGrid(columns: colums) {
                     ForEach(livros, id: \.id) { item in
-                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
-                            image.resizable()
-                                .padding(.top)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 200, maxHeight: 150)
-                                .padding(.bottom)
-                        } placeholder: {
-                            Image("PlaceHolder")
-                                .resizable()
+                        Button {
+                            changePages.toggle()
+                            selectedItem = item
+                        } label: {
+                            AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
+                                image.resizable()
                                     .padding(.top)
                                     .aspectRatio(contentMode: .fit)
                                     .frame(maxWidth: 200, maxHeight: 150)
                                     .padding(.bottom)
+                            } placeholder: {
+                                Image("PlaceHolder")
+                                    .resizable()
+                                        .padding(.top)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxWidth: 200, maxHeight: 150)
+                                        .padding(.bottom)
 
+                            }
                         }
-
                     }
                 }
                 Spacer()
-            }
+            } .overlay(content: {
+                if changePages {
+                    ChangePages(showChanges: $changePages, selectedItem: selectedItem)
+                }
+            })
 
     }
 
