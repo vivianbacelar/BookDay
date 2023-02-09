@@ -15,7 +15,6 @@ struct MainView: View {
 
      var body: some View {
 
-
          TabView (selection: $selection){
              Library()
                  .tabItem {
@@ -30,7 +29,8 @@ struct MainView: View {
              
              SearchView()
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Text("Search")
+                    Image("pesquisa")
                 }.tint(Color.corRosa)
                  .tag(3)
 

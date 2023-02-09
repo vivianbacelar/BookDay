@@ -20,11 +20,10 @@ struct ScrollBookReading: View {
     @State var countPage: String =
         UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
     
-  
+    
     var body: some View {
       
             TabView(selection: $ItemIndex){
-                
                 
                 ForEach(livros, id: \.id) { page in
                     
@@ -68,20 +67,6 @@ struct ScrollBookReading: View {
                                 }
                             }.buttonStyle(.plain)
                         }
-                        
-                        
-                        
-                        
-                        
-                        //                        if livros == []{
-                        //                            Image("AddNewBook")
-                        //                                .resizable()
-                        //                                    .scaledToFit()
-                        //                                    .frame(width: 291, height: 433)
-                        //                        } else {
-                        
-                        //                    }
-                        
                         
                         if page == (livros.last)! {
                             Button (action: goToZero) {
