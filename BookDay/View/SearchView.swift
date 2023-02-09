@@ -156,7 +156,9 @@ struct CustomAlertView: View {
     var body: some View{
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
             VStack (spacing: 25){
-                Image("bookStatus2")
+                Image("bookStatus")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/1.45, height: UIScreen.main.bounds.height/2.6)
                     .overlay(content: {
                         VStack{
                             Spacer()
@@ -166,10 +168,12 @@ struct CustomAlertView: View {
                                     show.toggle()
                                     DAO.shared.add(to: .reading, selectedItem!)
                                 }label:{
-                                    Image("readingButtom2")
-                                        .padding(.bottom, UIScreen.main.bounds.height/150)
+                                    Image("readingButton")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
+                                        .padding(.bottom, UIScreen.main.bounds.height/98)
                                 }.buttonStyle(.plain)
-                                
+
 
                                 Button{
                                     print("want to read")
@@ -177,8 +181,10 @@ struct CustomAlertView: View {
                                     DAO.shared.add(to: .wantToRead, selectedItem!)
 //
                                 }label:{
-                                    Image("wantToReadButtom2")
-                                       .padding(.bottom, UIScreen.main.bounds.height/150)
+                                    Image("wantToReadButton")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
+                                        .padding(.bottom, UIScreen.main.bounds.height/98)
                                 }.buttonStyle(.plain)
 
                                 Button{
@@ -186,12 +192,13 @@ struct CustomAlertView: View {
                                     show.toggle()
                                     DAO.shared.add(to: .read, selectedItem!)
                                 }label:{
-                                    Image("readButtom2")
-                                        .padding(.bottom, UIScreen.main.bounds.height/45)
+                                    Image("readButton")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
                                 }.buttonStyle(.plain)
 
                             }
-
+                            .padding(.bottom, UIScreen.main.bounds.height/47)
 
                             Button(action: {
                                 withAnimation{
@@ -199,7 +206,9 @@ struct CustomAlertView: View {
                                     show.toggle()
                                 }
                             }){
-                                Image("okButton2")
+                                Image("okButton")
+                                    .resizable()
+                                    .frame(width: UIScreen.main.bounds.width/1.45, height: UIScreen.main.bounds.height/17.5)
                             }.buttonStyle(.plain)
                         }
                     })

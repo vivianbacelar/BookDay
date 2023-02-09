@@ -138,9 +138,9 @@ struct InfoBookView: View {
                     VStack{
                         Button{
                             deleteAlert.toggle()
-                            print("delete")
+                            print("abandon")
                         }label:{
-                            Image("deleteButtom")
+                            Image("abandButton")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: UIScreen.main.bounds.width/1.8, height: UIScreen.main.bounds.height/5)
@@ -213,22 +213,7 @@ struct DeleteAlertView: View {
                                 .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/18)
                                 .padding(.top,UIScreen.main.bounds.height/6.1)
 
-                            Button(action: {
-                                    print("delButton")
-                                livros = []
-                                selectedItem?.toggle
-                                removeItem(at: IndexSet)
-                                
-                            }){
-                                Image("delButton")
-                                    .resizable()
-                                    .frame(width: UIScreen.main.bounds.width/1.4 ,height: UIScreen.main.bounds.height/18)
-                            }.buttonStyle(.plain)
                             
-//                            if  selectedItem?.toggle{
-//                                removeItem(at: IndexSet)
-//                            }
-//                                .onDelete(perform: removeItem)
                         }
                     }
             }
@@ -239,11 +224,7 @@ struct DeleteAlertView: View {
 
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinza3.opacity(0.7))
-        
-        
-        func removeItem (at offsets: IndexSet){
-            selectedItem?.remove(atOffsets: offsets)
-        }
+    
     }
 }
 
