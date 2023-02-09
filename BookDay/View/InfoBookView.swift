@@ -142,9 +142,9 @@ struct InfoBookView: View {
                     VStack{
                         Button{
                             deleteAlert.toggle()
-                            print("delete")
+                            print("abandon")
                         }label:{
-                            Image("moveAbandon")
+                            Image("abandButton")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: UIScreen.main.bounds.width/1.8, height: UIScreen.main.bounds.height/5)
@@ -216,6 +216,8 @@ struct DeleteAlertView: View {
                                 .resizable()
                                 .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/18)
                                 .padding(.top,UIScreen.main.bounds.height/6.1)
+
+                            
                         }
                     }
             }
@@ -226,8 +228,7 @@ struct DeleteAlertView: View {
 
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinza3.opacity(0.7))
-        
-        
+    
     }
 }
 
