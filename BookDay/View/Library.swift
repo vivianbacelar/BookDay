@@ -147,7 +147,7 @@ struct Library: View {
                                     .padding(.bottom)
                                 
                             }
-                        }
+                        }.buttonStyle(.plain)
                     }
                 }
                 Spacer()

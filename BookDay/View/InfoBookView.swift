@@ -184,6 +184,7 @@ struct InfoBookView: View {
 struct DeleteAlertView: View {
 
     @Binding var deleteAlert: Bool
+    @Environment(\.dismiss) var dismiss
     var selectedItem: Item
 
     var body: some View{
@@ -203,7 +204,7 @@ struct DeleteAlertView: View {
                                 .frame(width: UIScreen.main.bounds.width/25, height: UIScreen.main.bounds.height/50)
                                 .padding(.bottom,UIScreen.main.bounds.height/7)
                                 .padding(.trailing,UIScreen.main.bounds.width/2)
-                        }
+                        }.buttonStyle(.plain)
 
                         Spacer()
 
@@ -211,6 +212,7 @@ struct DeleteAlertView: View {
                             print("abandon")
                             deleteAlert = false
                             DAO.shared.remove(from: .reading, selectedItem)
+                            dismiss()
                         } label: {
                             Image("abandonBottom")
                                 .resizable()
@@ -218,7 +220,7 @@ struct DeleteAlertView: View {
                                 .padding(.top,UIScreen.main.bounds.height/6.1)
 
                             
-                        }
+                        }.buttonStyle(.plain)
                     }
             }
             .cornerRadius(20)

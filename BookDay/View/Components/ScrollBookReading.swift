@@ -42,7 +42,6 @@ struct ScrollBookReading: View {
                         
                         
                         VStack{
-//                          ProgressBarView()
                             
                             Text("Page \(Int(numberPage)) (\(Int(totalPage)))")
                                 .font(Font.custom("RalewayExtraLight ", size: 12))
@@ -67,7 +66,7 @@ struct ScrollBookReading: View {
                                             .padding(.bottom)
                                     }
                                 }
-                            }
+                            }.buttonStyle(.plain)
                         }
                         
                         

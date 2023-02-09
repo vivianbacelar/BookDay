@@ -68,12 +68,11 @@ struct ChangePages: View {
                                     showChanges.toggle()
                                 }
                             }){
-                                Image("close")
+                                Image("okButton")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: UIScreen.main.bounds.width/1.45, height: UIScreen.main.bounds.height/17.5)
                             }.buttonStyle(.plain)
-                            //
                             
                         }
                     }
