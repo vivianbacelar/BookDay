@@ -104,43 +104,47 @@ struct InfoBookView: View {
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                             .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.width/9.5)
                             .foregroundColor(Color.corFundo)
+                        
+    
+                            HStack{
+                                
+                                Text("Page")
+                                    .font(Font.custom("Raleway", size: 15).weight(.semibold))
+                                    .foregroundColor(Color.corCinzaMaisEscuro)
+                                
+                                Spacer()
+                                
+                                TextField("0", text: $countPage)
+                                    .multilineTextAlignment(.trailing)
+                                    .foregroundColor(Color.corPreta)
+                                    .padding()
+                                //                                .onSubmit {
+                                //                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
+                                //                                }
+                            }.padding(.horizontal, UIScreen.main.bounds.width/11)
+                            
+                        }
+                        
                         HStack{
-
-                            Text("Page")
-                                .font(Font.custom("Raleway", size: 15).weight(.semibold))
-                                .foregroundColor(Color.corCinzaMaisEscuro)
-
-                            Spacer()
-
-                            TextField("0", text: $countPage)
-                                .multilineTextAlignment(.trailing)
+                            Text("Progress")
+                                .font(Font.custom("Raleway", size: 15).weight(.bold))
                                 .foregroundColor(Color.corPreta)
-                                .padding()
-//                                .onSubmit {
-//                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
-//                                }
+                            
+                            Spacer()
+                            Text(percentageText)
+                                .font(Font.custom("Raleway", size: 15).weight(.bold))
+                                .foregroundColor(Color.corPreta)
+                            
                         }.padding(.horizontal, UIScreen.main.bounds.width/11)
-
-                    }
-                    HStack{
-                        Text("Progress")
-                            .font(Font.custom("Raleway", size: 15).weight(.bold))
-                            .foregroundColor(Color.corPreta)
-
-                        Spacer()
-                        Text(percentageText)
-                            .font(Font.custom("Raleway", size: 15).weight(.bold))
-                            .foregroundColor(Color.corPreta)
-
-                    }.padding(.horizontal, UIScreen.main.bounds.width/11)
-
-
+                        
+                        ProgressBarView(progress: percentageText)
+ 
                     VStack{
                         Button{
                             deleteAlert.toggle()
                             print("delete")
                         }label:{
-                            Image("deleteButtom")
+                            Image("moveAbandon")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: UIScreen.main.bounds.width/1.8, height: UIScreen.main.bounds.height/5)

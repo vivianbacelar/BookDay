@@ -27,53 +27,61 @@ struct ScrollBookReading: View {
                 
                 
                 ForEach(livros, id: \.id) { page in
-                    VStack (spacing: 10){
+                    
+                    VStack (alignment: .leading){
                         Text(page.volumeInfo.title)
-                            .font(Font.custom("Raleway", size: 18))
-                            .multilineTextAlignment(.leading)
+                            .font(Font.custom("Raleway", size: 20).weight(.bold))
                             .foregroundColor(Color.corPreta)
+                            .padding(.bottom, UIScreen.main.bounds.height/120)
                         
                         Text(page.volumeInfo.authors?.first ?? "")
-                            .font(Font.custom("Raleway", size: 15).weight(.light))
+                            .font(Font.custom("Raleway", size: 15).weight(.regular))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(Color.corPreta)
+                            .padding(.bottom, UIScreen.main.bounds.height/120)
                         
-                        ProgressBar(width: 300, height: 15, percent: percent, color: .corRosa)
                         
-                        Text("Page \(Int(numberPage)) (\(Int(totalPage)) )")
-                            .font(Font.custom("RalewayExtraLight ", size: 12))
-                            .foregroundColor(Color.corCinzaEscuro)
-                            .multilineTextAlignment(TextAlignment.trailing)
-                        
-                        NavigationLink {
-                            InfoBookView(item: page, countPage: $countPage)
-                        } label: {
-                            VStack{
-                                AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
-                                    image.resizable()
-                                        .scaledToFit()
-                                        .frame(width: 291, height: 433)
-                                } placeholder: {
-                                    Image("PlaceHolder")
-                                        .resizable()
-                                        .padding(.top)
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 291, maxHeight: 433)
-                                        .padding(.bottom)
+                        VStack{
+//                          ProgressBarView()
+                            
+                            Text("Page \(Int(numberPage)) (\(Int(totalPage)))")
+                                .font(Font.custom("RalewayExtraLight ", size: 12))
+                                .foregroundColor(Color.corCinzaEscuro)
+                                .multilineTextAlignment(TextAlignment.trailing)
+                            
+                            
+                            NavigationLink {
+                                InfoBookView(item: page, countPage: $countPage)
+                            } label: {
+                                VStack{
+                                    AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
+                                        image.resizable()
+                                            .scaledToFit()
+                                            .frame(width: 291, height: 433)
+                                    } placeholder: {
+                                        Image("PlaceHolder")
+                                            .resizable()
+                                            .padding(.top)
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(maxWidth: 291, maxHeight: 433)
+                                            .padding(.bottom)
+                                    }
                                 }
                             }
                         }
                         
                         
                         
-//                        if livros == []{
-//                            Image("AddNewBook")
-//                                .resizable()
-//                                    .scaledToFit()
-//                                    .frame(width: 291, height: 433)
-//                        } else {
-                       
-//                    }
+                        
+                        
+                        //                        if livros == []{
+                        //                            Image("AddNewBook")
+                        //                                .resizable()
+                        //                                    .scaledToFit()
+                        //                                    .frame(width: 291, height: 433)
+                        //                        } else {
+                        
+                        //                    }
                         
                         
                         if page == (livros.last)! {
@@ -86,7 +94,7 @@ struct ScrollBookReading: View {
                                 
                             }
                         }
-                        
+                    
                     }
                     .tag(page.volumeInfo)
                         

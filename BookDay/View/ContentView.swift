@@ -22,8 +22,8 @@ struct ContentView: View {
 
             VStack{
 
-                Spacer()
-                ProgressBar(width: 200, height: 30, percent: percent, color: .corRosa)
+//                Spacer()
+//                ProgressBar(width: 200, height: 30, percent: percent, color: .corRosa)
 
                 HStack (spacing: 120) {
 

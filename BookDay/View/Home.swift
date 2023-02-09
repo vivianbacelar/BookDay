@@ -45,14 +45,9 @@ struct Home: View {
                         ScrollBookReading()
                         
                     }
-                    
-                    
                 }
-            } .accentColor(Color.corPreta)
-            
-            
-   
-        }
+            }
+        }.accentColor(Color.corPreta)
        
         
         

@@ -96,6 +96,11 @@ struct Library: View {
                     
                 }.padding(.horizontal, 10)
             }
+            .overlay(content: {
+                if changePages {
+                    ChangePages(showChanges: $changePages, selectedItem: selectedItem)
+                }
+            })
             //TODO: melhorar, entender DAO no SwiftUI
             // depois explicar pro pg
             
@@ -106,9 +111,6 @@ struct Library: View {
             }
             
         }
-        .toolbar{
-            EditButton()
-        }.tint(Color.corPreta)
     }
 
     func getBook(of selected: String) -> [Item] {
@@ -122,7 +124,7 @@ struct Library: View {
     let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
     var collectionBooks: some View {
-
+     
             VStack {
                 LazyVGrid(columns: colums) {
                     ForEach(livros, id: \.id) { item in
@@ -139,22 +141,17 @@ struct Library: View {
                             } placeholder: {
                                 Image("PlaceHolder")
                                     .resizable()
-                                        .padding(.top)
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 200, maxHeight: 150)
-                                        .padding(.bottom)
-
+                                    .padding(.top)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 200, maxHeight: 150)
+                                    .padding(.bottom)
+                                
                             }
                         }
                     }
                 }
                 Spacer()
-            } .overlay(content: {
-                if changePages {
-                    ChangePages(showChanges: $changePages, selectedItem: selectedItem)
-                }
-            })
-
+            }
     }
 
     var shelfNumber: Int {

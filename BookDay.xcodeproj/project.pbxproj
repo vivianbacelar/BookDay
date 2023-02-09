@@ -23,7 +23,7 @@
 		A14899572980541A00402C94 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14899562980541A00402C94 /* Preview Assets.xcassets */; };
 		A1489960298060F000402C94 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148995F298060F000402C94 /* Book.swift */; };
 		A14FC1812982F969009F0075 /* FlowOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC1802982F969009F0075 /* FlowOrganizer.swift */; };
-		A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC184298305FE009F0075 /* ProgressBar.swift */; };
+		A14FC185298305FE009F0075 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14FC184298305FE009F0075 /* ProgressBarView.swift */; };
 		A14FC18729832DB5009F0075 /* BelyDisplay.otf in Resources */ = {isa = PBXBuildFile; fileRef = A14FC17B2982F72A009F0075 /* BelyDisplay.otf */; };
 		A152AC482984425E00D21DDC /* RalewayExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3C2984425E00D21DDC /* RalewayExtraLight.otf */; };
 		A152AC4A2984425E00D21DDC /* RalewayRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A152AC3E2984425E00D21DDC /* RalewayRegular.otf */; };
@@ -64,7 +64,7 @@
 		A14FC1722982EDF3009F0075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14FC17B2982F72A009F0075 /* BelyDisplay.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BelyDisplay.otf; sourceTree = "<group>"; };
 		A14FC1802982F969009F0075 /* FlowOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowOrganizer.swift; sourceTree = "<group>"; };
-		A14FC184298305FE009F0075 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		A14FC184298305FE009F0075 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		A152AC3C2984425E00D21DDC /* RalewayExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayExtraLight.otf; sourceTree = "<group>"; };
 		A152AC3E2984425E00D21DDC /* RalewayRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayRegular.otf; sourceTree = "<group>"; };
 		A152AC3F2984425E00D21DDC /* RalewayMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RalewayMedium.otf; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		8A541B8629885CB200E8E87F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A14FC184298305FE009F0075 /* ProgressBar.swift */,
+				A14FC184298305FE009F0075 /* ProgressBarView.swift */,
 				A152AC612984790E00D21DDC /* ScrollBookReading.swift */,
 				A13E8476298C2B0700FCDEDB /* ChangePages.swift */,
 				8A541B8729885E7F00E8E87F /* BlurView.swift */,
@@ -285,7 +285,7 @@
 				8A622AAD29847FC800795D99 /* ContentView.swift in Sources */,
 				8A73EDFB298449810015C444 /* StringProtocol.swift in Sources */,
 				A13E8477298C2B0700FCDEDB /* ChangePages.swift in Sources */,
-				A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */,
+				A14FC185298305FE009F0075 /* ProgressBarView.swift in Sources */,
 				A15BD0252991A9E6009AEC1A /* AppData.swift in Sources */,
 				A152AC622984790E00D21DDC /* ScrollBookReading.swift in Sources */,
 				A1489960298060F000402C94 /* Book.swift in Sources */,
@@ -426,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"BookDay/Preview Content\"";
 				DEVELOPMENT_TEAM = S5PMJAY297;
 				ENABLE_PREVIEWS = YES;
@@ -462,7 +462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"BookDay/Preview Content\"";
 				DEVELOPMENT_TEAM = S5PMJAY297;
 				ENABLE_PREVIEWS = YES;
