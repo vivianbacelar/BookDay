@@ -13,21 +13,18 @@ struct ProgressBarView: View {
     //    var height: CGFloat = 20
     //    var percent: CGFloat = 69
     //    var color = Color.corRosa
-    @State var progress: String = "0.0"
-    var receivedProgress: Double {
-        (Double(progress) ?? 0.0)/100
-    }
+    var progress: Double
     
     
     var body: some View {
         
-                VStack{
-                    ProgressView(value: receivedProgress, total: 1)
-                        .tint(Color.corRosa)
-        
-                }
-                .progressViewStyle(PinkBorderedProgressViewStyle())
-        
+            VStack{
+                ProgressView(value: progress, total: 100)
+                    .tint(Color.corRosa)
+    
+            }
+            .progressViewStyle(PinkBorderedProgressViewStyle())
+    
         
         //      let multiplier = width / 100
         //        GeometryReader{ geometry in

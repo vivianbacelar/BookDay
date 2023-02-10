@@ -9,8 +9,7 @@ import SwiftUI
 
 struct InfoBookView: View {
 
-
-    let item: Item
+    @State var item: Item
     @State private var selectedCells: Set<Item> = []
     @State var deleteAlert = false
     @Binding var countPage: String
@@ -118,6 +117,9 @@ struct InfoBookView: View {
                                     .multilineTextAlignment(.trailing)
                                     .foregroundColor(Color.corPreta)
                                     .padding()
+                                    .onSubmit {
+                                        item = DAO.shared.update(pageCount: countPage, of: item)
+                                    }
                                 //                                .onSubmit {
                                 //                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
                                 //                                }
@@ -137,7 +139,7 @@ struct InfoBookView: View {
                             
                         }.padding(.horizontal, UIScreen.main.bounds.width/11)
                         
-                        ProgressBarView(progress: percentageText)
+                        ProgressBarView(progress: percentage)
  
                     VStack{
                         Button{

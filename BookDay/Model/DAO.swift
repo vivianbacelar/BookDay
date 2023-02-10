@@ -60,5 +60,22 @@ class DAO: ObservableObject {
         }
     
     }
+    
+    func update(pageCount: String, of item: Item) -> Item {
+        var updatedItem = item
+        updatedItem.update(pageCount: pageCount)
+       // print(updatedItem.countPage)
+        
+        readingList = readingList.map { elem in
+            if elem == item {
+                print("updated!")
+                return updatedItem
+            }
+            return elem
+        }
+        print(readingList.map({$0.countPage ?? ""}))
+        return updatedItem
+    }
+    
 }
 

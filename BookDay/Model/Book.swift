@@ -20,6 +20,7 @@ struct Item: Codable, Identifiable, Hashable {
     let id: String
     let selfLink: String
     let volumeInfo: VolumeInfo
+    var countPage: String? = ""
     // let etag: String
     // let kind: Kind
     //let saleInfo: SaleInfo
@@ -30,7 +31,12 @@ struct Item: Codable, Identifiable, Hashable {
         case id = "id"
         case selfLink = "selfLink"
         case volumeInfo = "volumeInfo"
+        case countPage = "countPage"
 
+    }
+    
+    mutating func update(pageCount: String) {
+        countPage = pageCount
     }
 }
 

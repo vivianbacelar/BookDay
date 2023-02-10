@@ -16,9 +16,9 @@ struct ScrollBookReading: View {
     //    Pensar em como colocar o número de páginas totais
     @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
-//    @Binding var show: Bool
+    //    @Binding var show: Bool
     @State var countPage: String =
-        UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
+    UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
     
     
     var body: some View {
@@ -77,42 +77,42 @@ struct ScrollBookReading: View {
                             Button (action: addPage) {
                                 
                             }
-                        }
-                    
+                        }.buttonStyle(.plain)
                     }
-                    .tag(page.volumeInfo)
+                    
+                    
+                    if page == (livros.last)! {
+                        Button (action: goToZero) {
+                        }.buttonStyle(.plain)
                         
+                    } else{
+                        Button (action: addPage) {
+                        }
+                    }
                 }
-             
-                
+                .tag(page.volumeInfo)
             }
-            .animation(.easeInOut, value: ItemIndex)
-            .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .interactive))
-            .onAppear{
-                
-                //TODO: melhorar, entender DAO no SwiftUI
-                // depois explicar pro pg
-                livros = DAO.shared.readingList
-                dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corRosa)
-                dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
-                dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
-                
-                
-            }
-  
+        }
+        .animation(.easeInOut, value: ItemIndex)
+        .tabViewStyle(.page)
+        .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+        .onAppear{
+            
+            //TODO: melhorar, entender DAO no SwiftUI
+            // depois explicar pro pg
+            livros = DAO.shared.readingList
+            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corRosa)
+            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
+            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
+        }
+    }
+    func addPage() {
+        ItemIndex += 1
     }
     
-       
-
-        func addPage() {
-            ItemIndex += 1
-        }
-
-        func goToZero() {
-            ItemIndex = 0
-            
-        }
+    func goToZero() {
+        ItemIndex = 0
+    }
 }
 
 struct ScrollBookReading_Previews: PreviewProvider {
