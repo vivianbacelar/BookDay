@@ -122,9 +122,11 @@ struct SearchView: View {
 
                 .toolbar {
                     ToolbarItem(placement: .principal) {
+                        Spacer()
                         Text("BookDay")
                             .font(Font.custom("BelyDisplay-Regular", size: 23))
                             .foregroundColor(Color.corPreta)
+                        Spacer()
                     }
                 }.frame(maxWidth: .infinity)
                     .background(Color.corGelo)
