@@ -15,24 +15,32 @@ struct MainView: View {
 
      var body: some View {
 
+
          TabView (selection: $selection){
              Library()
                  .tabItem {
-                     Label("Library", systemImage: "books.vertical")
-                 }.tag(1)
+                     Label("Library", image: selection == 1 ? "librarytouch" : "library")
+                         
+                 }
+                 .tag(1)
+                 
 
             Home(page: Page.samplePage)
 
                 .tabItem {
-                    Label("Reading", systemImage: "book.fill")
-                }.tag(2)
+                    Label("Reading", image: selection == 2 ? "hometouch" : "home")
+                        
+                }
+                .tag(2)
+                
              
              SearchView()
                 .tabItem {
-                    Text("Search")
-                    Image("pesquisa")
-                }.tint(Color.corRosa)
-                 .tag(3)
+                    Label("Search", image: selection == 3 ? "searchtouch" : "search")
+                        
+                }
+                .tag(3)
+             
 
         }.onAppear() {
             let appearance = UITabBarAppearance()
@@ -42,9 +50,9 @@ struct MainView: View {
             appearance.stackedItemPositioning = .centered
             appearance.stackedItemSpacing = 0
             appearance.selectionIndicatorTintColor = .red
-            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "rosa")
+            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "cinzaMaisEscuro")
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor(named: "rosa")!
+                NSAttributedString.Key.foregroundColor: UIColor(named: "cinzaMaisEscuro")!
             ]
             appearance.stackedLayoutAppearance.normal.iconColor = UIColor(named: "cinza")
             appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
