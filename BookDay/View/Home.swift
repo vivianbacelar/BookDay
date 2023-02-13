@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Home: View {
-    @Binding var selection: Int
     @State private var showingLibrary = false
     @State var percent: CGFloat = 0
     @State var numberPage: CGFloat = 0
@@ -42,7 +41,7 @@ struct Home: View {
 //                            .padding(.top)
 //                            .padding(.bottom, 100)
                       
-                        ScrollBookReading(selection: $selection)
+                        ScrollBookReading()
                         
                     }
                 }

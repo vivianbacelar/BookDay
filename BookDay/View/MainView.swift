@@ -8,35 +8,42 @@
 import SwiftUI
 import UIKit
 
-struct MainView: View {
+class SelectionVM: ObservableObject {
+    @Published var selection: Int = 2
+    
+    static var shared: SelectionVM = SelectionVM()
+    
+    private init() { }
+}
 
+struct MainView: View {
+    @ObservedObject var selectionVM: SelectionVM = SelectionVM.shared
     @State var showLibraryTouch = true
     @State var selection = 2
 
      var body: some View {
 
 
-         TabView (selection: $selection) {
+         TabView (selection: $selectionVM.selection) {
         
-                 Library(selection: $selection)
+                 Library()
                  .tabItem {
-                     Label("Library", image: selection == 1 ? "librarytouch" : "library")
+                     Label("Library", image: selectionVM.selection == 1 ? "librarytouch" : "library")
                      }
                      .tag(1)
                  
                  
-             Home(selection: $selection, page: Page.samplePage)
+             Home(page: Page.samplePage)
                  
                      .tabItem {
-                         Label("Reading", image: selection == 2 ? "hometouch" : "home")
+                         Label("Reading", image: selectionVM.selection == 2 ? "hometouch" : "home")
                      }
                      .tag(2)
                  
                  
-                 SearchView(selection: $selection)
+                 SearchView()
                      .tabItem {
-                         Label("Search", image: selection == 3 ? "searchtouch" : "search")
-                         Label("Search", image: selection == 3 ? "searchtouch" : "search")
+                         Label("Search", image: selectionVM.selection == 3 ? "searchtouch" : "search")
                      }
                      .tag(3)
                  

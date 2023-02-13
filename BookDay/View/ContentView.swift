@@ -46,14 +46,14 @@ struct ContentView: View {
 
                         VStack (spacing: 20){
 
-                            Home(selection: $selection, page: page)
+                            Home(page: page)
 
                             if page == pages.last{
                                 Button (action: goToZero) {
 
                                 }.buttonStyle(.plain)
 
-                                NavigationLink("", destination: Library(selection: $selection), isActive: $showingLibrary)
+                                NavigationLink("", destination: Library(), isActive: $showingLibrary)
                             } else{
                                 Button (action: addPage) {
 

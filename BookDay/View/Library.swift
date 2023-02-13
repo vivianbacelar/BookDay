@@ -36,10 +36,8 @@ struct Library: View {
     @State var count: Int = 0
     @State var changePages = false
     @State var selectedItem: Item?
-    @Binding var selection: Int
     
-    init(selection: Binding<Int>) {
-        self._selection = selection
+    init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "cinzaClaro")
         UISegmentedControl.appearance().setTitleTextAttributes(
             [
