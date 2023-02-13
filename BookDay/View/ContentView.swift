@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    @Binding var selection: Int
     @State var percent: CGFloat = 0
     @State var numberPage: CGFloat = 0
     @State private var pageIndex = 0
@@ -90,8 +90,8 @@ struct ContentView: View {
         pageIndex = 0
     }
 }
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

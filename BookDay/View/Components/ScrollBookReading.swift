@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScrollBookReading: View {
-    
+    @ObservedObject var selectionVM: SelectionVM = SelectionVM.shared
     @State private var ItemIndex = 0
     private let dotAppearance = UIPageControl.appearance()
     @State var percent: CGFloat = 0
@@ -75,7 +75,7 @@ struct ScrollBookReading: View {
                                 
                             }.buttonStyle(.plain)
                             
-                        } else{
+                        } else {
                             Button (action: addPage) {
                            
                         }.buttonStyle(.plain)
@@ -86,6 +86,7 @@ struct ScrollBookReading: View {
                 
                 Button {
                     print("add")
+                    selectionVM.selection = 3
                 } label: {
                     Image("AddNewBook")
                         .resizable()
@@ -115,9 +116,9 @@ struct ScrollBookReading: View {
     }
 }
 
-struct ScrollBookReading_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrollBookReading()
-    }
-}
-
+//struct ScrollBookReading_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ScrollBookReading()
+//    }
+//}
+//

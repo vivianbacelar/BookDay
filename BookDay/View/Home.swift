@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Home: View {
-    
     @State private var showingLibrary = false
     @State var percent: CGFloat = 0
     @State var numberPage: CGFloat = 0
