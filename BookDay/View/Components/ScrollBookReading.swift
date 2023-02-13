@@ -83,6 +83,15 @@ struct ScrollBookReading: View {
                 }
                 .tag(page.volumeInfo)
             }
+                
+                Button {
+                    print("add")
+                } label: {
+                    Image("AddNewBook")
+                        .resizable()
+                        .frame(maxWidth: 291, maxHeight: 433)
+                }
+
         }
         .animation(.easeInOut, value: ItemIndex)
         .tabViewStyle(.page)
