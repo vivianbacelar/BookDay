@@ -44,10 +44,10 @@ struct ScrollBookReading: View {
                         
                         VStack{
                             
-                            Text("Page \(Int(numberPage)) (\(Int(totalPage)))")
-                                .font(Font.custom("RalewayExtraLight ", size: 12))
-                                .foregroundColor(Color.corCinzaEscuro)
-                                .multilineTextAlignment(TextAlignment.trailing)
+//                            Text("Page \(Int(numberPage)) (\(Int(totalPage)))")
+//                                .font(Font.custom("RalewayExtraLight ", size: 12))
+//                                .foregroundColor(Color.corCinzaEscuro)
+//                                .multilineTextAlignment(TextAlignment.trailing)
                             
                             
                             NavigationLink {
@@ -56,15 +56,11 @@ struct ScrollBookReading: View {
                                 VStack{
                                     AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
                                         image.resizable()
-                                            .scaledToFit()
-                                            .frame(width: 291, height: 433)
+                                            .frame(width: UIScreen.main.bounds.width/1.4, height: UIScreen.main.bounds.height/2)
                                     } placeholder: {
                                         Image("PlaceHolder")
                                             .resizable()
-                                            .padding(.top)
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(maxWidth: 291, maxHeight: 433)
-                                            .padding(.bottom)
+                                            .frame(width: UIScreen.main.bounds.width/1.4, height: UIScreen.main.bounds.height/2)
                                     }
                                 }
                             }.buttonStyle(.plain)
@@ -81,6 +77,7 @@ struct ScrollBookReading: View {
                         }.buttonStyle(.plain)
                     }
                 }
+                    .padding(.horizontal, UIScreen.main.bounds.width/10)
                 .tag(page.volumeInfo)
             }
                 
@@ -90,7 +87,7 @@ struct ScrollBookReading: View {
                 } label: {
                     Image("AddNewBook")
                         .resizable()
-                        .frame(maxWidth: 291, maxHeight: 433)
+                        .frame(width: UIScreen.main.bounds.width/1.4, height: UIScreen.main.bounds.height/2)
                 }
 
         }
@@ -115,10 +112,3 @@ struct ScrollBookReading: View {
         ItemIndex = 0
     }
 }
-
-//struct ScrollBookReading_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ScrollBookReading()
-//    }
-//}
-//

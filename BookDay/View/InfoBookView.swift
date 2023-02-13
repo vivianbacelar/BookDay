@@ -94,7 +94,7 @@ struct InfoBookView: View {
                                     self.selectedCells.insert (item)
                                 }
                             }
-                            .padding(.vertical,5)
+                            .padding(.vertical,UIScreen.main.bounds.height/50)
                     }.padding(.vertical)
 
                     Spacer()
@@ -166,7 +166,7 @@ struct InfoBookView: View {
                 Rectangle()
                     .foregroundColor(Color.corGelo.opacity(0.7))
                     .blur(radius: 4, opaque: false)
-                    .frame(height: 95)
+                    .frame(height: UIScreen.main.bounds.height/9)
             }.edgesIgnoringSafeArea(.all)
 
             if deleteAlert {
@@ -226,22 +226,8 @@ struct DeleteAlertView: View {
                     }
             }
             .cornerRadius(20)
-
-
         }
-
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinza3.opacity(0.7))
-    
     }
 }
-
-
-
-
-
-//struct InfoBookView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InfoBookView()
-//    }
-//}

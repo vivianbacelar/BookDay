@@ -11,7 +11,6 @@ struct Home: View {
     @State private var showingLibrary = false
     @State var percent: CGFloat = 0
     @State var numberPage: CGFloat = 0
-    //    Pensar em como colocar o número de páginas totais
     @State var totalPage: CGFloat = 0
     var page: Page
     
@@ -29,17 +28,12 @@ struct Home: View {
                     Text("BookDay")
                         .font(Font.custom("BelyDisplay-Regular", size: 23))
                         .foregroundColor(Color.corPreta)
-                        .padding(.top, 40)
-                        .padding(.bottom, 40)
+                        .padding(.top, UIScreen.main.bounds.height/25)
+                        .padding(.bottom, UIScreen.main.bounds.height/50)
                     
                     Spacer()
                     
                     VStack{
-//                        
-//                        Text("Add New Book")
-//                            .font(Font.custom("Raleway", size: 18))
-//                            .padding(.top)
-//                            .padding(.bottom, 100)
                       
                         ScrollBookReading()
                         

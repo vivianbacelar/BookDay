@@ -17,8 +17,19 @@ struct Welcome: Codable {
 }
 
 // MARK: - Item
-struct Item: Codable, Identifiable, Hashable {
-   
+class Item: Codable, Identifiable, Hashable {
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    var identifier: String {
+        return self.id
+    }
+        
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(identifier)
+    }
+
     let id: String
     let selfLink: String
     let volumeInfo: VolumeInfo
@@ -37,7 +48,7 @@ struct Item: Codable, Identifiable, Hashable {
 
     }
     
-    mutating func update(pageCount: String) {
+    func update(pageCount: String) {
         countPage = pageCount
     }
 }
