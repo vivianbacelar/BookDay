@@ -61,15 +61,32 @@ struct Library: View {
             ZStack{
                 Color.corGelo
                     .ignoresSafeArea()
-                
-                
+    
                 VStack{
+                    Spacer()
+
+//                    HStack{
                     
-                    Text("BookDay")
-                        .font(Font.custom("BelyDisplay-Regular", size: 23))
-                        .foregroundColor(Color.corPreta)
-                        .padding(.top, 40)
-                        .padding(.bottom, 40)
+                        Text("BookDay")
+                            .font(Font.custom("BelyDisplay-Regular", size: 23))
+                            .foregroundColor(Color.corPreta)
+                            .padding(.top, 25)
+                        
+//                            .toolbar{
+//
+//                                ToolbarItem(placement: .navigationBarTrailing) {
+//                                    NavigationLink {
+//                                        Abandon()
+//                                    } label: {
+//                                        Image("trash")
+////                                            .padding(.top)
+////                                            .padding(.trailing)
+//
+//
+//                                    }
+//                                }
+//                            }
+//                    }
                     
                     Picker("", selection: $selected){
                         
@@ -86,6 +103,7 @@ struct Library: View {
                     }
                     .pickerStyle(.segmented)
                     .frame(width: 300)
+                    .padding(.top, 60)
                     
                     ScrollView() {
                         ZStack {
@@ -111,7 +129,11 @@ struct Library: View {
             }
             
         }
-    }
+        
+        }
+    
+
+    
 
     func getBook(of selected: String) -> [Item] {
         if selected == "Want to Read" {
@@ -120,6 +142,8 @@ struct Library: View {
             return DAO.shared.readList
         }
     }
+    
+
 
     let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
@@ -174,6 +198,7 @@ struct Library: View {
 
     }
 }
+
 
 
     struct Library_Previews: PreviewProvider {
