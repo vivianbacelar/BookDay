@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-
+    @Binding var selection: Int
     @State var filteredItems: [Item] = []
     @State var customAlert = false
     @StateObject var networkModel = NetworkModel()
@@ -223,15 +223,15 @@ struct CustomAlertView: View {
         .background(Color.corCinza3.opacity(0.7))
     }
 }
-
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack{
-            SearchView()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.corCinzaEscuro.opacity(0.7))
-
-    }
-
-}
+//
+//struct SearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack{
+//            SearchView()
+//        }
+//        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .background(Color.corCinzaEscuro.opacity(0.7))
+//
+//    }
+//
+//}

@@ -36,8 +36,10 @@ struct Library: View {
     @State var count: Int = 0
     @State var changePages = false
     @State var selectedItem: Item?
-
-    init() {
+    @Binding var selection: Int
+    
+    init(selection: Binding<Int>) {
+        self._selection = selection
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "cinzaClaro")
         UISegmentedControl.appearance().setTitleTextAttributes(
             [
@@ -175,9 +177,9 @@ struct Library: View {
     }
 }
 
-
-    struct Library_Previews: PreviewProvider {
-        static var previews: some View {
-            Library()
-        }
-    }
+//
+//    struct Library_Previews: PreviewProvider {
+//        static var previews: some View {
+//            Library()
+//        }
+//    }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    @Binding var selection: Int
     @State var percent: CGFloat = 0
     @State var numberPage: CGFloat = 0
     @State private var pageIndex = 0
@@ -46,14 +46,14 @@ struct ContentView: View {
 
                         VStack (spacing: 20){
 
-                            Home(page: page)
+                            Home(selection: $selection, page: page)
 
                             if page == pages.last{
                                 Button (action: goToZero) {
 
                                 }.buttonStyle(.plain)
 
-                                NavigationLink("", destination: Library(), isActive: $showingLibrary)
+                                NavigationLink("", destination: Library(selection: $selection), isActive: $showingLibrary)
                             } else{
                                 Button (action: addPage) {
 
@@ -90,8 +90,8 @@ struct ContentView: View {
         pageIndex = 0
     }
 }
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

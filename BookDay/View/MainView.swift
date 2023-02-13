@@ -18,14 +18,14 @@ struct MainView: View {
 
          TabView (selection: $selection) {
         
-                 Library()
+                 Library(selection: $selection)
                  .tabItem {
                      Label("Library", image: selection == 1 ? "librarytouch" : "library")
                      }
                      .tag(1)
                  
                  
-                 Home(page: Page.samplePage)
+             Home(selection: $selection, page: Page.samplePage)
                  
                      .tabItem {
                          Label("Reading", image: selection == 2 ? "hometouch" : "home")
@@ -33,8 +33,9 @@ struct MainView: View {
                      .tag(2)
                  
                  
-                 SearchView()
+                 SearchView(selection: $selection)
                      .tabItem {
+                         Label("Search", image: selection == 3 ? "searchtouch" : "search")
                          Label("Search", image: selection == 3 ? "searchtouch" : "search")
                      }
                      .tag(3)
