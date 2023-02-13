@@ -16,32 +16,30 @@ struct MainView: View {
      var body: some View {
 
 
-         TabView (selection: $selection){
-             Library()
+         TabView (selection: $selection) {
+        
+                 Library()
                  .tabItem {
                      Label("Library", image: selection == 1 ? "librarytouch" : "library")
-                         
-                 }
-                 .tag(1)
+                     }
+                     .tag(1)
                  
-
-            Home(page: Page.samplePage)
-
-                .tabItem {
-                    Label("Reading", image: selection == 2 ? "hometouch" : "home")
-                        
-                }
-                .tag(2)
-                
+                 
+                 Home(page: Page.samplePage)
+                 
+                     .tabItem {
+                         Label("Reading", image: selection == 2 ? "hometouch" : "home")
+                     }
+                     .tag(2)
+                 
+                 
+                 SearchView()
+                     .tabItem {
+                         Label("Search", image: selection == 3 ? "searchtouch" : "search")
+                     }
+                     .tag(3)
+                 
              
-             SearchView()
-                .tabItem {
-                    Label("Search", image: selection == 3 ? "searchtouch" : "search")
-                        
-                }
-                .tag(3)
-             
-
         }.onAppear() {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -69,9 +67,11 @@ struct MainView: View {
             UINavigationBar.appearance().standardAppearance = appearenceNavBar
             UINavigationBar.appearance().scrollEdgeAppearance = appearenceNavBar
             UINavigationBar.appearance().isTranslucent = true
+            
+            }
         }
     }
-}
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

@@ -20,6 +20,8 @@ struct ScrollBookReading: View {
     @State var countPage: String =
     UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
     
+//    items.append("AddNewBook")
+    
     
     var body: some View {
       
@@ -75,19 +77,8 @@ struct ScrollBookReading: View {
                             
                         } else{
                             Button (action: addPage) {
-                                
-                            }
+                           
                         }.buttonStyle(.plain)
-                    }
-                    
-                    
-                    if page == (livros.last)! {
-                        Button (action: goToZero) {
-                        }.buttonStyle(.plain)
-                        
-                    } else{
-                        Button (action: addPage) {
-                        }
                     }
                 }
                 .tag(page.volumeInfo)
@@ -95,7 +86,7 @@ struct ScrollBookReading: View {
         }
         .animation(.easeInOut, value: ItemIndex)
         .tabViewStyle(.page)
-        .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
         .onAppear{
             
             //TODO: melhorar, entender DAO no SwiftUI
