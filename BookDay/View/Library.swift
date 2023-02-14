@@ -12,24 +12,24 @@ extension UIFont {
     var medium: UIFont { return withWeight(.medium) }
     var regular: UIFont { return withWeight(.regular) }
     var light: UIFont { return withWeight(.light) }
-
+    
     private func withWeight(_ weight: UIFont.Weight) -> UIFont {
         var attributes = fontDescriptor.fontAttributes
         var traits = (attributes[.traits] as? [UIFontDescriptor.TraitKey: Any]) ?? [:]
-
+        
         traits[.weight] = weight
-
+        
         attributes[.name] = nil
         attributes[.traits] = traits
         attributes[.family] = familyName
-
+        
         let descriptor = UIFontDescriptor(fontAttributes: attributes)
-
+        
         return UIFont(descriptor: descriptor, size: pointSize)
     }
 }
 struct Library: View {
-
+    
     @State private var selected = "Want to Read"
     /// Lista que é mostrada de fato
     @State var livros: [Item] = []
@@ -49,11 +49,11 @@ struct Library: View {
                 .font: UIFont(name: "Raleway", size: 18)!.regular,
                 .foregroundColor: UIColor(named: "cinzaMaisEscuro")!
             ], for: .normal)
-
+        
     }
-
-
-
+    
+    
+    
     var body: some View {
         
         NavigationView{
@@ -61,7 +61,7 @@ struct Library: View {
             ZStack{
                 Color.corGelo
                     .ignoresSafeArea()
-    
+                
                 VStack{
                     Spacer()
 
@@ -87,10 +87,9 @@ struct Library: View {
                                 }
                             }
 //                    }
+//                    }
                     
                     Picker("", selection: $selected){
-                        
-                        
                         Text("Want to Read")
                             .font(Font.custom("Raleway", size: 18))
                             .tag("Want to Read")
@@ -98,12 +97,10 @@ struct Library: View {
                         Text("Already Read")
                             .font(Font.custom("Raleway", size: 18))
                             .tag("Read")
-                        
-                        
                     }
                     .pickerStyle(.segmented)
-                    .frame(width: 300)
-                    .padding(.top, 60)
+                    .frame(width: UIScreen.main.bounds.width/1.4)
+                    .padding(.top, UIScreen.main.bounds.height/20)
                     
                     ScrollView() {
                         ZStack {
@@ -112,28 +109,25 @@ struct Library: View {
                         }
                     }
                     
-                }.padding(.horizontal, 10)
+                }.padding(.horizontal, UIScreen.main.bounds.width/2)
             }
             .overlay(content: {
                 if changePages {
                     ChangePages(showChanges: $changePages, selectedItem: selectedItem)
                 }
             })
-            //TODO: melhorar, entender DAO no SwiftUI
-            // depois explicar pro pg
-            
             .onAppear(){
                 livros = getBook(of: selected)
             }.onChange(of: selected) { newValue in
                 livros = getBook(of: newValue)
             }
             
-        }
         .accentColor(Color.corPreta)
         }
     
 
     
+
 
     func getBook(of selected: String) -> [Item] {
         if selected == "Want to Read" {
@@ -143,65 +137,55 @@ struct Library: View {
         }
     }
     
-
-
+    
+    
     let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-
+    
     var collectionBooks: some View {
-     
-            VStack {
-                LazyVGrid(columns: colums) {
-                    ForEach(livros, id: \.id) { item in
-                        Button {
-                            changePages.toggle()
-                            selectedItem = item
-                        } label: {
-                            AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
-                                image.resizable()
-                                    .padding(.top)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 200, maxHeight: 150)
-                                    .padding(.bottom)
-                            } placeholder: {
-                                Image("PlaceHolder")
-                                    .resizable()
-                                    .padding(.top)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 200, maxHeight: 150)
-                                    .padding(.bottom)
-                                
-                            }
-                        }.buttonStyle(.plain)
-                    }
+        
+        VStack {
+            LazyVGrid(columns: colums) {
+                ForEach(livros, id: \.id) { item in
+                    Button {
+                        changePages.toggle()
+                        selectedItem = item
+                    } label: {
+                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
+                            image.resizable()
+                                .padding(.top)
+                                .frame(maxWidth: UIScreen.main.bounds.width/4.5, maxHeight: UIScreen.main.bounds.height/6)
+                                .padding(.bottom)
+                        } placeholder: {
+                            Image("PlaceHolder")
+                                .resizable()
+                                .padding(.top)
+                                .frame(maxWidth: UIScreen.main.bounds.width/4.5, maxHeight: UIScreen.main.bounds.height/6)
+                                .padding(.bottom)
+                        }
+                    }.buttonStyle(.plain)
                 }
-                Spacer()
             }
+            Spacer()
+        }
     }
-
+    
     var shelfNumber: Int {
         return max(3, Int((livros.count + 2) / 3))
     }
-
+    
     var shelfBooks: some View {
-
+        
         VStack {
             ForEach((1...shelfNumber), id:\.self) { _ in
                 Rectangle()
                     .fill(.clear)
-                    .frame(width: 310, height: 150)
-
+                    .frame(width: UIScreen.main.bounds.width/1.3, height: UIScreen.main.bounds.height/6)
+                
                 Rectangle()
                     .fill(Color.corCinzaClaro)
-                    .frame(width: 310, height: 8)
+                    .frame(width: UIScreen.main.bounds.width/1.3, height: UIScreen.main.bounds.height/99)
             }
         }
-
+        
     }
 }
-
-//
-//    struct Library_Previews: PreviewProvider {
-//        static var previews: some View {
-//            Library()
-//        }
-//    }

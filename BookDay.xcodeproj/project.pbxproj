@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8A541B8829885E7F00E8E87F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A541B8729885E7F00E8E87F /* BlurView.swift */; };
-		8A541B8A29885EAD00E8E87F /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A541B8929885EAD00E8E87F /* CustomAlertView.swift */; };
 		8A622AAD29847FC800795D99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A622AAC29847FC800795D99 /* ContentView.swift */; };
 		8A622AAF29847FD000795D99 /* BookDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A622AAE29847FD000795D99 /* BookDayApp.swift */; };
 		8A73EDE92981A7AE0015C444 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A73EDE82981A7AE0015C444 /* NetworkModel.swift */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		8A541B8729885E7F00E8E87F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		8A541B8929885EAD00E8E87F /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		8A622AAC29847FC800795D99 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8A622AAE29847FD000795D99 /* BookDayApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDayApp.swift; sourceTree = "<group>"; };
 		8A73EDE82981A7AE0015C444 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 				A152AC612984790E00D21DDC /* ScrollBookReading.swift */,
 				A13E8476298C2B0700FCDEDB /* ChangePages.swift */,
 				8A541B8729885E7F00E8E87F /* BlurView.swift */,
-				8A541B8929885EAD00E8E87F /* CustomAlertView.swift */,
 				8A7D8EEC298993DE000FC836 /* LabelAlignment.swift */,
 				8A7D8EEE2989B800000FC836 /* ContentCell.swift */,
 			);
@@ -296,7 +293,6 @@
 				A165ACC1299C0FB20063C576 /* HideTabBar.swift in Sources */,
 				A152AC622984790E00D21DDC /* ScrollBookReading.swift in Sources */,
 				A1489960298060F000402C94 /* Book.swift in Sources */,
-				8A541B8A29885EAD00E8E87F /* CustomAlertView.swift in Sources */,
 				8A622AAF29847FD000795D99 /* BookDayApp.swift in Sources */,
 				A185140E2995735D00B673FB /* Abandon.swift in Sources */,
 				8A7D8EED298993DE000FC836 /* LabelAlignment.swift in Sources */,

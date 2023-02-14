@@ -11,10 +11,6 @@ struct ScrollBookReading: View {
     @ObservedObject var selectionVM: SelectionVM = SelectionVM.shared
     @State private var ItemIndex = 0
     private let dotAppearance = UIPageControl.appearance()
-    @State var percent: CGFloat = 0
-    @State var numberPage: CGFloat = 0
-    //    Pensar em como colocar o número de páginas totais
-    @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
     //    @Binding var show: Bool
     @State var countPage: String =
@@ -43,27 +39,17 @@ struct ScrollBookReading: View {
                         
                         VStack{
                             
-                            Text("Page \(Int(numberPage)) (\(Int(totalPage)))")
-                                .font(Font.custom("RalewayExtraLight ", size: 12))
-                                .foregroundColor(Color.corCinzaEscuro)
-                                .multilineTextAlignment(TextAlignment.trailing)
-                            
-                            
                             NavigationLink {
-                                InfoBookView(item: page, countPage: $countPage)
+                                InfoBookView(item: page)
                             } label: {
                                 VStack{
                                     AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
                                         image.resizable()
-                                            .scaledToFit()
-                                            .frame(width: 291, height: 433)
+                                            .frame(width: UIScreen.main.bounds.width/1.4, height: UIScreen.main.bounds.height/2)
                                     } placeholder: {
                                         Image("PlaceHolder")
                                             .resizable()
-                                            .padding(.top)
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(maxWidth: 291, maxHeight: 433)
-                                            .padding(.bottom)
+                                            .frame(width: UIScreen.main.bounds.width/1.4, height: UIScreen.main.bounds.height/2)
                                     }
                                 }
                             }.buttonStyle(.plain)
@@ -123,10 +109,3 @@ struct ScrollBookReading: View {
         ItemIndex = 0
     }
 }
-
-//struct ScrollBookReading_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ScrollBookReading()
-//    }
-//}
-//

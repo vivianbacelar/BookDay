@@ -48,14 +48,14 @@ struct SearchView: View {
                                             image
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
-                                                .frame(maxWidth: 130, maxHeight: 150)
+                                                .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
                                         } placeholder: {
                                             Image("PlaceHolder")
                                                 .resizable()
                                                     .aspectRatio(contentMode: .fit)
-                                                    .frame(maxHeight: 150)
+                                                    .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
                                         }
-                                        .padding(.trailing, 8)
+                                        .padding(.trailing, UIScreen.main.bounds.width/25)
                                         VStack(spacing: 5) {
                                             Text(item.volumeInfo.title)
                                                 .font(Font.custom("Raleway", size: 18))
@@ -68,23 +68,21 @@ struct SearchView: View {
                                                 .foregroundColor(Color.corPreta)
                                                 .multilineTextAlignment(.leading)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                                .padding(.top,1)
+                                                .padding(.top,UIScreen.main.bounds.height/150)
 
                                             Spacer()
 
                                             HStack {
                                                 Spacer()
                                                 Button (action:{
-//                                                    withAnimation{
                                                         customAlert.toggle()
                                                     //ação que inverte a boleana
                                                         selectedItem = item
-//                                                    }
                                                 }) {
                                                     Image("addButton")
                                                         .resizable()
                                                         .scaledToFit()
-                                                        .frame(width: 30)
+                                                        .frame(width: UIScreen.main.bounds.width/13)
                                                         .foregroundColor(Color.corLaranja)
                                                 }
                                                 .buttonStyle(.plain)
@@ -93,11 +91,11 @@ struct SearchView: View {
                                         }
                                         .frame(maxHeight: .infinity)
                                     }
-                                    .padding(.horizontal, 20)
+                                    .padding(.horizontal, UIScreen.main.bounds.width/15)
                                     RoundedRectangle(cornerRadius: 15)
                                         .foregroundColor(Color.corCinzaClaro)
-                                        .frame(height: 0.75)
-                                        .padding(.horizontal, 20)
+                                        .frame(height:UIScreen.main.bounds.height/900)
+                                        .padding(.horizontal, UIScreen.main.bounds.width/30)
                                 }
                             }
                         }
@@ -222,15 +220,4 @@ struct CustomAlertView: View {
         .background(Color.corCinza3.opacity(0.7))
     }
 }
-//
-//struct SearchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack{
-//            SearchView()
-//        }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(Color.corCinzaEscuro.opacity(0.7))
-//
-//    }
-//
-//}
+

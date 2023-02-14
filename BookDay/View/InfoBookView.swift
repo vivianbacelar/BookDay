@@ -12,7 +12,7 @@ struct InfoBookView: View {
     @State var item: Item
     @State private var selectedCells: Set<Item> = []
     @State var deleteAlert = false
-    @Binding var countPage: String
+    @State var countPage: String = "0"
 
     var stars: Double {
         item.volumeInfo.averageRating ?? 0
@@ -94,7 +94,7 @@ struct InfoBookView: View {
                                     self.selectedCells.insert (item)
                                 }
                             }
-                            .padding(.vertical,5)
+                            .padding(.vertical,UIScreen.main.bounds.height/50)
                     }.padding(.vertical)
 
                     Spacer()
@@ -113,12 +113,14 @@ struct InfoBookView: View {
                                 
                                 Spacer()
                                 
-                                TextField("0", text: $countPage)
+                                TextField(countPage, text: $countPage)
                                     .multilineTextAlignment(.trailing)
                                     .foregroundColor(Color.corPreta)
                                     .padding()
                                     .onSubmit {
-                                        item = DAO.shared.update(pageCount: countPage, of: item)
+//                                        item = DAO.shared.update(pageCount: countPage, of: item)
+                                        item.countPage = countPage
+                                        print("SUBMITOU")
                                     }
                                 //                                .onSubmit {
                                 //                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
@@ -165,13 +167,16 @@ struct InfoBookView: View {
             }
 
         }
+        .onAppear {
+            countPage = item.countPage ?? "0"
+        }
         .ignoresSafeArea()
         .overlay(alignment: .top){
             HStack {
                 Rectangle()
                     .foregroundColor(Color.corGelo.opacity(0.7))
                     .blur(radius: 4, opaque: false)
-                    .frame(height: 95)
+                    .frame(height: UIScreen.main.bounds.height/9)
             }.edgesIgnoringSafeArea(.all)
 
             if deleteAlert {
@@ -231,22 +236,8 @@ struct DeleteAlertView: View {
                     }
             }
             .cornerRadius(20)
-
-
         }
-
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinza3.opacity(0.7))
-    
     }
 }
-
-
-
-
-
-//struct InfoBookView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InfoBookView()
-//    }
-//}
