@@ -11,16 +11,7 @@ struct ScrollBookReading: View {
     @ObservedObject var selectionVM: SelectionVM = SelectionVM.shared
     @State private var ItemIndex = 0
     private let dotAppearance = UIPageControl.appearance()
-    @State var percent: CGFloat = 0
-    @State var numberPage: CGFloat = 0
-    //    Pensar em como colocar o número de páginas totais
-    @State var totalPage: CGFloat = 0
     @State var livros: [Item] = DAO.shared.readingList
-    //    @Binding var show: Bool
-    @State var countPage: String =
-    UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
-    
-//    items.append("AddNewBook")
     
     
     var body: some View {
@@ -44,14 +35,8 @@ struct ScrollBookReading: View {
                         
                         VStack{
                             
-//                            Text("Page \(Int(numberPage)) (\(Int(totalPage)))")
-//                                .font(Font.custom("RalewayExtraLight ", size: 12))
-//                                .foregroundColor(Color.corCinzaEscuro)
-//                                .multilineTextAlignment(TextAlignment.trailing)
-                            
-                            
                             NavigationLink {
-                                InfoBookView(item: page, countPage: $countPage)
+                                InfoBookView(item: page)
                             } label: {
                                 VStack{
                                     AsyncImage(url: page.volumeInfo.imageLinks?.thumbnail){ image in
@@ -78,6 +63,7 @@ struct ScrollBookReading: View {
                     }
                 }
                     .padding(.horizontal, UIScreen.main.bounds.width/10)
+                    .padding(.bottom, UIScreen.main.bounds.height/20)
                 .tag(page.volumeInfo)
             }
                 

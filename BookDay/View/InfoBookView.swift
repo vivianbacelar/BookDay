@@ -12,7 +12,7 @@ struct InfoBookView: View {
     @State var item: Item
     @State private var selectedCells: Set<Item> = []
     @State var deleteAlert = false
-    @Binding var countPage: String
+    @State var countPage: String = "0"
 
     var stars: Double {
         item.volumeInfo.averageRating ?? 0
@@ -113,12 +113,14 @@ struct InfoBookView: View {
                                 
                                 Spacer()
                                 
-                                TextField("0", text: $countPage)
+                                TextField(countPage, text: $countPage)
                                     .multilineTextAlignment(.trailing)
                                     .foregroundColor(Color.corPreta)
                                     .padding()
                                     .onSubmit {
-                                        item = DAO.shared.update(pageCount: countPage, of: item)
+//                                        item = DAO.shared.update(pageCount: countPage, of: item)
+                                        item.countPage = countPage
+                                        print("SUBMITOU")
                                     }
                                 //                                .onSubmit {
                                 //                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
@@ -159,6 +161,9 @@ struct InfoBookView: View {
                 }
             }
 
+        }
+        .onAppear {
+            countPage = item.countPage ?? "0"
         }
         .ignoresSafeArea()
         .overlay(alignment: .top){

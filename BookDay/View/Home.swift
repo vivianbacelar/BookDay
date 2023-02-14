@@ -29,7 +29,6 @@ struct Home: View {
                         .font(Font.custom("BelyDisplay-Regular", size: 23))
                         .foregroundColor(Color.corPreta)
                         .padding(.top, UIScreen.main.bounds.height/25)
-                        .padding(.bottom, UIScreen.main.bounds.height/50)
                     
                     Spacer()
                     
