@@ -72,20 +72,20 @@ struct Library: View {
                             .foregroundColor(Color.corPreta)
                             .padding(.top, 25)
                         
-//                            .toolbar{
-//
-//                                ToolbarItem(placement: .navigationBarTrailing) {
-//                                    NavigationLink {
-//                                        Abandon()
-//                                    } label: {
-//                                        Image("trash")
-////                                            .padding(.top)
-////                                            .padding(.trailing)
-//
-//
-//                                    }
-//                                }
-//                            }
+                            .toolbar{
+
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    NavigationLink {
+                                        Abandon()
+                                    } label: {
+                                        Image("trash")
+//                                            .padding(.top)
+//                                            .padding(.trailing)
+
+
+                                    }
+                                }
+                            }
 //                    }
                     
                     Picker("", selection: $selected){
@@ -95,7 +95,7 @@ struct Library: View {
                             .font(Font.custom("Raleway", size: 18))
                             .tag("Want to Read")
                         
-                        Text("Read")
+                        Text("Already Read")
                             .font(Font.custom("Raleway", size: 18))
                             .tag("Read")
                         
@@ -129,7 +129,7 @@ struct Library: View {
             }
             
         }
-        
+        .accentColor(Color.corPreta)
         }
     
 

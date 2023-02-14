@@ -20,14 +20,13 @@ struct ScrollBookReading: View {
     @State var countPage: String =
     UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
     
-//    items.append("AddNewBook")
     
     
     var body: some View {
       
             TabView(selection: $ItemIndex){
                 
-                ForEach(livros, id: \.id) { page in
+                ForEach(Array(livros.enumerated()), id: \.offset) { index, page in
                     
                     VStack (alignment: .leading){
                         Text(page.volumeInfo.title)
@@ -81,30 +80,39 @@ struct ScrollBookReading: View {
                         }.buttonStyle(.plain)
                     }
                 }
-                .tag(page.volumeInfo)
+                .tag(index)
             }
-                
-                Button {
-                    print("add")
-                    selectionVM.selection = 3
-                } label: {
-                    Image("AddNewBook")
-                        .resizable()
-                        .frame(maxWidth: 291, maxHeight: 433)
+                VStack{
+                    
+                    Text("Add new book")
+                        .font(Font.custom("Raleway", size: 20).weight(.regular))
+                        .foregroundColor(Color.corPreta)
+                       
+                        .padding(.top, UIScreen.main.bounds.height/50)
+                    
+                    Button {
+                        print("add")
+                        selectionVM.selection = 3
+                    } label: {
+                        Image("AddNewBook")
+                            .resizable()
+                            .frame(maxWidth: 291, maxHeight: 433)
+                    }
+                    .tag(livros.count)
                 }
 
         }
         .animation(.easeInOut, value: ItemIndex)
         .tabViewStyle(.page)
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .interactive))
         .onAppear{
             
             //TODO: melhorar, entender DAO no SwiftUI
             // depois explicar pro pg
             livros = DAO.shared.readingList
             dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corRosa)
-            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
-            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
+//            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
+//            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
         }
     }
     func addPage() {

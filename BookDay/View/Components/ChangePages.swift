@@ -50,7 +50,7 @@ struct ChangePages: View {
                                 
                                 Button{
                                     showChanges = false
-                                    DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .read)
+                                    DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .abandon)
                                     DAO.shared.change(item: selectedItem!, from: .read, to: .read)
                                 }label:{
                                     Image("moveAbandon")

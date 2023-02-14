@@ -14,6 +14,7 @@ class DAO: ObservableObject {
         case reading
         case read
         case wantToRead
+        case abandon
     }
 
     static let shared = DAO()
@@ -23,6 +24,7 @@ class DAO: ObservableObject {
     var readingList: [Item] = []
     var wantToReadList: [Item] = []
     var readList: [Item] = []
+    var abandonList: [Item] = []
     
     func save() {
         appData.saveData()
@@ -45,6 +47,8 @@ class DAO: ObservableObject {
             readingList.append(item)
         case .wantToRead:
           wantToReadList.append(item)
+        case .abandon:
+          abandonList.append(item)
         }
     }
     
@@ -57,6 +61,8 @@ class DAO: ObservableObject {
             readingList = readingList.filter({$0 != item})
         case .wantToRead:
             wantToReadList = wantToReadList.filter({$0 != item})
+        case .abandon:
+          abandonList = abandonList.filter({$0 != item})
         }
     
     }

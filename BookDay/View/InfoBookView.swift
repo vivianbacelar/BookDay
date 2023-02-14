@@ -127,6 +127,8 @@ struct InfoBookView: View {
                             
                         }
                         
+                    .padding(.vertical, UIScreen.main.bounds.height/25)
+                    
                         HStack{
                             Text("Progress")
                                 .font(Font.custom("Raleway", size: 15).weight(.bold))
@@ -140,6 +142,8 @@ struct InfoBookView: View {
                         }.padding(.horizontal, UIScreen.main.bounds.width/11)
                         
                         ProgressBarView(progress: percentage)
+                       
+                       
  
                     VStack{
                         Button{
@@ -149,7 +153,8 @@ struct InfoBookView: View {
                             Image("abandButton")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: UIScreen.main.bounds.width/1.8, height: UIScreen.main.bounds.height/5)
+                                .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/16)
+                                .padding(.vertical, UIScreen.main.bounds.height/13)
 
                         }.buttonStyle(.plain)
                         Rectangle()

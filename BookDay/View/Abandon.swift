@@ -18,37 +18,41 @@ struct Abandon: View {
     
     var body: some View {
         
-        
-        ZStack{
+        ZStack (alignment: .topTrailing){
             Color.corGelo
                 .ignoresSafeArea()
-            
             VStack{
-       
+                Text("Abandoned Books")
+                    .font(Font.custom("Raleway", size: 20).weight(.bold))
+                    .foregroundColor(Color.corPreta)
+                    .padding(.top, UIScreen.main.bounds.height/20)
+                
                 ScrollView() {
                     ZStack {
-//                        VStack{
-                            Text("Abandoned Books")
-                                .font(Font.custom("Raleway", size: 18).weight(.bold))
-                                .foregroundColor(Color.corPreta)
-                                .padding(.top, UIScreen.main.bounds.height/30)
-                            
-                            shelfBooks
-                            collectionBooks
-//                        }
+                        shelfBooks
+                        collectionBooks
                     }
                 }
-            }
+            }  .padding(.top, UIScreen.main.bounds.height/110)
             
-        }.padding(.horizontal, 10)
-        
+                .overlay(alignment: .topTrailing){
+                    Image("teia")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.height/7)
+                        .ignoresSafeArea()
+                }
+                .background(alignment: .bottomLeading){
+                    Image("teia2")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.height/7)
+                        .ignoresSafeArea()
+                }
+        }
             .overlay(content: {
                 if changePages {
                     ChangePages(showChanges: $changePages, selectedItem: selectedItem)
                 }
             })
-        //TODO: melhorar, entender DAO no SwiftUI
-        // depois explicar pro pg
         
             .onAppear(){
                 livros = getBook(of: selected)
@@ -62,9 +66,10 @@ struct Abandon: View {
     
     func getBook(of selected: String) -> [Item] {
         if selected == "Want to Read" {
-            return DAO.shared.wantToReadList
+            return DAO.shared.abandonList
         } else {
             return DAO.shared.readList
+            
         }
     }
     
