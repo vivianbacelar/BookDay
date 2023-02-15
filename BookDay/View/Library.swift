@@ -64,30 +64,23 @@ struct Library: View {
                 
                 VStack{
                     Spacer()
-
-//                    HStack{
                     
-                        Text("BookDay")
-                            .font(Font.custom("BelyDisplay-Regular", size: 23))
-                            .foregroundColor(Color.corPreta)
-                            .padding(.top, 25)
-                        
-                            .toolbar{
-
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    NavigationLink {
-                                        Abandon()
-                                    } label: {
-                                        Image("trash")
-//                                            .padding(.top)
-//                                            .padding(.trailing)
-
-
-                                    }
+                    Text("BookDay")
+                        .font(Font.custom("BelyDisplay-Regular", size: 23))
+                        .foregroundColor(Color.corPreta)
+                        .padding(.top, 25)
+                    
+                        .toolbar{
+                            
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                NavigationLink {
+                                    Abandon()
+                                } label: {
+                                    Image("trash")
+                                    
                                 }
                             }
-//                    }
-//                    }
+                        }
                     
                     Picker("", selection: $selected){
                         Text("Want to Read")
@@ -122,10 +115,10 @@ struct Library: View {
                 livros = getBook(of: newValue)
             }
             
-        .accentColor(Color.corPreta)
+            .accentColor(Color.corPreta)
         }
-    
-
+        
+    }
     
 
 

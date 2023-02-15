@@ -19,5 +19,10 @@ extension Color{
     static let corPreta = Color("preto")
     static let corLaranja = Color("laranja")
     static let corFundo = Color("fundo")
+    static let corRoxo = Color("roxo")
+    static let corAzul = Color("azul")
+    static let corVerde = Color("verde")
+    static let corAmarela = Color("amarelo")
+    static let corOn = Color("preta")
     
 }
