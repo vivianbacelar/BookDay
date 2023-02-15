@@ -26,8 +26,10 @@ struct ProgressBarView: View {
 struct PinkBorderedProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         ProgressView(configuration)
+            .scaleEffect(x: 1, y: 2.2, anchor: .center)
             .padding(4)
             .padding(.horizontal)
-            .cornerRadius(4)
+            .cornerRadius(10)
+            .frame(width: UIScreen.main.bounds.width/1.05)
     }
 }

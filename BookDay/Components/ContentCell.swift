@@ -19,8 +19,8 @@ struct ContentCell: View {
                 HStack {
 
                     Text ("Description")
-                        .font(.custom("Raleway", size: 18).weight(.bold))
-                        .foregroundColor(Color.corPreta)
+                        .font(.custom("Raleway", size: 18).weight(.regular))
+                        .foregroundColor(Color.corCinzaEscuro)
                         .padding (.leading, UIScreen.main.bounds.height/30)
                         .padding(.top)
 

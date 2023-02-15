@@ -69,17 +69,6 @@ struct Library: View {
                         .foregroundColor(Color.corPreta)
                         .padding(.top, UIScreen.main.bounds.height/25)
                     
-                        .toolbar{
-                            
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                NavigationLink {
-                                    Abandon()
-                                } label: {
-                                    Image("trash")
-                                    
-                                }
-                            }
-                        }
                     
                     Picker("", selection: $selected){
                         Text("Want to Read")
@@ -102,16 +91,18 @@ struct Library: View {
                     }
                     
                 }
-                .overlay(alignment: .topTrailing){
+                .overlay{
                         NavigationLink {
                             Abandon()
                         } label: {
                             Image("trash")
                                 .resizable()
                                 .frame(width: UIScreen.main.bounds.width/14.5, height: UIScreen.main.bounds.height/25)
-//                                .padding(.leading, UIScreen.main.bounds.width/2)
+                                
                             
-                    }
+                        }.padding(.bottom, UIScreen.main.bounds.height/1.38)
+                        .padding(.leading, UIScreen.main.bounds.width/1.3)
+                        
             }
                 
                     

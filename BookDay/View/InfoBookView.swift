@@ -12,7 +12,9 @@ struct InfoBookView: View {
     @State var item: Item
     @State private var selectedCells: Set<Item> = []
     @State var deleteAlert = false
+    @State var finishedBook = false
     @State var countPage: String = "0"
+  
 
     var stars: Double {
         item.volumeInfo.averageRating ?? 0
@@ -118,13 +120,9 @@ struct InfoBookView: View {
                                     .foregroundColor(Color.corPreta)
                                     .padding()
                                     .onSubmit {
-//                                        item = DAO.shared.update(pageCount: countPage, of: item)
                                         item.countPage = countPage
                                         print("SUBMITOU")
                                     }
-                                //                                .onSubmit {
-                                //                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
-                                //                                }
                             }.padding(.horizontal, UIScreen.main.bounds.width/11)
                             
                         }
@@ -148,21 +146,38 @@ struct InfoBookView: View {
                        
  
                     VStack{
-                        Button{
-                            deleteAlert.toggle()
-                            print("abandon")
-                        }label:{
-                            Image("abandButton")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/16)
-                                .padding(.vertical, UIScreen.main.bounds.height/13)
+                        HStack{
+                            
+                            Button{
+                                finishedBook.toggle()
+                                print("finished")
+//                                DAO.shared.change(selectedItem, from: .reading, to: .read)
+                            }label:{
+                                Image("finishedBook")
+//                                    .resizable()
+//                                    .scaledToFit()
+                                    .resizable()
+                                    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
+                                    .padding(.vertical, UIScreen.main.bounds.height/13)
 
-                        }.buttonStyle(.plain)
+                            }.buttonStyle(.plain)
+                            
+                            Button{
+                                deleteAlert.toggle()
+                                print("abandon")
+                            }label:{
+                                Image("abandButton")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/16)
+                                    .padding(.vertical, UIScreen.main.bounds.height/13)
+                                
+                            }.buttonStyle(.plain)
+                            
+                        }
                         Rectangle()
                             .foregroundColor(Color.corGelo)
-                            .frame(height: UIScreen.main.bounds.height/10)
-                        
+                            .frame(height: UIScreen.main.bounds.height/8)
                     }
                 }
             }
@@ -182,6 +197,9 @@ struct InfoBookView: View {
 
             if deleteAlert {
                 DeleteAlertView(deleteAlert: $deleteAlert, selectedItem: item)
+            }
+            if finishedBook{
+                FinishedBookView(finishedBook: $finishedBook, selectedItem: item)
             }
 
         }
@@ -224,10 +242,60 @@ struct DeleteAlertView: View {
                         Button{
                             print("abandon")
                             deleteAlert = false
-                            DAO.shared.remove(from: .reading, selectedItem)
+                            DAO.shared.change(item: selectedItem, from: .reading, to: .abandon)
                             dismiss()
                         } label: {
                             Image("abandonBottom")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/18)
+                                .padding(.top,UIScreen.main.bounds.height/6.1)
+
+                            
+                        }.buttonStyle(.plain)
+                    }
+            }
+            .cornerRadius(20)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.corCinza3.opacity(0.7))
+    }
+}
+
+
+struct FinishedBookView: View {
+
+    @Binding var finishedBook: Bool
+    @Environment(\.dismiss) var dismiss
+    var selectedItem: Item
+
+    var body: some View{
+        ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+
+            VStack (spacing: 25){
+                Image("sureFinished")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/4.6)
+                    .overlay {
+                        Button {
+                            print("close")
+                            finishedBook = false
+                        } label: {
+                            Image("closeBottom")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width/25, height: UIScreen.main.bounds.height/50)
+                                .padding(.bottom,UIScreen.main.bounds.height/7)
+                                .padding(.trailing,UIScreen.main.bounds.width/2)
+                        }.buttonStyle(.plain)
+
+                        Spacer()
+
+                        Button{
+                            print("finished")
+                            finishedBook = false
+                            DAO.shared.change(item: selectedItem, from: .reading, to: .read)
+                            dismiss()
+                        } label: {
+                            Image("finishedButton")
                                 .resizable()
                                 .frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/18)
                                 .padding(.top,UIScreen.main.bounds.height/6.1)
