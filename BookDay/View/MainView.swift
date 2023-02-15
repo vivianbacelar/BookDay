@@ -17,9 +17,12 @@ class SelectionVM: ObservableObject {
 }
 
 struct MainView: View {
+    
+    
+    
     @ObservedObject var selectionVM: SelectionVM = SelectionVM.shared
     @State var showLibraryTouch = true
-    @State var selection = 2
+//    @State var selection = 2
 
      var body: some View {
 
@@ -77,6 +80,9 @@ struct MainView: View {
             UINavigationBar.appearance().isTranslucent = true
             
             }
+         
+        
+         
         }
     }
 

@@ -69,6 +69,17 @@ struct Library: View {
                         .foregroundColor(Color.corPreta)
                         .padding(.top, UIScreen.main.bounds.height/25)
                     
+                        .toolbar{
+                            
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                NavigationLink {
+                                    Abandon()
+                                } label: {
+                                    Image("trash")
+                                    
+                                }
+                            }
+                        }
                     
                     Picker("", selection: $selected){
                         Text("Want to Read")

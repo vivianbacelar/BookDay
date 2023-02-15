@@ -149,10 +149,10 @@ struct SearchView: View {
 
 
 struct CustomAlertView: View {
-
+    
     @Binding var show: Bool
     var selectedItem: Item?
-
+    
     var body: some View{
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
             VStack (spacing: 25){
@@ -173,20 +173,19 @@ struct CustomAlertView: View {
                                         .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
                                         .padding(.bottom, UIScreen.main.bounds.height/98)
                                 }.buttonStyle(.plain)
-
-
+                                
+                                
                                 Button{
                                     print("want to read")
                                     show.toggle()
                                     DAO.shared.add(to: .wantToRead, selectedItem!)
-//
-                                }label:{
+                                } label:{
                                     Image("wantToReadButton")
                                         .resizable()
                                         .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
                                         .padding(.bottom, UIScreen.main.bounds.height/98)
                                 }.buttonStyle(.plain)
-
+                                
                                 Button{
                                     print("read")
                                     show.toggle()
@@ -196,10 +195,10 @@ struct CustomAlertView: View {
                                         .resizable()
                                         .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
                                 }.buttonStyle(.plain)
-
+                                
                             }
                             .padding(.bottom, UIScreen.main.bounds.height/47)
-
+                            
                             Button(action: {
                                 withAnimation{
                                     print("okButton")
@@ -214,11 +213,12 @@ struct CustomAlertView: View {
                     })
             }
             .cornerRadius(20)
-
-
+            
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.corCinza3.opacity(0.7))
     }
 }
+
 
