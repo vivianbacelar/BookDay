@@ -84,6 +84,7 @@ struct ScrollBookReading: View {
                             .resizable()
                             .frame(maxWidth: 291, maxHeight: 433)
                     }
+                    
                     .tag(livros.count)
                 }
 

@@ -132,7 +132,8 @@ struct SearchView: View {
             }
             .edgesIgnoringSafeArea(.all)
 
-        }.overlay(content: {
+        } .accentColor(Color.corPreta)
+        .overlay(content: {
             if customAlert {
                 CustomAlertView(show: $customAlert, selectedItem: selectedItem)
             }

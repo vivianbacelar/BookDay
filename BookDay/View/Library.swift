@@ -63,31 +63,12 @@ struct Library: View {
                     .ignoresSafeArea()
                 
                 VStack{
-                    Spacer()
-
-//                    HStack{
+                   
+                    Text("BookDay")
+                        .font(Font.custom("BelyDisplay-Regular", size: 23))
+                        .foregroundColor(Color.corPreta)
+                        .padding(.top, UIScreen.main.bounds.height/25)
                     
-                        Text("BookDay")
-                            .font(Font.custom("BelyDisplay-Regular", size: 23))
-                            .foregroundColor(Color.corPreta)
-                            .padding(.top, 25)
-                        
-                            .toolbar{
-
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    NavigationLink {
-                                        Abandon()
-                                    } label: {
-                                        Image("trash")
-//                                            .padding(.top)
-//                                            .padding(.trailing)
-
-
-                                    }
-                                }
-                            }
-//                    }
-//                    }
                     
                     Picker("", selection: $selected){
                         Text("Want to Read")
@@ -99,7 +80,7 @@ struct Library: View {
                             .tag("Read")
                     }
                     .pickerStyle(.segmented)
-                    .frame(width: UIScreen.main.bounds.width/1.4)
+                    .frame(width: UIScreen.main.bounds.width/1.2)
                     .padding(.top, UIScreen.main.bounds.height/20)
                     
                     ScrollView() {
@@ -109,7 +90,21 @@ struct Library: View {
                         }
                     }
                     
-                }.padding(.horizontal, UIScreen.main.bounds.width/2)
+                }
+                .overlay(alignment: .topTrailing){
+                        NavigationLink {
+                            Abandon()
+                        } label: {
+                            Image("trash")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width/14.5, height: UIScreen.main.bounds.height/25)
+//                                .padding(.leading, UIScreen.main.bounds.width/2)
+                            
+                    }
+            }
+                
+                    
+              
             }
             .overlay(content: {
                 if changePages {
@@ -122,9 +117,9 @@ struct Library: View {
                 livros = getBook(of: newValue)
             }
             
-        .accentColor(Color.corPreta)
-        }
-    
+            
+        } .accentColor(Color.corPreta)
+    }
 
     
 

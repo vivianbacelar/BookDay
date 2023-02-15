@@ -11,7 +11,7 @@ import SwiftUI
 struct BookDayApp: App {
     
     @Environment(\.scenePhase) var scenePhase
-    
+
     init() {
         DAO.shared.load()
     }
@@ -26,8 +26,9 @@ struct BookDayApp: App {
                 if newPhase == .background {
                     DAO.shared.save()
                 }
-                
+
             }
         }
+       
     }
 }

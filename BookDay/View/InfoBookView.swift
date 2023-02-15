@@ -162,6 +162,7 @@ struct InfoBookView: View {
                         Rectangle()
                             .foregroundColor(Color.corGelo)
                             .frame(height: UIScreen.main.bounds.height/10)
+                        
                     }
                 }
             }
