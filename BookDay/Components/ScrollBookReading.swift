@@ -83,7 +83,7 @@ struct ScrollBookReading: View {
                         Image("AddNewBook")
                             .resizable()
                             .frame(maxWidth: 291, maxHeight: 433)
-                    }
+                    }.buttonStyle(.plain)
                     
                     .tag(livros.count)
                 }

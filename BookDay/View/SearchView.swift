@@ -13,6 +13,7 @@ struct SearchView: View {
     @StateObject var networkModel = NetworkModel()
     @State var selectedItem: Item?
     private let userDefaults = UserDefaults.standard
+    @State var isPlaying : Bool = false
 
     var items: [Item] {
         filteredItems.isEmpty ? networkModel.items: filteredItems
@@ -76,10 +77,11 @@ struct SearchView: View {
                                                 Spacer()
                                                 Button (action:{
                                                         customAlert.toggle()
-                                                    //ação que inverte a boleana
                                                         selectedItem = item
+//                                                        self.isPlaying.toggle()
                                                 }) {
                                                     Image("addButton")
+//                                                    Image(self.isPlaying == true ? "addedButton" : "addButton")
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: UIScreen.main.bounds.width/13)

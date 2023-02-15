@@ -8,35 +8,35 @@
 import SwiftUI
 
 struct InfoBookView: View {
-
+    
     @State var item: Item
     @State private var selectedCells: Set<Item> = []
     @State var deleteAlert = false
     @State var countPage: String = "0"
-
+    
     var stars: Double {
         item.volumeInfo.averageRating ?? 0
     }
-
+    
     var percentage: Double {
         ((Double(countPage) ?? 0.0) * 100) / (Double(item.volumeInfo.pageCount ?? 100))
     }
-
-
+    
+    
     var percentageText: String {
         let formattedValue = String(format: "%.2f", percentage)
         var str = "\(formattedValue)"
         str += item.volumeInfo.pageCount != nil ? "%" : ""
         return str
     }
-
+    
     var body: some View {
-
+        
         ZStack(alignment: .top){
             Color.corGelo
             ScrollView{
                 VStack{
-
+                    
                     VStack{
                         AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail){ image in
                             image
@@ -52,7 +52,7 @@ struct InfoBookView: View {
                             RoundedRectangle(cornerRadius: 30, style: .continuous)
                                 .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.width/13)
                                 .foregroundColor(Color.white.opacity(0.7))
-
+                            
                             HStack {
                                 ForEach(0 ..< Int(stars)) { i in
                                     Image(systemName: "star.fill")
@@ -64,7 +64,7 @@ struct InfoBookView: View {
                                         .foregroundColor(Color.corLaranja)
                                         .frame(width: UIScreen.main.bounds.width/28,height: UIScreen.main.bounds.height/50)
                                 }
-
+                                
                                 Text(String(stars))
                                     .font(Font.custom("Raleway", size: 18))
                                     .foregroundColor(Color.corPreta)
@@ -72,9 +72,9 @@ struct InfoBookView: View {
                         }.padding(.bottom)
                             .padding(.leading, UIScreen.main.bounds.width/2)
                     }
-
+                    
                     Spacer()
-
+                    
                     Text(item.volumeInfo.title)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .font(Font.custom("Raleway", size: 25).weight(.bold))
@@ -82,9 +82,9 @@ struct InfoBookView: View {
                         .font(Font.custom("RalewayBold", size: 25))
                         .padding(.horizontal)
                         .padding(.bottom)
-
+                    
                     Spacer()
-
+                    
                     VStack{
                         ContentCell(item: item, isExpanded: self.selectedCells.contains (item))
                             .onTapGesture {
@@ -96,57 +96,60 @@ struct InfoBookView: View {
                             }
                             .padding(.vertical,UIScreen.main.bounds.height/50)
                     }.padding(.vertical)
-
+                    
                     Spacer()
-
+                    
                     ZStack {
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                             .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.width/9.5)
                             .foregroundColor(Color.corFundo)
                         
-    
-                            HStack{
-                                
-                                Text("Page")
-                                    .font(Font.custom("Raleway", size: 15).weight(.semibold))
-                                    .foregroundColor(Color.corCinzaMaisEscuro)
-                                
-                                Spacer()
-                                
-                                TextField(countPage, text: $countPage)
-                                    .multilineTextAlignment(.trailing)
-                                    .foregroundColor(Color.corPreta)
-                                    .padding()
-                                    .onSubmit {
-//                                        item = DAO.shared.update(pageCount: countPage, of: item)
-                                        item.countPage = countPage
-                                        print("SUBMITOU")
-                                    }
-                                //                                .onSubmit {
-                                //                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
-                                //                                }
-                            }.padding(.horizontal, UIScreen.main.bounds.width/11)
-                            
-                        }
                         
-                    .padding(.vertical, UIScreen.main.bounds.height/25)
-                    
                         HStack{
-                            Text("Progress")
-                                .font(Font.custom("Raleway", size: 15).weight(.bold))
-                                .foregroundColor(Color.corPreta)
+                            
+                            Text("Page")
+                                .font(Font.custom("Raleway", size: 15).weight(.semibold))
+                                .foregroundColor(Color.corCinzaMaisEscuro)
                             
                             Spacer()
-                            Text(percentageText)
-                                .font(Font.custom("Raleway", size: 15).weight(.bold))
-                                .foregroundColor(Color.corPreta)
                             
+                            TextField(countPage, text: $countPage)
+                                .multilineTextAlignment(.trailing)
+                                .foregroundColor(Color.corPreta)
+                                .padding()
+                                .onSubmit {
+                                    //                                        item = DAO.shared.update(pageCount: countPage, of: item)
+                                    item.countPage = countPage
+                                    print("SUBMITOU")
+                                }
+                            //                                .onSubmit {
+                            //                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
+                            //                                }
                         }.padding(.horizontal, UIScreen.main.bounds.width/11)
                         
+                    }
+                    
+                    .padding(.vertical, UIScreen.main.bounds.height/25)
+                    
+                    HStack{
+                        Text("Progress")
+                            .font(Font.custom("Raleway", size: 15).weight(.bold))
+                            .foregroundColor(Color.corPreta)
+                        
+                        Spacer()
+                        Text(percentageText)
+                            .font(Font.custom("Raleway", size: 15).weight(.bold))
+                            .foregroundColor(Color.corPreta)
+                        
+                    }.padding(.horizontal, UIScreen.main.bounds.width/11)
+                    
+                    VStack{
+                        
                         ProgressBarView(progress: percentage)
-                       
-                       
- 
+                        
+                        TextEditorView()
+                    }
+                    
                     VStack{
                         Button{
                             deleteAlert.toggle()
@@ -157,7 +160,7 @@ struct InfoBookView: View {
                                 .scaledToFit()
                                 .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/16)
                                 .padding(.vertical, UIScreen.main.bounds.height/13)
-
+                            
                         }.buttonStyle(.plain)
                         Rectangle()
                             .foregroundColor(Color.corGelo)
@@ -166,10 +169,10 @@ struct InfoBookView: View {
                     }
                 }
             }
-
+            
         }
         .onAppear {
-            countPage = item.countPage ?? "0"
+            countPage = item.countPage ?? ""
         }
         .ignoresSafeArea()
         .overlay(alignment: .top){
@@ -179,18 +182,18 @@ struct InfoBookView: View {
                     .blur(radius: 4, opaque: false)
                     .frame(height: UIScreen.main.bounds.height/9)
             }.edgesIgnoringSafeArea(.all)
-
+            
             if deleteAlert {
                 DeleteAlertView(deleteAlert: $deleteAlert, selectedItem: item)
             }
-
+            
         }
         
         
         
         
     }
-
+    
 }
 
 

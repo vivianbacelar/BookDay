@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct GreenView: View {
     @Binding  var currentStep: Int
@@ -41,15 +42,33 @@ struct GreenView: View {
                     
                     Button {
                         self.currentStep += 1
+                        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                            if success {
+                                print("All set!")
+                            } else if let error = error{
+                                print(error.localizedDescription)
+                            }
+                        }
+                        let content = UNMutableNotificationContent()
+                        content.title = "BookDay"
+                        content.subtitle = "Time to read"
+                        content.sound = UNNotificationSound.default
+                        
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                        
+                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                        
+                        
+                        UNUserNotificationCenter.current().add(request)
                     } label: {
-                        Image("nextButton")
+                        Image("allowButton")
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width/4.5, height: UIScreen.main.bounds.height/25)
                         
                     }.buttonStyle(.plain)
                     
                 }.padding(.horizontal, UIScreen.main.bounds.width/10)
-                    .padding(.top, UIScreen.main.bounds.height/1.8)
+                .padding(.top, UIScreen.main.bounds.height/1.8)
 
             }
             
