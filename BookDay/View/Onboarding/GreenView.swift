@@ -37,27 +37,7 @@ struct GreenView: View {
                 }.padding(.horizontal, UIScreen.main.bounds.width/15)
                     .padding(.top, UIScreen.main.bounds.height/12)
                 
-                VStack {
-                    Button("Request Permission"){
-                        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                            if success {
-                                print("All set!")
-                            } else if let error = error{
-                                print(error.localizedDescription)
-                            }
-                        }
-                        let content = UNMutableNotificationContent()
-                        content.title = "BookDay"
-                        content.subtitle = "Time to read"
-                        content.sound = UNNotificationSound.default
-                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                        
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                        
-                        UNUserNotificationCenter.current().add(request)
-                    }
-                 
-                }
+              
                     
                 
                 HStack(alignment: .bottom){
