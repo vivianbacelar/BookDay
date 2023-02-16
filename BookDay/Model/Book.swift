@@ -34,7 +34,7 @@ class Item: Codable, Identifiable, Hashable {
     let selfLink: String
     let volumeInfo: VolumeInfo
     var countPage: String? = ""
-//    var savedText: [String] = []
+    var savedText: [String]? = []
     
     // let etag: String
     // let kind: Kind
@@ -47,7 +47,7 @@ class Item: Codable, Identifiable, Hashable {
         case selfLink = "selfLink"
         case volumeInfo = "volumeInfo"
         case countPage = "countPage"
-//        case savedText = "savedText"
+        case savedText = "savedText"
 
     }
     
@@ -55,9 +55,13 @@ class Item: Codable, Identifiable, Hashable {
         countPage = pageCount
     }
     
-//    func updateSave(textEditorText: String) {
-//        savedText.append(textEditorText)
-//    }
+    func updateSave(textEditorText: String) {
+        if let _ = savedText {
+            savedText?.append(textEditorText)
+        } else {
+            savedText = [textEditorText]
+        }
+    }
 }
 
 // MARK: - VolumeInfo

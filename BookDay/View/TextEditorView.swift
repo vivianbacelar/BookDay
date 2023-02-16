@@ -9,9 +9,9 @@ import SwiftUI
 
 struct TextEditorView: View {
     
-//    @State var item: Item
+    @Binding var item: Item
     @State var textEditorText: String = ""
-    @State var savedText: [String] = []
+   // @State var savedText: [String] = []
     
     var body: some View {
             ZStack{
@@ -30,17 +30,14 @@ struct TextEditorView: View {
                         .frame(height: UIScreen.main.bounds.height/5)
                         .colorMultiply(Color.corFundo)
                         .cornerRadius(15)
-//                        . onSubmit{
-//                            item.savedText = savedText
-//
-//                        }
+                        . onSubmit{
+                            didAdd(text: textEditorText)
+                            
+                        }
                     
                     Button {
-                        if textEditorText != ""{
-                            savedText.append(textEditorText)
-                            textEditorText = ""
-                            print("save")
-                        }
+                        didAdd(text: textEditorText)
+                        UIApplication.shared.endEditing()
                     } label: {
                         Text("Save")
                             .font(Font.custom("Raleway", size: 15).weight(.bold))
@@ -50,10 +47,10 @@ struct TextEditorView: View {
                             .background(Color.corRosa)
                             .cornerRadius(15)
                         
-                    }
+                    }.buttonStyle(.plain)
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack {
-                            ForEach (savedText, id: \.self){ saved in
+                            ForEach (item.savedText ?? [], id: \.self){ saved in
                                 Text(saved)
                                     .font(Font.custom("Raleway", size: 15).weight(.bold))
                                     .foregroundColor(Color.corPreta)
@@ -62,14 +59,22 @@ struct TextEditorView: View {
                                     .background(Color.corFundo)
                                     .cornerRadius(15)
                             }
-                            
                         }
                     }
-                    
                 }
                 Spacer()
             }
             .padding()
+    }
+    
+    func didAdd(text: String) {
+        
+        if text != "" {
+            textEditorText = ""
+            item.updateSave(textEditorText: text)
+            print(item.savedText)
+            print("save")
+        }
     }
 }
 

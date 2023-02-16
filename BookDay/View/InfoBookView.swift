@@ -147,7 +147,7 @@ struct InfoBookView: View {
                         
                         ProgressBarView(progress: percentage)
                         
-                        TextEditorView()
+                        TextEditorView(item: $item)
                     }
                     
                     VStack{
