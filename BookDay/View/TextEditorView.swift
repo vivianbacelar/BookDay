@@ -17,11 +17,13 @@ struct TextEditorView: View {
                 Color.corGelo
                     .ignoresSafeArea()
                 
-                VStack{
+                VStack (alignment: .leading){
                     Spacer()
                     Text("Tell us what you just read")
                         .font(Font.custom("Raleway", size: 15).weight(.bold))
+                        .multilineTextAlignment(.leading)
                         .foregroundColor(Color.corPreta)
+                        .padding(.horizontal, UIScreen.main.bounds.width/30)
                     
                     TextEditor(text: $textEditorText)
                         .frame(height: UIScreen.main.bounds.height/5)
@@ -29,6 +31,7 @@ struct TextEditorView: View {
                         .cornerRadius(15)
                     Button {
                         savedText.append(textEditorText)
+                        textEditorText = ""
                         print("save")
                     } label: {
                         Text("Save")

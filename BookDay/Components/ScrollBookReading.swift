@@ -66,6 +66,7 @@ struct ScrollBookReading: View {
                         }.buttonStyle(.plain)
                     }
                 }
+                    .padding(.horizontal, UIScreen.main.bounds.width/10)
                 .tag(index)
             }
                 VStack{
