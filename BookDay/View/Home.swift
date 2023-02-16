@@ -43,9 +43,9 @@ struct Home: View {
                 }
             }
         }.accentColor(Color.corPreta)
-        .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
-                OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
-            })
+//        .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
+//                OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
+//            })
        
         
         

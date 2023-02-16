@@ -13,7 +13,7 @@ struct Abandon: View {
     /// Lista que é mostrada de fato
     @State var livros: [Item] = []
     @State var count: Int = 0
-    @State var changePages = false
+    @State var abandonLogic = false
     @State var selectedItem: Item?
     
     var body: some View {
@@ -49,8 +49,8 @@ struct Abandon: View {
                 }
         }
             .overlay(content: {
-                if changePages {
-                    ChangePages(showChanges: $changePages, selectedItem: selectedItem)
+                if abandonLogic {
+                    AbandonLogic(showButtons: $abandonLogic, selectedItem: selectedItem)
                 }
             })
         
@@ -81,7 +81,7 @@ struct Abandon: View {
             LazyVGrid(columns: colums) {
                 ForEach(livros, id: \.id) { item in
                     Button {
-                        changePages.toggle()
+                        abandonLogic.toggle()
                         selectedItem = item
                     } label: {
                         AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in

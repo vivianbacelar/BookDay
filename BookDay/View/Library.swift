@@ -36,6 +36,7 @@ struct Library: View {
     @State var count: Int = 0
     @State var changePages = false
     @State var selectedItem: Item?
+   
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "cinzaClaro")
@@ -169,18 +170,36 @@ struct Library: View {
     var shelfNumber: Int {
         return max(3, Int((livros.count + 2) / 3))
     }
-    
+    @Environment(\.colorScheme) var colorScheme
     var shelfBooks: some View {
         
         VStack {
-            ForEach((1...shelfNumber), id:\.self) { _ in
-                Rectangle()
-                    .fill(.clear)
-                    .frame(width: UIScreen.main.bounds.width/1.3, height: UIScreen.main.bounds.height/6)
+            
+            if livros.count == 0 {
+                if colorScheme == .light {
+                    Image("libraryEmpty")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                        .padding(.vertical, UIScreen.main.bounds.height/18)
+                } else {
+                    Image("libraryEmpty")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                        .padding(.vertical, UIScreen.main.bounds.height/18)
+                        .colorInvert()
+                }
+            } else {
+                ForEach((1...shelfNumber), id:\.self) { _ in
+                    Rectangle()
+                        .fill(.clear)
+                        .frame(width: UIScreen.main.bounds.width/1.3, height: UIScreen.main.bounds.height/6)
+                    
+                    Rectangle()
+                        .fill(Color.corCinzaClaro)
+                        .frame(width: UIScreen.main.bounds.width/1.3, height: UIScreen.main.bounds.height/99)
+        
+                }
                 
-                Rectangle()
-                    .fill(Color.corCinzaClaro)
-                    .frame(width: UIScreen.main.bounds.width/1.3, height: UIScreen.main.bounds.height/99)
             }
         }
         

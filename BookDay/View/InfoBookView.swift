@@ -75,14 +75,14 @@ struct InfoBookView: View {
                             .padding(.leading, UIScreen.main.bounds.width/2)
                     }
 
-                    Spacer()
+//                    Spacer()
 
                     Text(item.volumeInfo.title)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        .font(Font.custom("Raleway", size: 25).weight(.bold))
+                        .font(Font.custom("Raleway", size: 21).weight(.bold))
                         .foregroundColor(Color.corPreta)
-                        .font(Font.custom("RalewayBold", size: 25))
-                        .padding(.horizontal)
+//                        .padding(.horizontal)
+                        .padding(.horizontal, UIScreen.main.bounds.width/18)
                         .padding(.bottom)
 
                     Spacer()
@@ -96,10 +96,10 @@ struct InfoBookView: View {
                                     self.selectedCells.insert (item)
                                 }
                             }
-                            .padding(.vertical,UIScreen.main.bounds.height/50)
-                    }.padding(.vertical)
+                         }   .padding(.vertical,UIScreen.main.bounds.height/100)
+//                    .padding(.vertical)
 
-                    Spacer()
+//                    Spacer()
 
                     ZStack {
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
@@ -146,21 +146,21 @@ struct InfoBookView: View {
                        
  
                     VStack{
-                        HStack{
+                        HStack {
                             
-                            Button{
+                            Button {
                                 finishedBook.toggle()
                                 print("finished")
-//                                DAO.shared.change(selectedItem, from: .reading, to: .read)
                             }label:{
                                 Image("finishedBook")
-//                                    .resizable()
-//                                    .scaledToFit()
                                     .resizable()
-                                    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
+                                    .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.height/20)
                                     .padding(.vertical, UIScreen.main.bounds.height/13)
+                                    
 
                             }.buttonStyle(.plain)
+                                .padding(.horizontal, UIScreen.main.bounds.width/11)
+                            
                             
                             Button{
                                 deleteAlert.toggle()
@@ -168,11 +168,12 @@ struct InfoBookView: View {
                             }label:{
                                 Image("abandButton")
                                     .resizable()
-                                    .scaledToFit()
-                                    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/16)
+                                    .frame(width: UIScreen.main.bounds.width/7, height: UIScreen.main.bounds.height/16)
                                     .padding(.vertical, UIScreen.main.bounds.height/13)
-                                
+//
+
                             }.buttonStyle(.plain)
+                                .padding(.trailing, UIScreen.main.bounds.width/10)
                             
                         }
                         Rectangle()
