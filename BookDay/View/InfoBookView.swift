@@ -126,27 +126,7 @@ struct InfoBookView: View {
                             
                         }
                         
-                        HStack{
-                            
-                            Text("Page")
-                                .font(Font.custom("Raleway", size: 15).weight(.semibold))
-                                .foregroundColor(Color.corCinzaMaisEscuro)
-                            
-                            Spacer()
-                            
-                            TextField(countPage, text: $countPage)
-                                .multilineTextAlignment(.trailing)
-                                .foregroundColor(Color.corPreta)
-                                .padding()
-                                .onSubmit {
-                                    //                                        item = DAO.shared.update(pageCount: countPage, of: item)
-                                    item.countPage = countPage
-                                    print("SUBMITOU")
-                                }
-                            //                                .onSubmit {
-                            //                                    UserDefaults.standard.set(countPage, forKey: UserDefaultsKeys.countPage.rawValue)
-                            //                                }
-                        }.padding(.horizontal, UIScreen.main.bounds.width/11)
+                  
                         
                     }
                     
@@ -208,8 +188,7 @@ struct InfoBookView: View {
                     }
                 }
             }
-            
-        }
+           
         .onAppear {
             countPage = item.countPage ?? ""
         }
