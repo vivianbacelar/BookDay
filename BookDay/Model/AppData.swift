@@ -16,6 +16,8 @@ class AppData: Codable {
     private var wantRead : [Item] = []
     private var reading : [Item] = []
     private var read : [Item] = []
+    
+    
 
 
     func saveData() {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TextEditorView: View {
     
+//    @State var item: Item 
     @State var textEditorText: String = ""
     @State var savedText: [String] = []
     
@@ -65,8 +66,8 @@ struct TextEditorView: View {
     }
 }
 
-struct TextEditorView_Previews: PreviewProvider {
-    static var previews: some View {
-        TextEditorView()
-    }
-}
+//struct TextEditorView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TextEditorView()
+//    }
+//}

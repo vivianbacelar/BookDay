@@ -26,6 +26,7 @@ class DAO: ObservableObject {
     var readList: [Item] = []
     var abandonList: [Item] = []
     
+    
     func save() {
         appData.saveData()
     }
