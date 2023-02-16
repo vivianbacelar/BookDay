@@ -48,6 +48,12 @@ struct BlueView: View {
                     .padding(.top, UIScreen.main.bounds.height/4)
                     .padding(.bottom,UIScreen.main.bounds.height/35)
             }
+            .background{
+                Image("imageAzul")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .padding(.trailing, UIScreen.main.bounds.width/300)
+            }
         }
     }
 }

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct Home: View {
     
-//    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true   -> nao aparece de novo mas para estar tirei
-    @State var shouldShowOnboarding: Bool = true
+    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     @State private var showingLibrary = false
     @State var percent: CGFloat = 0
     @State var numberPage: CGFloat = 0

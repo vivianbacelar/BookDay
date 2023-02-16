@@ -35,7 +35,16 @@ struct IceView: View {
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width/3.5, height: UIScreen.main.bounds.height/22)
                 }.buttonStyle(.plain)
+                
             }
+            .background{
+                Image("imageBookDay")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .padding(.bottom, UIScreen.main.bounds.height/35)
+                    .padding(.trailing, UIScreen.main.bounds.width/400)
+            }
+            
         }
     }
 }

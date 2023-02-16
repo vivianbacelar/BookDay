@@ -35,6 +35,7 @@ class Item: Codable, Identifiable, Hashable {
     let volumeInfo: VolumeInfo
     var countPage: String? = ""
 //    var savedText: [String] = []
+    
     // let etag: String
     // let kind: Kind
     //let saleInfo: SaleInfo

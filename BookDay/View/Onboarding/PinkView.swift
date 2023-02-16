@@ -59,6 +59,12 @@ struct PinkView: View {
                     .padding(.top, UIScreen.main.bounds.height/1.8)
 
             }
+            .background{
+                Image("imageRosa")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .padding(.trailing, UIScreen.main.bounds.width/10)
+            }
         }
     }
 }

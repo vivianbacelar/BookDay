@@ -53,6 +53,12 @@ struct YellowView: View {
                         .padding(.top, UIScreen.main.bounds.height/1.7)
 
                 }
+                .background{
+                    Image("imageAmarela")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        .padding(.trailing, UIScreen.main.bounds.width/300)
+                }
                 
         }
     }

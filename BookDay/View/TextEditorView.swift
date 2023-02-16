@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TextEditorView: View {
     
-//    @State var item: Item 
+//    @State var item: Item
     @State var textEditorText: String = ""
     @State var savedText: [String] = []
     
@@ -30,10 +30,17 @@ struct TextEditorView: View {
                         .frame(height: UIScreen.main.bounds.height/5)
                         .colorMultiply(Color.corFundo)
                         .cornerRadius(15)
+//                        . onSubmit{
+//                            item.savedText = savedText
+//
+//                        }
+                    
                     Button {
-                        savedText.append(textEditorText)
-                        textEditorText = ""
-                        print("save")
+                        if textEditorText != ""{
+                            savedText.append(textEditorText)
+                            textEditorText = ""
+                            print("save")
+                        }
                     } label: {
                         Text("Save")
                             .font(Font.custom("Raleway", size: 15).weight(.bold))
