@@ -10,6 +10,7 @@ import SwiftUI
 
 struct IceView: View {
     @Binding  var currentStep: Int
+    @Environment (\.colorScheme) var colorScheme
 
     var body: some View{
         ZStack{
@@ -38,11 +39,20 @@ struct IceView: View {
                 
             }
             .background{
-                Image("imageBookDay")
-                    .resizable()
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                    .padding(.bottom, UIScreen.main.bounds.height/35)
-                    .padding(.trailing, UIScreen.main.bounds.width/400)
+                if colorScheme == .light{
+                    Image("imageBookDay")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        .padding(.bottom, UIScreen.main.bounds.height/35)
+                        .padding(.trailing, UIScreen.main.bounds.width/400)
+                }else{
+                    Image("imageBookDay")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        .padding(.bottom, UIScreen.main.bounds.height/35)
+                        .padding(.trailing, UIScreen.main.bounds.width/400)
+                        .colorInvert()
+                }
             }
             
         }

@@ -21,6 +21,7 @@ struct PurpleView: View {
                         Text("To start off, let's learn about your reading schedule.")
                             .font(Font.custom("Raleway", size: 24).weight(.semibold))
                             .multilineTextAlignment(.leading)
+                            .foregroundColor(Color.corPreto)
                         Image("dots2")
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.height/120)
@@ -42,7 +43,7 @@ struct PurpleView: View {
                         Text("Skip")
                             .font(Font.custom("Raleway", size: 15).weight(.medium))
                             .multilineTextAlignment(.leading)
-                            .foregroundColor(Color.corOn)
+                            .foregroundColor(Color.corPreto)
                     }.buttonStyle(.plain)
                     
                     Spacer()

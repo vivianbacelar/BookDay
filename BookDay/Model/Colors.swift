@@ -9,20 +9,22 @@ import Foundation
 import SwiftUI
 
 extension Color{
-    static let corRosa = Color("rosa")
-    static let corGelo = Color("gelo")
-    static let corCinza = Color("cinza")
-    static let corCinzaEscuro = Color("cinzaEscuro")
-    static let corCinzaMaisEscuro = Color("cinzaMaisEscuro")
-    static let corCinzaClaro = Color("cinzaClaro")
-    static let corCinza3 = Color("cinza3")
-    static let corPreta = Color("preto")
-    static let corLaranja = Color("laranja")
-    static let corFundo = Color("fundo")
-    static let corRoxo = Color("roxo")
-    static let corAzul = Color("azul")
-    static let corVerde = Color("verde")
-    static let corAmarela = Color("amarelo")
-    static let corOn = Color("preta")
+    static let corRosa = Color("corrosa")
+    static let corGelo = Color("corgelo")
+    static let corCinza = Color("corcinza")
+    static let corCinzaEscuro = Color("corcinzaEscuro")
+    static let corCinzaMaisEscuro = Color("corcinzaMaisEscuro")
+    static let corCinzaClaro = Color("corcinzaClaro")
+    static let corCinza3 = Color("corcinza3")
+    static let corPreta = Color("corpreto")
+    static let corLaranja = Color("corlaranja")
+    static let corFundo = Color("corfundo")
+    static let corRoxo = Color("corroxo")
+    static let corAzul = Color("corazul")
+    static let corVerde = Color("corverde")
+    static let corAmarela = Color("coramarelo")
+    static let corOn = Color("coron")
+    static let corPreto = Color("corpreta")
+    
     
 }

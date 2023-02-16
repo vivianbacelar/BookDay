@@ -54,18 +54,18 @@ struct MainView: View {
         }.onAppear() {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor(named: "gelo")
+            appearance.backgroundColor = UIColor(named: "corgelo")
             appearance.shadowColor = nil
             appearance.stackedItemPositioning = .centered
             appearance.stackedItemSpacing = 0
             appearance.selectionIndicatorTintColor = .red
-            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "cinzaMaisEscuro")
+            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "corcinzaMaisEscuro")
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor(named: "cinzaMaisEscuro")!
+                NSAttributedString.Key.foregroundColor: UIColor(named: "corcinzaMaisEscuro")!
             ]
-            appearance.stackedLayoutAppearance.normal.iconColor = UIColor(named: "cinza")
+            appearance.stackedLayoutAppearance.normal.iconColor = UIColor(named: "corcinza")
             appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor(named: "cinza")!
+                NSAttributedString.Key.foregroundColor: UIColor(named: "corcinza")!
             ]
             UITabBar.appearance().scrollEdgeAppearance = appearance
             UITabBar.appearance().standardAppearance = appearance

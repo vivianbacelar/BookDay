@@ -21,7 +21,7 @@ struct BlueView: View {
                     Text("Inform the time you usually read")
                         .font(Font.custom("Raleway", size: 24).weight(.semibold))
                         .multilineTextAlignment(.leading)
-                    
+                        .foregroundColor(Color.corPreto)
                     Image("testeHora")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width/5, height: UIScreen.main.bounds.height/25)

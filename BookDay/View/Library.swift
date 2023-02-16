@@ -42,12 +42,12 @@ struct Library: View {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [
                 .font: UIFont(name: "Raleway", size: 18)!.regular,
-                .foregroundColor: UIColor(named: "preto")!
+                .foregroundColor: UIColor(named: "corpreto")!
             ], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes(
             [
                 .font: UIFont(name: "Raleway", size: 18)!.regular,
-                .foregroundColor: UIColor(named: "cinzaMaisEscuro")!
+                .foregroundColor: UIColor(named: "corcinzaMaisEscuro")!
             ], for: .normal)
         
     }

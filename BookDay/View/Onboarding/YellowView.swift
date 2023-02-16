@@ -24,6 +24,7 @@ struct YellowView: View {
                             Text("To start your journey add a new book...")
                                 .font(Font.custom("Raleway", size: 24).weight(.semibold))
                                 .multilineTextAlignment(.leading)
+                                .foregroundColor(Color.corPreto)
                             Image("dots5")
                                 .resizable()
                                 .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.height/120)
@@ -40,7 +41,26 @@ struct YellowView: View {
                     
                     HStack(alignment: .bottom){
                         Spacer()
-                        Button {
+                        Button {self.currentStep += 1
+                            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                                if success {
+                                    print("All set!")
+                                } else if let error = error{
+                                    print(error.localizedDescription)
+                                }
+                            }
+                            let content = UNMutableNotificationContent()
+                            content.title = "BookDay"
+                            content.subtitle = "Time to read"
+                            content.sound = UNNotificationSound.default
+                            
+                            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                            
+                            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                            
+                            
+                            UNUserNotificationCenter.current().add(request)
+                            
                             shouldShowOnboarding.toggle()
                         } label: {
                             Image("letsGoButton")
@@ -59,6 +79,7 @@ struct YellowView: View {
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                         .padding(.trailing, UIScreen.main.bounds.width/300)
                 }
+           
                 
         }
     }
