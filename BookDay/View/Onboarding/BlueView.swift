@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BlueView: View {
     @Binding  var currentStep: Int
+    @State private var currentDate = Date()
     
     var body: some View{
         ZStack{
@@ -17,7 +18,7 @@ struct BlueView: View {
            
             VStack{
                 Spacer()
-                VStack(alignment: .center){
+                VStack(alignment: .center) {
                     Text("Inform the time you usually read")
                         .font(Font.custom("Raleway", size: 24).weight(.semibold))
                         .multilineTextAlignment(.leading)
@@ -25,6 +26,8 @@ struct BlueView: View {
                     Image("testeHora")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width/5, height: UIScreen.main.bounds.height/25)
+                    //                        DatePicker ( "", selection: $currentDate, displayedComponents: .hourAndMinute)
+                    //                            .frame(width: UIScreen.main.bounds.width/5, height: UIScreen.main.bounds.height/25)
                     
                     Image("dots3")
                         .resizable()

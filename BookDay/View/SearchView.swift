@@ -15,6 +15,7 @@ struct SearchView: View {
     private let userDefaults = UserDefaults.standard
     @State var isPlaying : Bool = false
 
+    @Environment(\.colorScheme) var colorScheme
     var items: [Item] {
         filteredItems.isEmpty ? networkModel.items: filteredItems
     }
@@ -32,12 +33,19 @@ struct SearchView: View {
                             VStack{
                                 Spacer()
 
-                                Text("So sorry, your book is not here 😭")
-                                    .font(Font.custom("Raleway", size: 18))
-                                    .foregroundColor(Color.corPreta)
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    .padding(.vertical,  UIScreen.main.bounds.height/3)
-
+                                if colorScheme == .light {
+                                    Image("notFind")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                                        .padding(.vertical, UIScreen.main.bounds.height/18)
+                                } else {
+                                    Image("notFind")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                                        .padding(.vertical, UIScreen.main.bounds.height/18)
+                                        .colorInvert()
+                                    
+                                }
                             }
                         } else {
                             ForEach(items) { item in

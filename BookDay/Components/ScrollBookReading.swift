@@ -17,7 +17,6 @@ struct ScrollBookReading: View {
     UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
     
     
-    
     var body: some View {
       
             TabView(selection: $ItemIndex){
@@ -74,8 +73,8 @@ struct ScrollBookReading: View {
                     Text("Add new book")
                         .font(Font.custom("Raleway", size: 20).weight(.regular))
                         .foregroundColor(Color.corPreta)
-                       
-                        .padding(.top, UIScreen.main.bounds.height/50)
+                        .padding(.bottom, UIScreen.main.bounds.height/20)
+                      
                     
                     Button {
                         print("add")
@@ -87,7 +86,7 @@ struct ScrollBookReading: View {
                     }.buttonStyle(.plain)
                     
                     .tag(livros.count)
-                }
+                } .padding(.top, UIScreen.main.bounds.height/30)
 
         }
         .animation(.easeInOut, value: ItemIndex)
@@ -99,8 +98,6 @@ struct ScrollBookReading: View {
             // depois explicar pro pg
             livros = DAO.shared.readingList
             dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corRosa)
-//            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
-//            dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corCinza)
         }
     }
     func addPage() {
