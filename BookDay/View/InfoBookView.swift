@@ -138,9 +138,16 @@ struct InfoBookView: View {
                             .foregroundColor(Color.corPreta)
                         
                         Spacer()
-                        Text(percentageText)
-                            .font(Font.custom("Raleway", size: 15).weight(.bold))
-                            .foregroundColor(Color.corPreta)
+                        if percentage <= 100{
+                            Text(percentageText)
+                                .font(Font.custom("Raleway", size: 15).weight(.bold))
+                                .foregroundColor(Color.corPreta)
+                        }else{
+                            Text("100%")
+                                .font(Font.custom("Raleway", size: 15).weight(.bold))
+                                .foregroundColor(Color.corPreta)
+                        }
+                        
                         
                     }.padding(.horizontal, UIScreen.main.bounds.width/11)
                     

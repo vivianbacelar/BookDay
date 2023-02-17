@@ -24,7 +24,7 @@ class NetworkModel: ObservableObject{
         var searching: String = ""
         var count = 0
         while count < search.count {
-            if String(search[count]) == " " {
+            if String(search[count]) == " " || String(search[count]) == "'" {
                 searching += "+"
             }
             else {
