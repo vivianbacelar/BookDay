@@ -29,6 +29,7 @@ struct ChangePages: View {
                                     print("Reading")
                                     showChanges = false
                                     DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .reading)
+                                    DAO.shared.change(item: selectedItem!, from: .read, to: .reading)
                                 }label:{
                                     Image("moveReading")
                                         .resizable()
@@ -41,6 +42,7 @@ struct ChangePages: View {
                                     print("moveRead")
                                     showChanges = false
                                     DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .read)
+                                    DAO.shared.change(item: selectedItem!, from: .read, to: .read)
                                 }label:{
                                     Image("moveRead")
                                         .resizable()
@@ -51,7 +53,7 @@ struct ChangePages: View {
                                 Button{
                                     showChanges = false
                                     DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .abandon)
-                                    DAO.shared.change(item: selectedItem!, from: .read, to: .read)
+                                    DAO.shared.change(item: selectedItem!, from: .read, to: .abandon)
                                 }label:{
                                     Image("moveAbandon")
                                         .resizable()

@@ -49,16 +49,16 @@ struct MainView: View {
                          Label("Search", image: selectionVM.selection == 3 ? "searchtouch" : "search")
                      }
                      .tag(3)
-                 
              
-        }.onAppear() {
+         }
+         .onAppear() {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor(named: "corgelo")
-            appearance.shadowColor = nil
+             appearance.shadowColor = .clear
             appearance.stackedItemPositioning = .centered
             appearance.stackedItemSpacing = 0
-            appearance.selectionIndicatorTintColor = .red
+             appearance.selectionIndicatorTintColor = .black
             appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "corcinzaMaisEscuro")
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
                 NSAttributedString.Key.foregroundColor: UIColor(named: "corcinzaMaisEscuro")!
@@ -69,15 +69,16 @@ struct MainView: View {
             ]
             UITabBar.appearance().scrollEdgeAppearance = appearance
             UITabBar.appearance().standardAppearance = appearance
+        
             
             let appearenceNavBar = UINavigationBarAppearance()
             appearenceNavBar.configureWithTransparentBackground()
             appearenceNavBar.backgroundImage = UIImage().withTintColor(.blue)
-            appearenceNavBar.backgroundColor = UIColor(Color.corGelo).withAlphaComponent(0.5)
+            appearenceNavBar.backgroundColor = UIColor(Color.corCinzaEscuro).withAlphaComponent(0.5)
             appearenceNavBar.shadowColor = nil
             UINavigationBar.appearance().standardAppearance = appearenceNavBar
             UINavigationBar.appearance().scrollEdgeAppearance = appearenceNavBar
-            UINavigationBar.appearance().isTranslucent = true
+            UINavigationBar.appearance().isTranslucent = false
             
             }
          

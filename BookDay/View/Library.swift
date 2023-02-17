@@ -178,12 +178,12 @@ struct Library: View {
             
             if livros.count == 0 {
                 if colorScheme == .light {
-                    Image("libraryEmpty")
+                    Image("libraryEmpty2")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
                         .padding(.vertical, UIScreen.main.bounds.height/18)
                 } else {
-                    Image("libraryEmpty")
+                    Image("libraryEmpty2")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
                         .padding(.vertical, UIScreen.main.bounds.height/18)
