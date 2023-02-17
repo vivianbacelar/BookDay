@@ -32,7 +32,7 @@ struct Abandon: View {
                         shelfBooks
                         collectionBooks
                     }
-                }
+                }.padding(.horizontal, UIScreen.main.bounds.width/1.2)
             }  .padding(.top, UIScreen.main.bounds.height/110)
             
                 .overlay(alignment: .topTrailing){
