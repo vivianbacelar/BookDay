@@ -102,10 +102,11 @@ struct SearchView: View {
                                         .frame(maxHeight: .infinity)
                                     }
                                     .padding(.horizontal, UIScreen.main.bounds.width/15)
+                                    .padding(.vertical,UIScreen.main.bounds.height/43)
                                     RoundedRectangle(cornerRadius: 15)
                                         .foregroundColor(Color.corCinzaClaro)
                                         .frame(height:UIScreen.main.bounds.height/900)
-                                        .padding(.horizontal, UIScreen.main.bounds.width/30)
+                                        .padding(.horizontal, UIScreen.main.bounds.width/14)
                                 }
                             }
                         }

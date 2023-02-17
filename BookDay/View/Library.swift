@@ -90,7 +90,7 @@ struct Library: View {
                             shelfBooks
                             collectionBooks
                         }
-                    }
+                    }.padding(.horizontal, UIScreen.main.bounds.width/1.2)
                     
                 }
                 .overlay{

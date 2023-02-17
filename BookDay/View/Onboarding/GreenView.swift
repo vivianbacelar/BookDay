@@ -20,7 +20,7 @@ struct GreenView: View {
             VStack{
                 HStack{
                     VStack(alignment: .leading){
-                        Text("Enable the notification for us to help you keep up with your schedule. Just click on the image!")
+                        Text("Enable the notification for us to help you keep up with your schedule.")
                             .font(Font.custom("Raleway", size: 24).weight(.semibold))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(Color.corPreto)
