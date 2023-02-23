@@ -14,7 +14,7 @@ struct SearchView: View {
     @State var selectedItem: Item?
     private let userDefaults = UserDefaults.standard
     @State var isPlaying : Bool = false
-
+    
     @Environment(\.colorScheme) var colorScheme
     var items: [Item] {
         filteredItems.isEmpty ? networkModel.items: filteredItems
@@ -49,132 +49,132 @@ struct SearchView: View {
                                 }
                             }
                         }
+                        
+                        
+                        if items.isEmpty && !networkModel.searchEmpty {
                             
-                            
-                            if items.isEmpty && !networkModel.searchEmpty {
+                            VStack{
+                                Spacer()
                                 
-                                VStack{
-                                    Spacer()
+                                if colorScheme == .light {
+                                    Image("notFind2")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/2)
+                                        .padding(.vertical, UIScreen.main.bounds.height/15)
+                                } else {
+                                    Image("notFind2")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/2)
+                                        .padding(.vertical, UIScreen.main.bounds.height/15)
+                                        .colorInvert()
                                     
-                                    if colorScheme == .light {
-                                        Image("notFind2")
-                                            .resizable()
-                                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/2)
-                                            .padding(.vertical, UIScreen.main.bounds.height/15)
-                                    } else {
-                                        Image("notFind2")
-                                            .resizable()
-                                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/2)
-                                            .padding(.vertical, UIScreen.main.bounds.height/15)
-                                            .colorInvert()
-                                        
-                                    }
                                 }
-                            } else {
-                                ForEach(items) { item in
+                            }
+                        } else {
+                            ForEach(items) { item in
+                                
+                                VStack {
                                     
-                                    VStack {
-                                        
-                                        HStack {
-                                            AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
-                                                image
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
-                                            } placeholder: {
-                                                Image("PlaceHolder")
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
-                                            }
-                                            .padding(.trailing, UIScreen.main.bounds.width/25)
-                                            VStack(spacing: 5) {
-                                                Text(item.volumeInfo.title)
-                                                    .font(Font.custom("Raleway", size: 18))
-                                                    .foregroundColor(Color.corPreta)
-                                                    .multilineTextAlignment(.leading)
-                                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                                
-                                                Text(item.volumeInfo.authors?.first ?? "")
-                                                    .font(Font.custom("Raleway", size: 13).weight(.thin))
-                                                    .foregroundColor(Color.corPreta)
-                                                    .multilineTextAlignment(.leading)
-                                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                                    .padding(.top,UIScreen.main.bounds.height/150)
-                                                
+                                    HStack {
+                                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
+                                        } placeholder: {
+                                            Image("PlaceHolder")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
+                                        }
+                                        .padding(.trailing, UIScreen.main.bounds.width/25)
+                                        VStack(spacing: 5) {
+                                            Text(item.volumeInfo.title)
+                                                .font(Font.custom("Raleway", size: 18))
+                                                .foregroundColor(Color.corPreta)
+                                                .multilineTextAlignment(.leading)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                            
+                                            Text(item.volumeInfo.authors?.first ?? "")
+                                                .font(Font.custom("Raleway", size: 13).weight(.thin))
+                                                .foregroundColor(Color.corPreta)
+                                                .multilineTextAlignment(.leading)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .padding(.top,UIScreen.main.bounds.height/150)
+                                            
+                                            Spacer()
+                                            
+                                            HStack {
                                                 Spacer()
-                                                
-                                                HStack {
-                                                    Spacer()
-                                                    Button (action:{
-                                                        customAlert.toggle()
-                                                        selectedItem = item
-                                                        //                                                        self.isPlaying.toggle()
-                                                    }) {
-                                                        Image("addButton")
-                                                        //                                                    Image(self.isPlaying == true ? "addedButton" : "addButton")
-                                                            .resizable()
-                                                            .scaledToFit()
-                                                            .frame(width: UIScreen.main.bounds.width/13)
-                                                            .foregroundColor(Color.corLaranja)
-                                                    }
-                                                    .buttonStyle(.plain)
+                                                Button (action:{
+                                                    customAlert.toggle()
+                                                    selectedItem = item
+                                                    //                                                        self.isPlaying.toggle()
+                                                }) {
+                                                    Image("addButton")
+                                                    //                                                    Image(self.isPlaying == true ? "addedButton" : "addButton")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: UIScreen.main.bounds.width/13)
+                                                        .foregroundColor(Color.corLaranja)
                                                 }
-                                                .padding(.top)
+                                                .buttonStyle(.plain)
                                             }
-                                            .frame(maxHeight: .infinity)
+                                            .padding(.top)
                                         }
                                         .frame(maxHeight: .infinity)
                                     }
-                                    .padding(.horizontal, UIScreen.main.bounds.width/15)
-                                    .padding(.vertical,UIScreen.main.bounds.height/43)
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .foregroundColor(Color.corCinzaClaro)
-                                        .frame(height:UIScreen.main.bounds.height/900)
-                                        .padding(.horizontal, UIScreen.main.bounds.width/14)
+                                    .frame(maxHeight: .infinity)
                                 }
+                                .padding(.horizontal, UIScreen.main.bounds.width/15)
+                                .padding(.vertical,UIScreen.main.bounds.height/43)
+                                RoundedRectangle(cornerRadius: 15)
+                                    .foregroundColor(Color.corCinzaClaro)
+                                    .frame(height:UIScreen.main.bounds.height/900)
+                                    .padding(.horizontal, UIScreen.main.bounds.width/14)
                             }
                         }
                     }
-                    .navigationBarTitleDisplayMode(.inline)
-                    .searchable(text: $networkModel.search, placement: .navigationBarDrawer(displayMode: .always))
-                    .padding(.vertical)
-
-                    .onSubmit(of: .search) {
-                        Task {
-                            do {
-                                try await networkModel.fetchBooks()
-                            } catch {
-                                print(error)
-                            }
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .searchable(text: $networkModel.search, placement: .navigationBarDrawer(displayMode: .always))
+                .padding(.vertical)
+                
+                .onSubmit(of: .search) {
+                    Task {
+                        do {
+                            try await networkModel.fetchBooks()
+                        } catch {
+                            print(error)
                         }
                     }
-                    .onChange(of: networkModel.search, perform: performSearch)
+                }
+                .onChange(of: networkModel.search, perform: performSearch)
+                
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        
+                        Text("BookDay")
+                            .font(Font.custom("BelyDisplay-Regular", size: 23))
+                            .foregroundColor(Color.corPreta)
+                        
+                    }
+                }.frame(maxWidth: .infinity)
+                    .background(Color.corGelo)
+                    .toolbarBackground( Color.corGelo, for: .navigationBar)
+                    .toolbarBackground(.visible, for: .navigationBar)
                 
             }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    
-                    Text("BookDay")
-                        .font(Font.custom("BelyDisplay-Regular", size: 23))
-                        .foregroundColor(Color.corPreta)
-                    
-                }
-            }.frame(maxWidth: .infinity)
-                .background(Color.corGelo)
-                .toolbarBackground( Color.corGelo, for: .navigationBar)
-                .toolbarBackground(.visible, for: .navigationBar)
-
-                }
-                .edgesIgnoringSafeArea(.all)
-                
-            } .accentColor(Color.corPreta)
-                .overlay(content: {
-                    if customAlert {
-                        CustomAlertView(show: $customAlert, selectedItem: selectedItem)
-                    }
-                })
+            .edgesIgnoringSafeArea(.all)
+            
         }
+        .accentColor(Color.corPreta)
+        .overlay(content: {
+            if customAlert {
+                CustomAlertView(show: $customAlert, selectedItem: selectedItem)
+            }
+        })
+    }
     private func performSearch (keyWord: String) {
         filteredItems = networkModel.items.filter{ item in
             item.volumeInfo.title.contains(keyWord)
