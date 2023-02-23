@@ -10,49 +10,67 @@ import UserNotifications
 
 struct Notifications: View {
     
-    @State private var date = Date()
-    let dateRange: ClosedRange<Date> = {
-        let calendar = Calendar.current
-        let endComponents = DateComponents(hour: 23, minute: 59, second: 59)
-        return calendar.date(from:endComponents)!
-        ...
-        calendar.date(from:endComponents)!
-    }()
+    @State var alarm: AlarmModel = AlarmModel()
     
     var body: some View {
-        VStack {
-            Button("Request Permission"){
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                    if success {
-                        print("All set!")
-                    } else if let error = error{
-                        print(error.localizedDescription)
-                    }
+        
+        HStack {
+            DatePicker("", selection: $alarm.time, displayedComponents: .hourAndMinute)
+                .labelsHidden()
+                .onChange(of: alarm.time) { newValue in
+                   
                 }
-            }
+            Spacer()
             
-            DatePicker ("Horário da Notificação", selection: $date, in: dateRange, displayedComponents: [.hourAndMinute])
+            Toggle(alarm.enabled ? "" : "", isOn: $alarm.enabled)
+                .onChange(of: alarm.enabled, perform: { enabled in
+                    print("troca")
+                    enabled ? setAlarm() : cancelAlarm()
+                })
+                .tint(Color("yellow"))
+                .padding()
             
-            Button("Schedule Notification"){
-            
-                let content = UNMutableNotificationContent()
-                content.title = "BookDay"
-                content.subtitle = "Time to read"
-                content.sound = UNNotificationSound.default
-                
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                
-                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                
-                
-                UNUserNotificationCenter.current().add(request)
-            }
+        } .onAppear {
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+            print(granted)
         }
     }
 }
+    
+    func setAlarm() {
+        print("notificação")
+        let content = UNMutableNotificationContent()
+        content.title = "BookDay"
+        content.body = "Everyday a new page"
+        content.sound = UNNotificationSound.default
 
-struct Notifications_Previews: PreviewProvider {
-    static var previews: some View {
-        Notifications()
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute], from: alarm.time), repeats: true)
+        
+        let request = UNNotificationRequest(identifier: alarm.id.uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request)
+        { error in
+            if error != nil {
+                print("Error setting alarm: \(error!)")
+            } else {
+                print(request)
+                print(Date.now)
+            }
+        }
+    }
+    
+    func cancelAlarm() {
+        print("Cancelou alarme!")
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [alarm.id.uuidString])
     }
 }
+   
+
+//struct Notifications_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Notifications()
+//    }
+//}

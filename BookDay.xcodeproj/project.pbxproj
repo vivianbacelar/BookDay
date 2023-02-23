@@ -46,9 +46,10 @@
 		A15BD0252991A9E6009AEC1A /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BD0242991A9E6009AEC1A /* AppData.swift */; };
 		A164B176299EB07200959B2E /* AbandonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A164B175299EB07200959B2E /* AbandonLogic.swift */; };
 		A165ACC1299C0FB20063C576 /* HideTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165ACC0299C0FB20063C576 /* HideTabBar.swift */; };
-		A165ACC3299C1A4F0063C576 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165ACC2299C1A4F0063C576 /* NotificationsView.swift */; };
-		A185140E2995735D00B673FB /* AbandonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A185140D2995735D00B673FB /* AbandonView.swift */; };
-		A1FDA291298DB6AD001130FD /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EF02989D11E000FC836 /* LibraryView.swift */; };
+		A165ACC3299C1A4F0063C576 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165ACC2299C1A4F0063C576 /* Notifications.swift */; };
+		A185140E2995735D00B673FB /* Abandon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A185140D2995735D00B673FB /* Abandon.swift */; };
+		A196118D299FF64400D97451 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196118C299FF64400D97451 /* AlarmModel.swift */; };
+		A1FDA291298DB6AD001130FD /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EF02989D11E000FC836 /* Library.swift */; };
 		A1FDA292298DB6BE001130FD /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EF22989D169000FC836 /* SearchView.swift */; };
 		A1FDA293298DB6BE001130FD /* InfoBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EE829887A46000FC836 /* InfoBookView.swift */; };
 /* End PBXBuildFile section */
@@ -98,8 +99,9 @@
 		A15BD0242991A9E6009AEC1A /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		A164B175299EB07200959B2E /* AbandonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbandonLogic.swift; sourceTree = "<group>"; };
 		A165ACC0299C0FB20063C576 /* HideTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideTabBar.swift; sourceTree = "<group>"; };
-		A165ACC2299C1A4F0063C576 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
-		A185140D2995735D00B673FB /* AbandonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbandonView.swift; sourceTree = "<group>"; };
+		A165ACC2299C1A4F0063C576 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		A185140D2995735D00B673FB /* Abandon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abandon.swift; sourceTree = "<group>"; };
+		A196118C299FF64400D97451 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				8A7D8EF42989D237000FC836 /* DAO.swift */,
 				A15BD0242991A9E6009AEC1A /* AppData.swift */,
 				8A7D8EF629916F82000FC836 /* Accent.swift */,
+				A196118C299FF64400D97451 /* AlarmModel.swift */,
 				8A1A3D76299EC17F0092C1E8 /* endEditing.swift */,
 			);
 			path = Model;
@@ -336,6 +339,7 @@
 				A13E8477298C2B0700FCDEDB /* ChangePages.swift in Sources */,
 				A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */,
 				8A1A3D6B299C809F0092C1E8 /* PinkView.swift in Sources */,
+				A196118D299FF64400D97451 /* AlarmModel.swift in Sources */,
 				A164B176299EB07200959B2E /* AbandonLogic.swift in Sources */,
 				A15BD0252991A9E6009AEC1A /* AppData.swift in Sources */,
 				8A1A3D64299C178D0092C1E8 /* OnboardingView.swift in Sources */,
@@ -482,9 +486,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"BookDay/Preview Content\"";
-				DEVELOPMENT_TEAM = J494PVQ4KV;
+				DEVELOPMENT_TEAM = S5PMJAY297;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookDay/Info.plist;
@@ -518,9 +522,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"BookDay/Preview Content\"";
-				DEVELOPMENT_TEAM = J494PVQ4KV;
+				DEVELOPMENT_TEAM = S5PMJAY297;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookDay/Info.plist;

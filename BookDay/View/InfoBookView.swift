@@ -217,9 +217,6 @@ struct InfoBookView: View {
 
         }
         
-        
-        
-        
     }
     
 }

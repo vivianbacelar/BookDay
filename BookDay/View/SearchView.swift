@@ -22,82 +22,107 @@ struct SearchView: View {
     
     var body: some View {
         ZStack {
-
+            
             Color.corGelo
                 .ignoresSafeArea()
             NavigationView {
-
+                
                 ScrollView () {
                     VStack {
-                        if items.isEmpty && !networkModel.searchEmpty {
+                        
+                        if items.isEmpty && networkModel.searchEmpty {
                             VStack{
                                 Spacer()
-
+                                
                                 if colorScheme == .light {
-                                    Image("notFind")
+                                    Image("searchFirst2")
                                         .resizable()
-                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
-                                        .padding(.vertical, UIScreen.main.bounds.height/18)
+                                        .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/1.8)
+                                        .padding(.bottom, UIScreen.main.bounds.height/14)
                                 } else {
-                                    Image("notFind")
+                                    Image("searchFirst2")
                                         .resizable()
-                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
-                                        .padding(.vertical, UIScreen.main.bounds.height/18)
+                                        .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/1.8)
+                                        .padding(.bottom, UIScreen.main.bounds.height/14)
                                         .colorInvert()
                                     
                                 }
                             }
-                        } else {
-                            ForEach(items) { item in
-
-                                VStack {
-
-                                    HStack {
-                                        AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
-                                            image
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
-                                        } placeholder: {
-                                            Image("PlaceHolder")
-                                                .resizable()
+                        }
+                            
+                            
+                            if items.isEmpty && !networkModel.searchEmpty {
+                                
+                                VStack{
+                                    Spacer()
+                                    
+                                    if colorScheme == .light {
+                                        Image("notFind2")
+                                            .resizable()
+                                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/2)
+                                            .padding(.vertical, UIScreen.main.bounds.height/15)
+                                    } else {
+                                        Image("notFind2")
+                                            .resizable()
+                                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/2)
+                                            .padding(.vertical, UIScreen.main.bounds.height/15)
+                                            .colorInvert()
+                                        
+                                    }
+                                }
+                            } else {
+                                ForEach(items) { item in
+                                    
+                                    VStack {
+                                        
+                                        HStack {
+                                            AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
+                                                image
+                                                    .resizable()
                                                     .aspectRatio(contentMode: .fit)
                                                     .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
-                                        }
-                                        .padding(.trailing, UIScreen.main.bounds.width/25)
-                                        VStack(spacing: 5) {
-                                            Text(item.volumeInfo.title)
-                                                .font(Font.custom("Raleway", size: 18))
-                                                .foregroundColor(Color.corPreta)
-                                                .multilineTextAlignment(.leading)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-
-                                            Text(item.volumeInfo.authors?.first ?? "")
-                                                .font(Font.custom("Raleway", size: 13).weight(.thin))
-                                                .foregroundColor(Color.corPreta)
-                                                .multilineTextAlignment(.leading)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                                .padding(.top,UIScreen.main.bounds.height/150)
-
-                                            Spacer()
-
-                                            HStack {
+                                            } placeholder: {
+                                                Image("PlaceHolder")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(maxWidth: UIScreen.main.bounds.width/4, maxHeight: UIScreen.main.bounds.height/4)
+                                            }
+                                            .padding(.trailing, UIScreen.main.bounds.width/25)
+                                            VStack(spacing: 5) {
+                                                Text(item.volumeInfo.title)
+                                                    .font(Font.custom("Raleway", size: 18))
+                                                    .foregroundColor(Color.corPreta)
+                                                    .multilineTextAlignment(.leading)
+                                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                                
+                                                Text(item.volumeInfo.authors?.first ?? "")
+                                                    .font(Font.custom("Raleway", size: 13).weight(.thin))
+                                                    .foregroundColor(Color.corPreta)
+                                                    .multilineTextAlignment(.leading)
+                                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                                    .padding(.top,UIScreen.main.bounds.height/150)
+                                                
                                                 Spacer()
-                                                Button (action:{
+                                                
+                                                HStack {
+                                                    Spacer()
+                                                    Button (action:{
                                                         customAlert.toggle()
                                                         selectedItem = item
-//                                                        self.isPlaying.toggle()
-                                                }) {
-                                                    Image("addButton")
-//                                                    Image(self.isPlaying == true ? "addedButton" : "addButton")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: UIScreen.main.bounds.width/13)
-                                                        .foregroundColor(Color.corLaranja)
+                                                        //                                                        self.isPlaying.toggle()
+                                                    }) {
+                                                        Image("addButton")
+                                                        //                                                    Image(self.isPlaying == true ? "addedButton" : "addButton")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: UIScreen.main.bounds.width/13)
+                                                            .foregroundColor(Color.corLaranja)
+                                                    }
+                                                    .buttonStyle(.plain)
                                                 }
-                                                .buttonStyle(.plain)
+                                                .padding(.top)
                                             }
-                                            .padding(.top)
+                                            .frame(maxHeight: .infinity)
                                         }
                                         .frame(maxHeight: .infinity)
                                     }
@@ -125,31 +150,31 @@ struct SearchView: View {
                         }
                     }
                     .onChange(of: networkModel.search, perform: performSearch)
+                
+            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    
+                    Text("BookDay")
+                        .font(Font.custom("BelyDisplay-Regular", size: 23))
+                        .foregroundColor(Color.corPreta)
+                    
+                }
+            }.frame(maxWidth: .infinity)
+                .background(Color.corGelo)
+                .toolbarBackground( Color.corGelo, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
 
                 }
-
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        
-                        Text("BookDay")
-                            .font(Font.custom("BelyDisplay-Regular", size: 23))
-                            .foregroundColor(Color.corPreta)
-                      
+                .edgesIgnoringSafeArea(.all)
+                
+            } .accentColor(Color.corPreta)
+                .overlay(content: {
+                    if customAlert {
+                        CustomAlertView(show: $customAlert, selectedItem: selectedItem)
                     }
-                }.frame(maxWidth: .infinity)
-                    .background(Color.corGelo)
-                    .toolbarBackground( Color.corGelo, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
-            }
-            .edgesIgnoringSafeArea(.all)
-
-        } .accentColor(Color.corPreta)
-        .overlay(content: {
-            if customAlert {
-                CustomAlertView(show: $customAlert, selectedItem: selectedItem)
-            }
-        })
-    }
+                })
+        }
     private func performSearch (keyWord: String) {
         filteredItems = networkModel.items.filter{ item in
             item.volumeInfo.title.contains(keyWord)
@@ -178,6 +203,9 @@ struct CustomAlertView: View {
                                     print("reading")
                                     show.toggle()
                                     DAO.shared.add(to: .reading, selectedItem!)
+                                    DAO.shared.remove(from: .wantToRead,  selectedItem!)
+                                    DAO.shared.remove(from: .abandon,  selectedItem!)
+                                    DAO.shared.remove(from: .read,  selectedItem!)
                                 }label:{
                                     Image("readingButton")
                                         .resizable()
@@ -190,6 +218,9 @@ struct CustomAlertView: View {
                                     print("want to read")
                                     show.toggle()
                                     DAO.shared.add(to: .wantToRead, selectedItem!)
+                                    DAO.shared.remove(from: .reading,  selectedItem!)
+                                    DAO.shared.remove(from: .abandon,  selectedItem!)
+                                    DAO.shared.remove(from: .read,  selectedItem!)
                                 } label:{
                                     Image("wantToReadButton")
                                         .resizable()
@@ -201,6 +232,9 @@ struct CustomAlertView: View {
                                     print("read")
                                     show.toggle()
                                     DAO.shared.add(to: .read, selectedItem!)
+                                    DAO.shared.remove(from: .reading,  selectedItem!)
+                                    DAO.shared.remove(from: .abandon,  selectedItem!)
+                                    DAO.shared.remove(from: .wantToRead,  selectedItem!)
                                 }label:{
                                     Image("readButton")
                                         .resizable()

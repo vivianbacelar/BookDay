@@ -79,7 +79,7 @@ struct Library: View {
                         
                         Text("Already Read")
                             .font(Font.custom("Raleway", size: 18))
-                            .tag("Read")
+                            .tag("Already Read")
                     }
                     .pickerStyle(.segmented)
                     .frame(width: UIScreen.main.bounds.width/1.2)
@@ -134,7 +134,12 @@ struct Library: View {
         } else {
             return DAO.shared.readList
         }
-    }
+        if selected == "Already Read"{
+//                InfoBookView()
+            }
+        }
+            
+    
     
     
     
@@ -178,12 +183,12 @@ struct Library: View {
             
             if livros.count == 0 {
                 if colorScheme == .light {
-                    Image("libraryEmpty")
+                    Image("libraryEmpty2")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
                         .padding(.vertical, UIScreen.main.bounds.height/18)
                 } else {
-                    Image("libraryEmpty")
+                    Image("libraryEmpty2")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
                         .padding(.vertical, UIScreen.main.bounds.height/18)
