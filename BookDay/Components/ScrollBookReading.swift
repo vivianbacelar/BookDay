@@ -13,8 +13,17 @@ struct ScrollBookReading: View {
     private let dotAppearance = UIPageControl.appearance()
     @State var livros: [Item] = DAO.shared.readingList
     //    @Binding var show: Bool
-    @State var countPage: String =
-    UserDefaults.standard.string(forKey: UserDefaultsKeys.countPage.rawValue) ?? "0"
+//    var page: Item
+//    var countPage: String {
+//        countPage = page.countPage ?? "0.0"
+//
+//    }
+//
+//
+//    var percentage: Double {
+//        ((Double(countPage) ?? 0.0) * 100) / (Double(page.volumeInfo.pageCount ?? 100))
+//    }
+    
     
     
     var body: some View {
@@ -34,6 +43,10 @@ struct ScrollBookReading: View {
                             .multilineTextAlignment(.leading)
                             .foregroundColor(Color.corPreta)
                             .padding(.bottom, UIScreen.main.bounds.height/120)
+                        
+                       
+                        
+//                        ProgressBarView(progress: percentage)
                         
                         
                         VStack{
