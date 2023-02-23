@@ -18,49 +18,55 @@ struct TextEditorView: View {
                 Color.corGelo
                     .ignoresSafeArea()
                 
-                VStack (alignment: .leading){
+                VStack {
                     Spacer()
                     Text("Tell us what you just read")
-                        .font(Font.custom("Raleway", size: 15).weight(.bold))
+                        .font(Font.custom("Raleway", size: 15).weight(.medium))
                         .multilineTextAlignment(.leading)
                         .foregroundColor(Color.corPreta)
-                        .padding(.horizontal, UIScreen.main.bounds.width/30)
+                        .padding(.trailing, UIScreen.main.bounds.width/2.8)
+                        .padding(.bottom, UIScreen.main.bounds.height/80)
                     
                     TextEditor(text: $textEditorText)
-                        .frame(height: UIScreen.main.bounds.height/5)
-                        .colorMultiply(Color.corFundo)
+                        .scrollContentBackground(.hidden)
+                        .frame(width: UIScreen.main.bounds.width/1.15,height: UIScreen.main.bounds.height/5)
+                        .colorMultiply(Color.corPreta)
+                        .background(Color.corFundo)
                         .cornerRadius(15)
                         . onSubmit{
                             didAdd(text: textEditorText)
-                            
                         }
-                    
-                    Button {
-                        didAdd(text: textEditorText)
-                        UIApplication.shared.endEditing()
-                    } label: {
-                        Text("Save")
-                            .font(Font.custom("Raleway", size: 15).weight(.bold))
-                            .foregroundColor(Color.corPreta)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.corRosa)
-                            .cornerRadius(15)
+                    HStack {
+                        NavigationLink {
+                            LastNotesView(item: item)
+                        } label: {
+                            Text("Last Notes")
+                                .font(Font.custom("Raleway", size: 15).weight(.regular))
+                                .foregroundColor(Color.corRosa)
+                                .padding()
+                        }.buttonStyle(.plain)
                         
-                    }.buttonStyle(.plain)
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack {
-                            ForEach (item.savedText ?? [], id: \.self){ saved in
-                                Text(saved)
-                                    .font(Font.custom("Raleway", size: 15).weight(.bold))
-                                    .foregroundColor(Color.corPreta)
+                        Spacer()
+                        
+                        Button {
+                            didAdd(text: textEditorText)
+                            UIApplication.shared.endEditing()
+                        } label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 15)
+                                    .frame(width: UIScreen.main.bounds.width/5.8, height: UIScreen.main.bounds.height/30)
+                                    .foregroundColor(Color.corRosa)
+                                Text("Save")
+                                    .font(Font.custom("Raleway", size: 15).weight(.regular))
+                                    .foregroundColor(Color.corGelo)
                                     .padding()
-                                    .frame(width: UIScreen.main.bounds.width/1.3, height: UIScreen.main.bounds.height/7)
-                                    .background(Color.corFundo)
-                                    .cornerRadius(15)
+                                
                             }
-                        }
-                    }
+                            
+                        }.buttonStyle(.plain)
+                    } .padding(.horizontal, UIScreen.main.bounds.width/30)
+                    
+                    
                 }
                 Spacer()
             }

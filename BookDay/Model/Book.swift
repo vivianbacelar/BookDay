@@ -51,9 +51,9 @@ class Item: Codable, Identifiable, Hashable {
 
     }
     
-    func update(pageCount: String) {
-        countPage = pageCount
-    }
+//    func update(pageCount: String) {
+//        countPage = pageCount
+//    }
     
     func updateSave(textEditorText: String) {
         if let _ = savedText {
@@ -108,9 +108,7 @@ enum Language: String, Codable,  Hashable {
     case en = "en"
 }
 
-enum UserDefaultsKeys: String {
-    case countPage = "countPage"
-}
+
 
 /*
 // MARK: - AccessInfo

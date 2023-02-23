@@ -13,16 +13,9 @@ struct ScrollBookReading: View {
     private let dotAppearance = UIPageControl.appearance()
     @State var livros: [Item] = DAO.shared.readingList
     //    @Binding var show: Bool
-//    var page: Item
-//    var countPage: String {
-//        countPage = page.countPage ?? "0.0"
-//
-//    }
-//
-//
-//    var percentage: Double {
-//        ((Double(countPage) ?? 0.0) * 100) / (Double(page.volumeInfo.pageCount ?? 100))
-//    }
+//    @State var item: Item
+
+//    var percentage: Double
     
     
     
@@ -33,23 +26,23 @@ struct ScrollBookReading: View {
                 ForEach(Array(livros.enumerated()), id: \.offset) { index, page in
                     
                     VStack (alignment: .leading){
-                        Text(page.volumeInfo.title)
-                            .font(Font.custom("Raleway", size: 20).weight(.bold))
-                            .foregroundColor(Color.corPreta)
-                            .padding(.bottom, UIScreen.main.bounds.height/120)
+                        VStack(alignment: .leading){
+                            Text(page.volumeInfo.title)
+                                .font(Font.custom("Raleway", size: 20).weight(.bold))
+                                .foregroundColor(Color.corPreta)
+                                .padding(.bottom, UIScreen.main.bounds.height/120)
+                            
+                            Text(page.volumeInfo.authors?.first ?? "")
+                                .font(Font.custom("Raleway", size: 15).weight(.regular))
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(Color.corPreta)
+                                .padding(.bottom, UIScreen.main.bounds.height/120)
+                        }.padding(.leading, UIScreen.main.bounds.width/15)
                         
-                        Text(page.volumeInfo.authors?.first ?? "")
-                            .font(Font.custom("Raleway", size: 15).weight(.regular))
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(Color.corPreta)
-                            .padding(.bottom, UIScreen.main.bounds.height/120)
-                        
-                       
-                        
-//                        ProgressBarView(progress: percentage)
-                        
-                        
-                        VStack{
+                        VStack (alignment: .center){
+                            ProgressBarView(progress: calPercentage(item: page))
+                        }
+                        VStack {
                             
                             NavigationLink {
                                 InfoBookView(item: page)
@@ -65,7 +58,8 @@ struct ScrollBookReading: View {
                                     }
                                 }
                             }.buttonStyle(.plain)
-                        }
+                        }.padding(.leading, UIScreen.main.bounds.width/8)
+                        
                         
                         if page == (livros.last)! {
                             Button (action: goToZero) {
@@ -87,8 +81,6 @@ struct ScrollBookReading: View {
                         .font(Font.custom("Raleway", size: 20).weight(.regular))
                         .foregroundColor(Color.corPreta)
                         .padding(.bottom, UIScreen.main.bounds.height/20)
-                      
-                    
                     Button {
                         print("add")
                         selectionVM.selection = 3
@@ -119,5 +111,12 @@ struct ScrollBookReading: View {
     
     func goToZero() {
         ItemIndex = 0
+    }
+    
+    func calPercentage(item: Item) -> Double {
+        var percentage = ((Double(item.countPage ?? "0.0") ?? 0.0) * 100) / (Double(item.volumeInfo.pageCount ?? 100))
+        print(item.countPage)
+        return percentage
+       
     }
 }
