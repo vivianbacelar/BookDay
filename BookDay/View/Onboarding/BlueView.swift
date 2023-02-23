@@ -26,10 +26,6 @@ struct BlueView: View {
                         .multilineTextAlignment(.leading)
                         .foregroundColor(Color.corPreto)
                     
-//                    Image("testeHora")
-//                        .resizable()
-//                        .frame(width: UIScreen.main.bounds.width/5, height: UIScreen.main.bounds.height/25)
-                    
                    Notifications()
   
                         Image("dots3")

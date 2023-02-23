@@ -79,7 +79,7 @@ struct Library: View {
                         
                         Text("Already Read")
                             .font(Font.custom("Raleway", size: 18))
-                            .tag("Read")
+                            .tag("Already Read")
                     }
                     .pickerStyle(.segmented)
                     .frame(width: UIScreen.main.bounds.width/1.2)
@@ -134,7 +134,12 @@ struct Library: View {
         } else {
             return DAO.shared.readList
         }
-    }
+        if selected == "Already Read"{
+//                InfoBookView()
+            }
+        }
+            
+    
     
     
     

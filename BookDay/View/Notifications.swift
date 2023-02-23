@@ -24,6 +24,7 @@ struct Notifications: View {
             
             Toggle(alarm.enabled ? "" : "", isOn: $alarm.enabled)
                 .onChange(of: alarm.enabled, perform: { enabled in
+                    print("troca")
                     enabled ? setAlarm() : cancelAlarm()
                 })
                 .tint(Color("yellow"))

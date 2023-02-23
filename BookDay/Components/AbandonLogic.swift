@@ -20,7 +20,7 @@ struct AbandonLogic: View {
                 Image("secondChance")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width/1.45, height: UIScreen.main.bounds.height/2.6)
+                    .frame(width: UIScreen.main.bounds.width/1.45, height: UIScreen.main.bounds.height/3)
                     .overlay(content: {
                         VStack{
                             Spacer()
@@ -32,8 +32,8 @@ struct AbandonLogic: View {
                                 }label:{
                                     Image("readingButton")
                                         .resizable()
-                                        .frame(width:  UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
-                                        .padding(.bottom, UIScreen.main.bounds.height/98)
+                                        .frame(width: UIScreen.main.bounds.width/1.9, height: UIScreen.main.bounds.height/18)
+                                        .padding(.bottom, UIScreen.main.bounds.height/38)
                                 }.buttonStyle(.plain)
                                 
                                 Button{
@@ -42,12 +42,11 @@ struct AbandonLogic: View {
                                 }label:{
                                     Image("wantToReadButton")
                                         .resizable()
-                                        .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/19.5)
+                                        .frame(width: UIScreen.main.bounds.width/1.9, height: UIScreen.main.bounds.height/18)
                                 }.buttonStyle(.plain)
                                 
                                 
-                            }
-                            .padding(.bottom, UIScreen.main.bounds.height/60)
+                            }.padding(.bottom, UIScreen.main.bounds.height/62)
                             
                             Button(action: {
                                 withAnimation{
@@ -55,10 +54,10 @@ struct AbandonLogic: View {
                                     showButtons.toggle()
                                 }
                             }){
-                                Image("okButton")
+                                Image("close2")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: UIScreen.main.bounds.width/1.45, height: UIScreen.main.bounds.height/17.5)
+                                    .frame(width: UIScreen.main.bounds.width/1.45, height: UIScreen.main.bounds.height/14)
                             }.buttonStyle(.plain)
                             
                         }

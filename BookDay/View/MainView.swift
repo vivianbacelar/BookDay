@@ -52,33 +52,32 @@ struct MainView: View {
              
          }
          .onAppear() {
-            let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor(named: "corgelo")
-             appearance.shadowColor = .clear
-            appearance.stackedItemPositioning = .centered
-            appearance.stackedItemSpacing = 0
-             appearance.selectionIndicatorTintColor = .black
-            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "corcinzaMaisEscuro")
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor(named: "corcinzaMaisEscuro")!
-            ]
-            appearance.stackedLayoutAppearance.normal.iconColor = UIColor(named: "corcinza")
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor(named: "corcinza")!
-            ]
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-            UITabBar.appearance().standardAppearance = appearance
-        
-            
-            let appearenceNavBar = UINavigationBarAppearance()
-            appearenceNavBar.configureWithTransparentBackground()
-            appearenceNavBar.backgroundImage = UIImage().withTintColor(.blue)
-            appearenceNavBar.backgroundColor = UIColor(Color.corCinzaEscuro).withAlphaComponent(0.5)
-            appearenceNavBar.shadowColor = nil
-            UINavigationBar.appearance().standardAppearance = appearenceNavBar
-            UINavigationBar.appearance().scrollEdgeAppearance = appearenceNavBar
-            UINavigationBar.appearance().isTranslucent = false
+                     let appearance = UITabBarAppearance()
+                     appearance.configureWithOpaqueBackground()
+                     appearance.backgroundColor = UIColor(named: "corgelo")
+                     appearance.shadowColor = nil
+                     appearance.stackedItemPositioning = .centered
+                     appearance.stackedItemSpacing = 0
+                     appearance.selectionIndicatorTintColor = .red
+                     appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "corcinzaMaisEscuro")
+                     appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
+                         NSAttributedString.Key.foregroundColor: UIColor(named: "corcinzaMaisEscuro")!
+                     ]
+                     appearance.stackedLayoutAppearance.normal.iconColor = UIColor(named: "corcinza")
+                     appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+                         NSAttributedString.Key.foregroundColor: UIColor(named: "corcinza")!
+                     ]
+                     UITabBar.appearance().scrollEdgeAppearance = appearance
+                     UITabBar.appearance().standardAppearance = appearance
+                     
+                     let appearenceNavBar = UINavigationBarAppearance()
+                     appearenceNavBar.configureWithTransparentBackground()
+                     appearenceNavBar.backgroundImage = UIImage().withTintColor(.blue)
+                     appearenceNavBar.backgroundColor = UIColor(Color.corGelo).withAlphaComponent(0.5)
+                     appearenceNavBar.shadowColor = nil
+                     UINavigationBar.appearance().standardAppearance = appearenceNavBar
+                     UINavigationBar.appearance().scrollEdgeAppearance = appearenceNavBar
+                     UINavigationBar.appearance().isTranslucent = true
             
             }
          
