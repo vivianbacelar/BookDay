@@ -12,6 +12,7 @@ struct TextEditorView: View {
     @Binding var item: Item
     @State var textEditorText: String = ""
    // @State var savedText: [String] = []
+  
     
     var body: some View {
             ZStack{
@@ -45,6 +46,7 @@ struct TextEditorView: View {
                                 .foregroundColor(Color.corRosa)
                                 .padding()
                         }.buttonStyle(.plain)
+                            
                         
                         Spacer()
                         
@@ -72,6 +74,7 @@ struct TextEditorView: View {
             }
             .padding()
     }
+    
     
     func didAdd(text: String) {
         

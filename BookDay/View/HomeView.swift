@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct Home: View {
     
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
@@ -16,9 +17,10 @@ struct Home: View {
     @State var totalPage: CGFloat = 0
     var page: Page
     
+
     var body: some View {
         
-        NavigationView{
+        NavigationStack{
             
             ZStack{
                 Color.corGelo
@@ -41,17 +43,11 @@ struct Home: View {
                     }
                 }
             }
+            
         }.accentColor(Color.corPreta)
         .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
                 OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
             })
        
-        
-        
-        //                        struct Home_Previews: PreviewProvider {
-        //                            static var previews: some View {
-        //                                Home(page: Page.samplePage)
-        //                            }
-        //                        }
     }
 }

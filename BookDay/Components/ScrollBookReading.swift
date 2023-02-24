@@ -103,6 +103,7 @@ struct ScrollBookReading: View {
             // depois explicar pro pg
             livros = DAO.shared.readingList
             dotAppearance.currentPageIndicatorTintColor = UIColor(Color.corRosa)
+            dotAppearance.pageIndicatorTintColor = UIColor(Color.corFundo)
         }
     }
     func addPage() {

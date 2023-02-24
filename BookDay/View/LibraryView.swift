@@ -39,7 +39,7 @@ struct Library: View {
    
     
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "cinzaClaro")
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "cinzaCinza3")
         UISegmentedControl.appearance().setTitleTextAttributes(
             [
                 .font: UIFont(name: "Raleway", size: 18)!.regular,
@@ -56,8 +56,6 @@ struct Library: View {
     
     
     var body: some View {
-        
-        NavigationView{
             
             ZStack{
                 Color.corGelo
@@ -68,7 +66,7 @@ struct Library: View {
                     Text("BookDay")
                         .font(Font.custom("BelyDisplay-Regular", size: 23))
                         .foregroundColor(Color.corPreta)
-                        .padding(.top, UIScreen.main.bounds.height/25)
+                        .padding(.top, UIScreen.main.bounds.height/45)
                     
                         
                     
@@ -102,8 +100,9 @@ struct Library: View {
                                 .frame(width: UIScreen.main.bounds.width/14.5, height: UIScreen.main.bounds.height/25)
                                 
                             
-                        }.padding(.bottom, UIScreen.main.bounds.height/1.38)
+                        }.padding(.bottom, UIScreen.main.bounds.height/1.32)
                         .padding(.leading, UIScreen.main.bounds.width/1.3)
+                        
                         
             }
      
@@ -121,13 +120,9 @@ struct Library: View {
                 }
             })
           
-            
-            
-        } .accentColor(Color.corPreta)
+            .toolbar(Visibility.hidden, for: ToolbarPlacement.navigationBar)
+            .navigationBarHidden(true)
     }
-
-    
-
 
     func getBook(of selected: String) -> [Item] {
         if selected == "Want to Read" {
@@ -136,13 +131,11 @@ struct Library: View {
             return DAO.shared.readList
         }
     }
-            
-    
-    
-    
+
     
     let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
+    @State var clicked = false
     var collectionBooks: some View {
         
         VStack {
@@ -153,8 +146,9 @@ struct Library: View {
                             changePages.toggle()
                             selectedItem = item
                         } else {
-                            InfoBookView(item: item)
+                            print("Clicou")
                             selectedItem = item
+                            clicked = true
                         }
                     } label: {
                         AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
@@ -173,6 +167,12 @@ struct Library: View {
                 }
             }
             Spacer()
+        } .navigationDestination(isPresented: $clicked) {
+            let _ = print("Vamos ver")
+            if (selectedItem != nil) && clicked {
+                let _ = print(selectedItem!.volumeInfo.title)
+                InfoBookView(item: selectedItem!)
+            }
         }
     }
     

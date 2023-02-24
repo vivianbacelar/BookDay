@@ -27,11 +27,15 @@ struct MainView: View {
      var body: some View {
          VStack{
              TabView (selection: $selectionVM.selection) {
-                 Library()
-                     .tabItem {
-                         Label("Library", image: selectionVM.selection == 1 ? "librarytouch" : "library")
-                     }
-                     .tag(1)
+                 NavigationStack{
+                     Library()
+                 }.accentColor(Color.corPreta)
+                         .tabItem {
+                             Label("Library", image: selectionVM.selection == 1 ? "librarytouch" : "library")
+                         
+                         }
+                         .tag(1)
+                 
                  
                  
                  Home(page: Page.samplePage)

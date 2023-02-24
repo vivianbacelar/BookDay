@@ -51,9 +51,9 @@ class Item: Codable, Identifiable, Hashable {
 
     }
     
-//    func update(pageCount: String) {
-//        countPage = pageCount
-//    }
+    func update(pageCount: String) {
+        countPage = pageCount
+    }
     
     func updateSave(textEditorText: String) {
         if let _ = savedText {

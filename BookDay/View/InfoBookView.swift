@@ -31,6 +31,8 @@ struct InfoBookView: View {
         return str
     }
     
+
+    
     var body: some View {
         
         ZStack(alignment: .top){
