@@ -45,10 +45,9 @@
 		A159F6012981CA740054BBC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159F6002981CA740054BBC4 /* HomeView.swift */; };
 		A15BD0252991A9E6009AEC1A /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BD0242991A9E6009AEC1A /* AppData.swift */; };
 		A164B176299EB07200959B2E /* AbandonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A164B175299EB07200959B2E /* AbandonLogic.swift */; };
-		A165ACC1299C0FB20063C576 /* HideTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165ACC0299C0FB20063C576 /* HideTabBar.swift */; };
 		A196118D299FF64400D97451 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196118C299FF64400D97451 /* AlarmModel.swift */; };
 		A1AFD5EF29A7E0B9001B43A3 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AFD5EE29A7E0B9001B43A3 /* NotificationsView.swift */; };
-		A1AFD5F129A7E0C0001B43A3 /* AbandonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AFD5F029A7E0C0001B43A3 /* AbandonView.swift */; };
+		A1AFD5F129A7E0C0001B43A3 /* Abandon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AFD5F029A7E0C0001B43A3 /* Abandon.swift */; };
 		A1FDA291298DB6AD001130FD /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EF02989D11E000FC836 /* LibraryView.swift */; };
 		A1FDA292298DB6BE001130FD /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EF22989D169000FC836 /* SearchView.swift */; };
 		A1FDA293298DB6BE001130FD /* InfoBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D8EE829887A46000FC836 /* InfoBookView.swift */; };
@@ -98,10 +97,9 @@
 		A159F6002981CA740054BBC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A15BD0242991A9E6009AEC1A /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		A164B175299EB07200959B2E /* AbandonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbandonLogic.swift; sourceTree = "<group>"; };
-		A165ACC0299C0FB20063C576 /* HideTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideTabBar.swift; sourceTree = "<group>"; };
 		A196118C299FF64400D97451 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		A1AFD5EE29A7E0B9001B43A3 /* NotificationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
-		A1AFD5F029A7E0C0001B43A3 /* AbandonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbandonView.swift; sourceTree = "<group>"; };
+		A1AFD5F029A7E0C0001B43A3 /* Abandon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Abandon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,7 +210,6 @@
 				A148995F298060F000402C94 /* Book.swift */,
 				A159F5F82981BCE60054BBC4 /* Colors.swift */,
 				A14FC1802982F969009F0075 /* FlowOrganizer.swift */,
-				A165ACC0299C0FB20063C576 /* HideTabBar.swift */,
 				A152AC5D298449A200D21DDC /* PageModel.swift */,
 				8A7D8EF42989D237000FC836 /* DAO.swift */,
 				A15BD0242991A9E6009AEC1A /* AppData.swift */,
@@ -232,7 +229,7 @@
 				A159F6002981CA740054BBC4 /* HomeView.swift */,
 				8A7D8EF02989D11E000FC836 /* LibraryView.swift */,
 				A1AFD5EE29A7E0B9001B43A3 /* NotificationsView.swift */,
-				A1AFD5F029A7E0C0001B43A3 /* AbandonView.swift */,
+				A1AFD5F029A7E0C0001B43A3 /* Abandon.swift */,
 				8A7D8EF22989D169000FC836 /* SearchView.swift */,
 				8A7D8EE829887A46000FC836 /* InfoBookView.swift */,
 				8A1A3D63299C178D0092C1E8 /* OnboardingView.swift */,
@@ -340,11 +337,10 @@
 				A14FC185298305FE009F0075 /* ProgressBar.swift in Sources */,
 				8A1A3D6B299C809F0092C1E8 /* PinkView.swift in Sources */,
 				A196118D299FF64400D97451 /* AlarmModel.swift in Sources */,
-				A1AFD5F129A7E0C0001B43A3 /* AbandonView.swift in Sources */,
+				A1AFD5F129A7E0C0001B43A3 /* Abandon.swift in Sources */,
 				A164B176299EB07200959B2E /* AbandonLogic.swift in Sources */,
 				A15BD0252991A9E6009AEC1A /* AppData.swift in Sources */,
 				8A1A3D64299C178D0092C1E8 /* OnboardingView.swift in Sources */,
-				A165ACC1299C0FB20063C576 /* HideTabBar.swift in Sources */,
 				A152AC622984790E00D21DDC /* ScrollBookReading.swift in Sources */,
 				A1489960298060F000402C94 /* Book.swift in Sources */,
 				8A1A3D6D299C80AA0092C1E8 /* PurpleView.swift in Sources */,

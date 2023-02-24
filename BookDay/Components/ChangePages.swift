@@ -29,7 +29,6 @@ struct ChangePages: View {
                                     print("Reading")
                                     showChanges = false
                                     DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .reading)
-//                                    DAO.shared.change(item: selectedItem!, from: .read, to: .reading)
                                 }label:{
                                     Image("moveReading")
                                         .resizable()

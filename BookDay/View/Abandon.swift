@@ -32,8 +32,8 @@ struct Abandon: View {
                         shelfBooks
                         collectionBooks
                     }
-                }.padding(.horizontal, UIScreen.main.bounds.width/1.2)
-            }  .padding(.top, UIScreen.main.bounds.height/110)
+                }
+            } .padding(.top, UIScreen.main.bounds.height/110)
             
                 .overlay(alignment: .topTrailing){
                     Image("teia")
@@ -100,6 +100,7 @@ struct Abandon: View {
                             
                         }
                     }.buttonStyle(.plain)
+                        
                 }
             }
             Spacer()
@@ -121,7 +122,7 @@ struct Abandon: View {
                 Rectangle()
                     .fill(Color.corCinzaClaro)
                     .frame(width: 310, height: 8)
-            }
+            } 
         }
         
     }

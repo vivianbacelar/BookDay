@@ -106,20 +106,21 @@ struct Library: View {
                         .padding(.leading, UIScreen.main.bounds.width/1.3)
                         
             }
-                
-                    
-              
+     
             }
-            .overlay(content: {
-                if changePages {
-                    ChangePages(showChanges: $changePages, selectedItem: selectedItem)
-                }
-            })
+            
             .onAppear(){
                 livros = getBook(of: selected)
             }.onChange(of: selected) { newValue in
                 livros = getBook(of: newValue)
             }
+            
+            .overlay(content: {
+                if changePages {
+                    ChangePages(showChanges: $changePages, selectedItem: selectedItem)
+                }
+            })
+          
             
             
         } .accentColor(Color.corPreta)
@@ -134,10 +135,7 @@ struct Library: View {
         } else {
             return DAO.shared.readList
         }
-        if selected == "Already Read"{
-//                InfoBookView()
-            }
-        }
+    }
             
     
     
@@ -151,8 +149,13 @@ struct Library: View {
             LazyVGrid(columns: colums) {
                 ForEach(livros, id: \.id) { item in
                     Button {
-                        changePages.toggle()
-                        selectedItem = item
+                        if selected == "Want to Read" {
+                            changePages.toggle()
+                            selectedItem = item
+                        } else {
+                            InfoBookView(item: item)
+                            selectedItem = item
+                        }
                     } label: {
                         AsyncImage(url: item.volumeInfo.imageLinks?.thumbnail) { image in
                             image.resizable()
