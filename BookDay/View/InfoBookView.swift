@@ -148,7 +148,7 @@ struct InfoBookView: View {
                     
                     VStack{
                     
-                        ProgressBarView(progress: percentage)
+                        ProgressBarView(progress: percentage,qualView: true)
                     
                     }
                 

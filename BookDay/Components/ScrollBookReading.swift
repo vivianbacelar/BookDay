@@ -28,20 +28,34 @@ struct ScrollBookReading: View {
                     VStack (alignment: .leading){
                         VStack(alignment: .leading){
                             Text(page.volumeInfo.title)
-                                .font(Font.custom("Raleway", size: 20).weight(.bold))
+                                .font(Font.custom("Raleway", size: 18).weight(.bold))
                                 .foregroundColor(Color.corPreta)
-                                .padding(.bottom, UIScreen.main.bounds.height/120)
+                                .padding(.bottom, UIScreen.main.bounds.height/1000)
                             
                             Text(page.volumeInfo.authors?.first ?? "")
-                                .font(Font.custom("Raleway", size: 15).weight(.regular))
+                                .font(Font.custom("Raleway", size: 14).weight(.regular))
                                 .multilineTextAlignment(.leading)
                                 .foregroundColor(Color.corPreta)
-                                .padding(.bottom, UIScreen.main.bounds.height/120)
-                        }.padding(.leading, UIScreen.main.bounds.width/15)
-                        
-                        VStack (alignment: .center){
-                            ProgressBarView(progress: calPercentage(item: page))
+                                .padding(.bottom, UIScreen.main.bounds.height/500)
+                            
                         }
+                        .padding(.horizontal)
+                            
+                        
+                        VStack {
+                            ProgressBarView(progress: calPercentage(item: page), qualView: false)
+                            HStack{
+                                Spacer()
+                                Text(percentageText(item: page, progress: calPercentage(item: page)))
+                                    .font(Font.custom("Raleway", size: 13).weight(.regular))
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(Color.corCinzaMaisEscuro)
+                                
+                            }
+                        }.padding(.horizontal)
+                            .padding(.bottom, UIScreen.main.bounds.height/100)
+                            .padding(.top, UIScreen.main.bounds.height/50)
+                        
                         VStack {
                             
                             NavigationLink {
@@ -58,7 +72,9 @@ struct ScrollBookReading: View {
                                     }
                                 }
                             }.buttonStyle(.plain)
-                        }.padding(.leading, UIScreen.main.bounds.width/8)
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, UIScreen.main.bounds.height/50)
                         
                         
                         if page == (livros.last)! {
@@ -71,6 +87,8 @@ struct ScrollBookReading: View {
                            
                         }.buttonStyle(.plain)
                     }
+                        
+                 
                 }
                     .padding(.horizontal, UIScreen.main.bounds.width/10)
                 .tag(index)
@@ -91,7 +109,9 @@ struct ScrollBookReading: View {
                     }.buttonStyle(.plain)
                     
                     .tag(livros.count)
-                } .padding(.top, UIScreen.main.bounds.height/30)
+                }
+                .padding(.top, UIScreen.main.bounds.height/30)
+            
 
         }
         .animation(.easeInOut, value: ItemIndex)
@@ -115,8 +135,14 @@ struct ScrollBookReading: View {
     
     func calPercentage(item: Item) -> Double {
         var percentage = ((Double(item.countPage ?? "0.0") ?? 0.0) * 100) / (Double(item.volumeInfo.pageCount ?? 100))
-        print(item.countPage)
         return percentage
        
+    }
+    
+    func percentageText(item: Item, progress: Double ) -> String {
+        let formattedValue = String(format: "%.2f", progress)
+        var str = "\(formattedValue)"
+        str += item.volumeInfo.pageCount != nil ? "%" : ""
+        return str
     }
 }
