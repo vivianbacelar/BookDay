@@ -167,7 +167,8 @@ struct Library: View {
                 }
             }
             Spacer()
-        } .navigationDestination(isPresented: $clicked) {
+        }
+        .navigationDestination(isPresented: $clicked) {
             let _ = print("Vamos ver")
             if (selectedItem != nil) && clicked {
                 let _ = print(selectedItem!.volumeInfo.title)
