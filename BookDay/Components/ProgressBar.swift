@@ -41,11 +41,11 @@ struct PinkBorderedProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         ProgressView(configuration)
             .scaleEffect(x: 1, y: 2.2, anchor: .center)
-            .padding(0.5)
+            .padding(4)
 //            .padding(.horizontal)
             
-            .cornerRadius(100)
-            .frame(width: UIScreen.main.bounds.width/1.3)
+            .cornerRadius(300)
+            .frame(width: UIScreen.main.bounds.width/1.16)
     }
 }
 

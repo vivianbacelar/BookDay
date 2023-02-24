@@ -24,12 +24,13 @@ struct TextEditorView: View {
                         .font(Font.custom("Raleway", size: 15).weight(.medium))
                         .multilineTextAlignment(.leading)
                         .foregroundColor(Color.corPreta)
-                        .padding(.trailing, UIScreen.main.bounds.width/2.8)
+                        .padding(.trailing, UIScreen.main.bounds.width/2.6)
                         .padding(.bottom, UIScreen.main.bounds.height/80)
                     
                     TextEditor(text: $textEditorText)
                         .scrollContentBackground(.hidden)
-                        .frame(width: UIScreen.main.bounds.width/1.15,height: UIScreen.main.bounds.height/5)
+                        .font(Font.custom("Raleway", size: 14).weight(.semibold))
+                        .frame(width: UIScreen.main.bounds.width/1.12,height: UIScreen.main.bounds.height/5)
                         .colorMultiply(Color.corPreta)
                         .background(Color.corFundo)
                         .cornerRadius(15)
@@ -43,7 +44,7 @@ struct TextEditorView: View {
                             Text("Last Notes")
                                 .font(Font.custom("Raleway", size: 15).weight(.regular))
                                 .foregroundColor(Color.corRosa)
-                                .padding()
+//                                .padding()
                         }.buttonStyle(.plain)
                         
                         Spacer()
@@ -59,12 +60,11 @@ struct TextEditorView: View {
                                 Text("Save")
                                     .font(Font.custom("Raleway", size: 15).weight(.regular))
                                     .foregroundColor(Color.corGelo)
-                                    .padding()
-                                
+//                                    .padding()
                             }
-                            
                         }.buttonStyle(.plain)
-                    } .padding(.horizontal, UIScreen.main.bounds.width/30)
+                    } .padding(.horizontal, UIScreen.main.bounds.width/25)
+                        .padding(.vertical,UIScreen.main.bounds.height/150)
                     
                     
                 }
@@ -78,7 +78,6 @@ struct TextEditorView: View {
         if text != "" {
             textEditorText = ""
             item.updateSave(textEditorText: text)
-            print(item.savedText)
             print("save")
         }
     }

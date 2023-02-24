@@ -68,7 +68,7 @@ struct InfoBookView: View {
                                 
                                 Text(String(stars))
                                     .font(Font.custom("Raleway", size: 18))
-                                    .foregroundColor(Color.corPreta)
+                                    .foregroundColor(Color.corPreto)
                             }
                         }.padding(.bottom)
                             .padding(.leading, UIScreen.main.bounds.width/2)
@@ -79,7 +79,7 @@ struct InfoBookView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .font(Font.custom("Raleway", size: 20).weight(.bold))
                         .foregroundColor(Color.corPreta)
-                        .padding(.horizontal, UIScreen.main.bounds.width/14)
+                        .padding(.horizontal, UIScreen.main.bounds.width/11.5)
                         .padding(.top)
                         .padding(.bottom, UIScreen.main.bounds.height/80)
                     
@@ -99,8 +99,8 @@ struct InfoBookView: View {
 
 
                     ZStack {
-                        RoundedRectangle(cornerRadius: 30, style: .continuous)
-                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.width/9.5)
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .frame(width: UIScreen.main.bounds.width/1.12, height: UIScreen.main.bounds.width/9.5)
                             .foregroundColor(Color.corFundo)
                         
                             HStack{
@@ -112,9 +112,10 @@ struct InfoBookView: View {
                                 Spacer()
                                 
                                 TextField(countPage, text: $countPage)
+                                    .font(Font.custom("Raleway", size: 15).weight(.semibold))
                                     .multilineTextAlignment(.trailing)
                                     .foregroundColor(Color.corPreta)
-                                    .padding()
+//                                    .padding()
                                     .onSubmit {
                                         item.countPage = countPage
                                         print("SUBMITOU")
@@ -126,7 +127,7 @@ struct InfoBookView: View {
                     
                     HStack{
                         Text("Progress")
-                            .font(Font.custom("Raleway", size: 15).weight(.bold))
+                            .font(Font.custom("Raleway", size: 15).weight(.regular))
                             .foregroundColor(Color.corPreta)
                         
                         Spacer()
@@ -169,7 +170,7 @@ struct InfoBookView: View {
                             }label:{
                                 Image("finishedBook")
                                     .resizable()
-                                    .frame(width: UIScreen.main.bounds.width/2.1, height: UIScreen.main.bounds.height/18)
+                                    .frame(width: UIScreen.main.bounds.width/2.3, height: UIScreen.main.bounds.height/18)
                                     .padding(.vertical, UIScreen.main.bounds.height/28)
                                     
 
@@ -183,15 +184,15 @@ struct InfoBookView: View {
                             }label:{
                                 Image("abandButton")
                                     .resizable()
-                                    .frame(width: UIScreen.main.bounds.width/3.2, height: UIScreen.main.bounds.height/23)
+                                    .frame(width: UIScreen.main.bounds.width/3.5, height: UIScreen.main.bounds.height/26)
                                     .padding(.vertical, UIScreen.main.bounds.height/28)
 
                             }.buttonStyle(.plain)
                             
-                        } .padding(.horizontal, UIScreen.main.bounds.width/15)
+                        } .padding(.horizontal, UIScreen.main.bounds.width/11)
                         Rectangle()
                             .foregroundColor(Color.corGelo)
-                            .frame(height: UIScreen.main.bounds.height/12)
+                            .frame(height: UIScreen.main.bounds.height/8)
                     }.padding(.top, UIScreen.main.bounds.height/20)
                 }
             }
