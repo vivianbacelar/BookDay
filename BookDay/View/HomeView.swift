@@ -32,15 +32,15 @@ struct Home: View {
                     Text("BookDay")
                         .font(Font.custom("BelyDisplay-Regular", size: 23))
                         .foregroundColor(Color.corPreta)
-                        .padding(.top, UIScreen.main.bounds.height/25)
+                        .padding(.top, UIScreen.main.bounds.height/45)
                     
-                    Spacer()
+//                    Spacer()
                     
                     VStack{
                       
                         ScrollBookReading()
                         
-                    }
+                    }.padding(.bottom)
                 }
             }
             
@@ -49,5 +49,6 @@ struct Home: View {
                 OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
             })
        
+        
     }
 }

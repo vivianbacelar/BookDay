@@ -19,7 +19,7 @@ struct ContentCell: View {
                 HStack {
 
                     Text ("Description")
-                        .font(.custom("Raleway", size: 15).weight(.bold))
+                        .font(.custom("Raleway", size: 15).weight(.semibold))
                         .foregroundColor(Color.corPreta)
                         .padding (.leading, UIScreen.main.bounds.height/25)
                         .padding(.top)
@@ -27,15 +27,15 @@ struct ContentCell: View {
                     Spacer()
 
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .foregroundColor(Color.corRosa)
-                        .font(.system(size: 22, weight: .regular))
+                        .foregroundColor(Color.corPreta)
+                        .font(.system(size: 20, weight: .thin))
                         .padding(.trailing, UIScreen.main.bounds.width/10)
                 }
                 if isExpanded {
-                    VStack{
-                        LabelAlignment(text: item.volumeInfo.description ?? "", textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 60, color: UIColor(Color.corCinzaEscuro), font: UIFont(name: "Raleway", size: 15)!)
-                            .padding(.top, UIScreen.main.bounds.height/35)
-                            .padding (.horizontal, UIScreen.main.bounds.width/15)
+                    VStack (alignment: .center) {
+                        LabelAlignment(text: item.volumeInfo.description ?? "", textAlignmentStyle: .justified, width: UIScreen.main.bounds.width/1.21, color: UIColor(Color.corCinzaEscuro), font: UIFont(name: "Raleway", size: 14)!)
+                            .padding(.top, UIScreen.main.bounds.height/105)
+                            .padding (.horizontal, UIScreen.main.bounds.width/12)
                     }
                 }
                 Spacer()
