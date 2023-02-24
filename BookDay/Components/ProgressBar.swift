@@ -29,7 +29,7 @@ struct PinkBorderedProgressViewStyle: ProgressViewStyle {
             .scaleEffect(x: 1, y: 2.2, anchor: .center)
             .padding(4)
             .padding(.horizontal)
-            .cornerRadius(10)
+            .cornerRadius(25)
             .frame(width: UIScreen.main.bounds.width/1.05)
     }
 }

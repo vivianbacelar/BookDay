@@ -74,15 +74,14 @@ struct InfoBookView: View {
                             .padding(.leading, UIScreen.main.bounds.width/2)
                     }
 
-//                    Spacer()
 
                     Text(item.volumeInfo.title)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        .font(Font.custom("Raleway", size: 21).weight(.bold))
+                        .font(Font.custom("Raleway", size: 20).weight(.bold))
                         .foregroundColor(Color.corPreta)
-//                        .padding(.horizontal)
-                        .padding(.horizontal, UIScreen.main.bounds.width/18)
-                        .padding(.bottom)
+                        .padding(.horizontal, UIScreen.main.bounds.width/14)
+                        .padding(.top)
+                        .padding(.bottom, UIScreen.main.bounds.height/80)
                     
                     Spacer()
                     
@@ -95,17 +94,15 @@ struct InfoBookView: View {
                                     self.selectedCells.insert (item)
                                 }
                             }
-                         }   .padding(.vertical,UIScreen.main.bounds.height/100)
-//                    .padding(.vertical)
+                         }
+                    .padding(.bottom,UIScreen.main.bounds.height/30)
 
-//                    Spacer()
 
                     ZStack {
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                             .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.width/9.5)
                             .foregroundColor(Color.corFundo)
                         
-    
                             HStack{
                                 
                                 Text("Page")
@@ -125,12 +122,7 @@ struct InfoBookView: View {
                             }.padding(.horizontal, UIScreen.main.bounds.width/11)
                             
                         }
-                        
-                  
-                        
                     }
-                    
-                    .padding(.vertical, UIScreen.main.bounds.height/25)
                     
                     HStack{
                         Text("Progress")
@@ -149,16 +141,26 @@ struct InfoBookView: View {
                         }
                         
                         
-                    }.padding(.horizontal, UIScreen.main.bounds.width/11)
-                    
-                    VStack{
-                        
-                        ProgressBarView(progress: percentage)
-                        
-                        TextEditorView(item: $item)
                     }
+                    .padding(.horizontal, UIScreen.main.bounds.width/11)
+                    .padding(.top, UIScreen.main.bounds.height/30)
+                    .padding(.bottom, UIScreen.main.bounds.height/50)
                     
                     VStack{
+                    
+                        ProgressBarView(progress: percentage)
+                    
+                    }
+                
+                    VStack{
+                        TextEditorView(item: $item)
+                    }.padding(.top, UIScreen.main.bounds.height/40)
+                
+                    VStack{
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(Color.corCinzaClaro)
+                            .frame(height:UIScreen.main.bounds.height/900)
+                            .padding(.horizontal, UIScreen.main.bounds.width/14)
                         HStack {
                             
                             Button {
@@ -167,37 +169,36 @@ struct InfoBookView: View {
                             }label:{
                                 Image("finishedBook")
                                     .resizable()
-                                    .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.height/20)
-                                    .padding(.vertical, UIScreen.main.bounds.height/13)
+                                    .frame(width: UIScreen.main.bounds.width/2.1, height: UIScreen.main.bounds.height/18)
+                                    .padding(.vertical, UIScreen.main.bounds.height/28)
                                     
 
                             }.buttonStyle(.plain)
-                                .padding(.horizontal, UIScreen.main.bounds.width/11)
+
                             
-                            
+                            Spacer()
                             Button{
                                 deleteAlert.toggle()
                                 print("abandon")
                             }label:{
                                 Image("abandButton")
                                     .resizable()
-                                    .frame(width: UIScreen.main.bounds.width/7, height: UIScreen.main.bounds.height/16)
-                                    .padding(.vertical, UIScreen.main.bounds.height/13)
-//
+                                    .frame(width: UIScreen.main.bounds.width/3.2, height: UIScreen.main.bounds.height/23)
+                                    .padding(.vertical, UIScreen.main.bounds.height/28)
 
                             }.buttonStyle(.plain)
-                                .padding(.trailing, UIScreen.main.bounds.width/10)
                             
-                        }
+                        } .padding(.horizontal, UIScreen.main.bounds.width/15)
                         Rectangle()
                             .foregroundColor(Color.corGelo)
-                            .frame(height: UIScreen.main.bounds.height/8)
-                    }
+                            .frame(height: UIScreen.main.bounds.height/12)
+                    }.padding(.top, UIScreen.main.bounds.height/20)
                 }
             }
            
-        .onAppear {
+        .onAppear { // salva countPage
             countPage = item.countPage ?? ""
+            item.countPage = countPage
         }
         .ignoresSafeArea()
         .overlay(alignment: .top){

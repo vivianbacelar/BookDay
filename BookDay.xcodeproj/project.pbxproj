@@ -16,6 +16,7 @@
 		8A1A3D73299C80D00092C1E8 /* YellowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A3D72299C80D00092C1E8 /* YellowView.swift */; };
 		8A1A3D75299D70230092C1E8 /* TextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A3D74299D70230092C1E8 /* TextEditor.swift */; };
 		8A1A3D77299EC17F0092C1E8 /* endEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A3D76299EC17F0092C1E8 /* endEditing.swift */; };
+		8A1A3D7929A7FD4E0092C1E8 /* LastNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A3D7829A7FD4E0092C1E8 /* LastNotesView.swift */; };
 		8A541B8829885E7F00E8E87F /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A541B8729885E7F00E8E87F /* Blur.swift */; };
 		8A622AAD29847FC800795D99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A622AAC29847FC800795D99 /* ContentView.swift */; };
 		8A622AAF29847FD000795D99 /* BookDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A622AAE29847FD000795D99 /* BookDayApp.swift */; };
@@ -63,6 +64,7 @@
 		8A1A3D72299C80D00092C1E8 /* YellowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowView.swift; sourceTree = "<group>"; };
 		8A1A3D74299D70230092C1E8 /* TextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditor.swift; sourceTree = "<group>"; };
 		8A1A3D76299EC17F0092C1E8 /* endEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = endEditing.swift; sourceTree = "<group>"; };
+		8A1A3D7829A7FD4E0092C1E8 /* LastNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastNotesView.swift; sourceTree = "<group>"; };
 		8A541B8729885E7F00E8E87F /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		8A622AAC29847FC800795D99 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8A622AAE29847FD000795D99 /* BookDayApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDayApp.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				8A622AAE29847FD000795D99 /* BookDayApp.swift */,
+				8A1A3D7829A7FD4E0092C1E8 /* LastNotesView.swift */,
 				8A622AAC29847FC800795D99 /* ContentView.swift */,
 				A159F5FA2981C4870054BBC4 /* MainView.swift */,
 				A159F6002981CA740054BBC4 /* HomeView.swift */,
@@ -326,6 +329,7 @@
 				A1FDA291298DB6AD001130FD /* LibraryView.swift in Sources */,
 				8A1A3D77299EC17F0092C1E8 /* endEditing.swift in Sources */,
 				8A7D8EF52989D237000FC836 /* DAO.swift in Sources */,
+				8A1A3D7929A7FD4E0092C1E8 /* LastNotesView.swift in Sources */,
 				8A1A3D71299C80C30092C1E8 /* GreenView.swift in Sources */,
 				8A1A3D6F299C80B70092C1E8 /* BlueView.swift in Sources */,
 				8A73EDE92981A7AE0015C444 /* NetworkModel.swift in Sources */,
