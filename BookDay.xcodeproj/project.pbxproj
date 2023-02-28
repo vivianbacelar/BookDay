@@ -17,6 +17,7 @@
 		8A1A3D75299D70230092C1E8 /* TextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A3D74299D70230092C1E8 /* TextEditor.swift */; };
 		8A1A3D77299EC17F0092C1E8 /* endEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A3D76299EC17F0092C1E8 /* endEditing.swift */; };
 		8A1A3D7929A7FD4E0092C1E8 /* LastNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A3D7829A7FD4E0092C1E8 /* LastNotesView.swift */; };
+		8A1A3D7B29AD37610092C1E8 /* MiniInfoBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A3D7A29AD37610092C1E8 /* MiniInfoBookView.swift */; };
 		8A541B8829885E7F00E8E87F /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A541B8729885E7F00E8E87F /* Blur.swift */; };
 		8A622AAD29847FC800795D99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A622AAC29847FC800795D99 /* ContentView.swift */; };
 		8A622AAF29847FD000795D99 /* BookDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A622AAE29847FD000795D99 /* BookDayApp.swift */; };
@@ -65,6 +66,7 @@
 		8A1A3D74299D70230092C1E8 /* TextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditor.swift; sourceTree = "<group>"; };
 		8A1A3D76299EC17F0092C1E8 /* endEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = endEditing.swift; sourceTree = "<group>"; };
 		8A1A3D7829A7FD4E0092C1E8 /* LastNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastNotesView.swift; sourceTree = "<group>"; };
+		8A1A3D7A29AD37610092C1E8 /* MiniInfoBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniInfoBookView.swift; sourceTree = "<group>"; };
 		8A541B8729885E7F00E8E87F /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		8A622AAC29847FC800795D99 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8A622AAE29847FD000795D99 /* BookDayApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDayApp.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				A159F5FA2981C4870054BBC4 /* MainView.swift */,
 				A159F6002981CA740054BBC4 /* HomeView.swift */,
 				8A7D8EF02989D11E000FC836 /* LibraryView.swift */,
+				8A1A3D7A29AD37610092C1E8 /* MiniInfoBookView.swift */,
 				A1AFD5EE29A7E0B9001B43A3 /* NotificationsView.swift */,
 				A1AFD5F029A7E0C0001B43A3 /* Abandon.swift */,
 				8A7D8EF22989D169000FC836 /* SearchView.swift */,
@@ -325,6 +328,7 @@
 			files = (
 				A1FDA292298DB6BE001130FD /* SearchView.swift in Sources */,
 				A1FDA293298DB6BE001130FD /* InfoBookView.swift in Sources */,
+				8A1A3D7B29AD37610092C1E8 /* MiniInfoBookView.swift in Sources */,
 				8A1A3D73299C80D00092C1E8 /* YellowView.swift in Sources */,
 				A1FDA291298DB6AD001130FD /* LibraryView.swift in Sources */,
 				8A1A3D77299EC17F0092C1E8 /* endEditing.swift in Sources */,
@@ -488,7 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"BookDay/Preview Content\"";
-				DEVELOPMENT_TEAM = S5PMJAY297;
+				DEVELOPMENT_TEAM = J494PVQ4KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookDay/Info.plist;
@@ -524,7 +528,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"BookDay/Preview Content\"";
-				DEVELOPMENT_TEAM = S5PMJAY297;
+				DEVELOPMENT_TEAM = J494PVQ4KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookDay/Info.plist;
