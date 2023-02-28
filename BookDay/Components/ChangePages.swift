@@ -11,7 +11,7 @@ struct ChangePages: View {
     
     @Binding var showChanges: Bool
     var selectedItem: Item?
-    
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)){
@@ -29,6 +29,7 @@ struct ChangePages: View {
                                     print("Reading")
                                     showChanges = false
                                     DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .reading)
+                                    dismiss()
                                 }label:{
                                     Image("moveReading")
                                         .resizable()
@@ -41,6 +42,7 @@ struct ChangePages: View {
                                     print("moveRead")
                                     showChanges = false
                                     DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .read)
+                                    dismiss()
                                 }label:{
                                     Image("moveRead")
                                         .resizable()
@@ -52,6 +54,7 @@ struct ChangePages: View {
                                     showChanges = false
                                     DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .abandon)
 //                                    DAO.shared.change(item: selectedItem!, from: .read, to: .abandon)
+                                    dismiss()
                                 }label:{
                                     Image("moveAbandon")
                                         .resizable()

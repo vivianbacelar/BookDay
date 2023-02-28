@@ -34,7 +34,7 @@ struct Library: View {
     /// Lista que é mostrada de fato
     @State var livros: [Item] = []
     @State var count: Int = 0
-    @State var changePages = false
+//    @State var changePages = false
     @State var selectedItem: Item?
    
     
@@ -114,11 +114,6 @@ struct Library: View {
                 livros = getBook(of: newValue)
             }
             
-            .overlay(content: {
-                if changePages {
-                    ChangePages(showChanges: $changePages, selectedItem: selectedItem)
-                }
-            })
           
             .toolbar(Visibility.hidden, for: ToolbarPlacement.navigationBar)
             .navigationBarHidden(true)
@@ -136,6 +131,7 @@ struct Library: View {
     let colums: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     @State var clicked = false
+    @State var miniClicked = false
     var collectionBooks: some View {
         
         VStack {
@@ -143,8 +139,8 @@ struct Library: View {
                 ForEach(livros, id: \.id) { item in
                     Button {
                         if selected == "Want to Read" {
-                            changePages.toggle()
                             selectedItem = item
+                            miniClicked = true
                         } else {
                             print("Clicou")
                             selectedItem = item
@@ -171,8 +167,13 @@ struct Library: View {
         .navigationDestination(isPresented: $clicked) {
             let _ = print("Vamos ver")
             if (selectedItem != nil) && clicked {
-                let _ = print(selectedItem!.volumeInfo.title)
                 InfoBookView(item: selectedItem!)
+            }
+        }
+        .navigationDestination(isPresented: $miniClicked) {
+            if (selectedItem != nil) && !clicked && miniClicked {
+                let _ = print(selectedItem!.volumeInfo.title)
+                MiniInfoBookView(item: selectedItem!)
             }
         }
     }

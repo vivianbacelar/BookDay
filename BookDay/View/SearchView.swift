@@ -14,6 +14,7 @@ struct SearchView: View {
     @State var selectedItem: Item?
     private let userDefaults = UserDefaults.standard
     @State var isPlaying : Bool = false
+  
     
     @Environment(\.colorScheme) var colorScheme
     var items: [Item] {
@@ -101,10 +102,36 @@ struct SearchView: View {
                                                 .multilineTextAlignment(.leading)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .padding(.top,UIScreen.main.bounds.height/150)
+                                           
                                             
                                             Spacer()
                                             
                                             HStack {
+                                                if calStars(item: item) == 0.0 {
+                                                    Text("No avarage")
+                                                        .font(Font.custom("Raleway", size: 13).weight(.regular))
+                                                        .foregroundColor(Color.corPreto)
+                                                }else{
+                                                    ForEach(0 ..< Int(calStars(item: item))) { i in
+                                                        
+                                                        Image(systemName: "star.fill")
+                                                            .foregroundColor(Color.corLaranja)
+                                                            .frame(width: UIScreen.main.bounds.width/1000,height: UIScreen.main.bounds.height/2000)
+                                                            .padding(.horizontal, UIScreen.main.bounds.width/80)
+                                                        
+                                                    }
+                                                    if Int(calStars(item: item) * 2) % 2 != 0 {
+                                                        Image(systemName: "star.leadinghalf.filled")
+                                                            .foregroundColor(Color.corLaranja)
+                                                            .frame(width: UIScreen.main.bounds.width/1000,height: UIScreen.main.bounds.height/2000)
+                                                            .padding(.horizontal, UIScreen.main.bounds.width/80)
+                                                    }
+                                                    
+                                                    Text(String(calStars(item: item)))
+                                                        .font(Font.custom("Raleway", size: 13).weight(.regular))
+                                                        .foregroundColor(Color.corPreto)
+                                                }
+                                                
                                                 Spacer()
                                                 Button (action:{
                                                     customAlert.toggle()
@@ -175,10 +202,16 @@ struct SearchView: View {
             }
         })
     }
+    
     private func performSearch (keyWord: String) {
         filteredItems = networkModel.items.filter{ item in
             item.volumeInfo.title.contains(keyWord)
         }
+    }
+    
+    
+    func calStars(item: Item) -> Double {
+        return item.volumeInfo.averageRating ?? 0
     }
 }
 
