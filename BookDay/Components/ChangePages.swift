@@ -10,7 +10,8 @@ import SwiftUI
 struct ChangePages: View {
     
     @Binding var showChanges: Bool
-    var selectedItem: Item?
+    @State var selectedItem: Item?
+    @State var clicked = false
     
     var body: some View {
         
@@ -51,7 +52,7 @@ struct ChangePages: View {
                                 Button{
                                     showChanges = false
                                     DAO.shared.change(item: selectedItem!, from: .wantToRead, to: .abandon)
-//                                    DAO.shared.change(item: selectedItem!, from: .read, to: .abandon)
+                                    //                                    DAO.shared.change(item: selectedItem!, from: .read, to: .abandon)
                                 }label:{
                                     Image("moveAbandon")
                                         .resizable()
@@ -77,10 +78,21 @@ struct ChangePages: View {
                         }
                     }
                     )}
+            
         }   .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.corCinza3.opacity(0.7))
+        
+            .navigationDestination(isPresented: $clicked) {
+                let _ = print("Vamos ver")
+                if (selectedItem != nil) && clicked {
+                    let _ = print(selectedItem!.volumeInfo.title)
+                    AlternativeInfoView(item: selectedItem!)
+                }
+            }
+        
     }
 }
+    
             
 
 

@@ -30,7 +30,7 @@ struct PurpleView: View {
                      
                     Rectangle()
                         .foregroundColor(Color.corRoxo)
-                        .frame(width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.height/10)
+                        .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.height/10)
                     
                 }.padding(.horizontal, UIScreen.main.bounds.width/15)
                     .padding(.top, UIScreen.main.bounds.height/12)

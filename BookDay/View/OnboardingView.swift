@@ -23,9 +23,9 @@ struct OnboardingView: View {
             PurpleView(currentStep: $currentStep)
                 .tag(3)
             GreenView(currentStep: $currentStep)
-                .tag(4)
-            BlueView(currentStep: $currentStep)
                 .tag(5)
+            BlueView(currentStep: $currentStep)
+                .tag(4)
             YellowView(currentStep: $currentStep, shouldShowOnboarding: $shouldShowOnboarding)
                 .tag(6)
         }

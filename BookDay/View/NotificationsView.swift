@@ -27,7 +27,7 @@ struct Notifications: View {
                     print("troca")
                     enabled ? setAlarm() : cancelAlarm()
                 })
-                .tint(Color("yellow"))
+                .tint(Color.corAzulEscuro)
                 .padding()
             
         } .onAppear {
