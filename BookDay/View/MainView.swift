@@ -53,7 +53,7 @@ struct MainView: View {
                      }
                      .tag(3)
                  
-             }
+             }.buttonStyle(.plain)
              
              .onAppear() {
                  let appearance = UITabBarAppearance()
