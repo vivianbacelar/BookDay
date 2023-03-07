@@ -84,14 +84,6 @@ struct ChangePages: View {
         }   .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.corCinza3.opacity(0.7))
         
-            .navigationDestination(isPresented: $clicked) {
-                let _ = print("Vamos ver")
-                if (selectedItem != nil) && clicked {
-                    let _ = print(selectedItem!.volumeInfo.title)
-                    AlternativeInfoView(item: selectedItem!)
-                }
-            }
-        
     }
 }
     
