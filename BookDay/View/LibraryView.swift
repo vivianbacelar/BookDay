@@ -100,7 +100,8 @@ struct Library: View {
                                 .frame(width: UIScreen.main.bounds.width/14.5, height: UIScreen.main.bounds.height/25)
                                 
                             
-                        }.padding(.bottom, UIScreen.main.bounds.height/1.32)
+                        }.buttonStyle(.plain)
+                        .padding(.bottom, UIScreen.main.bounds.height/1.32)
                         .padding(.leading, UIScreen.main.bounds.width/1.3)
                         
                         

@@ -135,8 +135,7 @@ struct ScrollBookReading: View {
     }
     
     func calPercentage(item: Item) -> Double {
-        var percentage = ((Double(item.countPage ?? "0.0") ?? 0.0) * 100) / (Double(item.volumeInfo.pageCount ?? 100))
-        return percentage
+        return ((Double(item.countPage ?? "0.0") ?? 0.0) * 100) / (Double(item.volumeInfo.pageCount ?? 100))
        
     }
     

@@ -84,6 +84,8 @@ struct ChangePages: View {
         }   .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.corCinza3.opacity(0.7))
         
+           
+        
     }
 }
     
